@@ -322,6 +322,7 @@ const TrustedBySection = () => {
   );
 };
 
+// Updated CommercialSection with peeking images
 const CommercialSection = ({ openModal }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -329,6 +330,9 @@ const CommercialSection = ({ openModal }) => {
     slidesToScroll: 1,
     containScroll: "trimSnaps",
     skipSnaps: false,
+    startIndex: 0,
+    dragFree: false,
+    inViewThreshold: 0.3,
   });
 
   useEffect(() => {
@@ -340,14 +344,14 @@ const CommercialSection = ({ openModal }) => {
       }
     };
 
-    const intervalId = setInterval(autoScroll, 3000); // Auto-scroll every 3 seconds
+    const intervalId = setInterval(autoScroll, 3000);
 
     return () => clearInterval(intervalId);
   }, [emblaApi]);
 
   return (
     <section id="works" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-8">
         <motion.h2
           className="text-portfolio-darker-green font-medium text-4xl lg:text-6xl mb-16 text-center"
           style={{ fontFamily: "CustomRegular" }}
@@ -358,9 +362,10 @@ const CommercialSection = ({ openModal }) => {
         >
           COMMERCIALS
         </motion.h2>
-
+      </div>
+      <div className="w-full overflow-hidden px-32">
         <motion.div
-          className="embla overflow-visible"
+          className="embla"
           ref={emblaRef}
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -371,12 +376,12 @@ const CommercialSection = ({ openModal }) => {
             {commercialImages.map((image, index) => (
               <motion.div
                 key={index}
-                className="embla__slide flex-none w-1/3 md:w-1/4 lg:w-1/2 mx-2 relative"
-                whileHover={{ scale: 1.05 }}
+                className="embla__slide flex-none w-[70vw] md:w-[60vw] lg:w-[50vw] px-4"
+                whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
                 <div
-                  className="relative h-80 lg:h-96 bg-gray-200 rounded-lg overflow-hidden cursor-pointer shadow-lg"
+                  className="relative h-[22rem] md:h-[26rem] lg:h-[32rem] bg-gray-200 rounded-lg overflow-hidden cursor-pointer shadow-lg"
                   onClick={() => openModal(image, `Commercial ${index + 1}`)}
                 >
                   <img
@@ -384,16 +389,7 @@ const CommercialSection = ({ openModal }) => {
                     alt={`Commercial ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
-                  <div
-                    className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center"
-                    style={{
-                      opacity: emblaApi
-                        ? emblaApi.selectedScrollSnap() === index
-                          ? 0
-                          : 0.5
-                        : 1,
-                    }}
-                  >
+                  <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                     <div className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
                       <div className="w-16 h-16 border-2 border-white rounded-full flex items-center justify-center">
                         <div className="w-0 h-0 border-l-8 border-r-0 border-t-4 border-b-4 border-l-white border-t-transparent border-b-transparent ml-1"></div>
@@ -407,11 +403,12 @@ const CommercialSection = ({ openModal }) => {
         </motion.div>
       </div>
     </section>
-  );
+);
 };
 const PhotoGallery = ({ openModal }: { openModal: (src: string, alt: string) => void }) => {
   return (
     <section className="py-20 bg-white overflow-hidden">
+      {/* Keep max-width only for the title */}
       <div className="max-w-7xl mx-auto px-8">
         <motion.h2
           className="text-portfolio-dark-green font-medium text-4xl lg:text-6xl mb-16 text-center"
@@ -423,7 +420,10 @@ const PhotoGallery = ({ openModal }: { openModal: (src: string, alt: string) => 
         >
           PHOTOS / STILLS
         </motion.h2>
+      </div>
 
+      {/* Full-width scroll containers */}
+      <div className="w-full">
         <InfiniteScrollRow
           images={galleryImages.slice(0, Math.ceil(galleryImages.length / 2))}
           direction="ltr"
@@ -439,15 +439,35 @@ const PhotoGallery = ({ openModal }: { openModal: (src: string, alt: string) => 
   );
 };
 
-const AfterMoviesSection = ({
-  openModal,
-}: {
-  openModal: (src: string, alt: string) => void;
-}) => {
-  const [emblaRef] = useEmblaCarousel({ loop: true });
+// Updated CommercialSection with peeking images
+const AfterMoviesSection = ({ openModal }) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "center",
+    slidesToScroll: 1,
+    containScroll: "trimSnaps",
+    skipSnaps: false,
+    startIndex: 0,
+    dragFree: false,
+    inViewThreshold: 0.3,
+  });
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const autoScroll = () => {
+      if (emblaApi.canScrollNext()) {
+        emblaApi.scrollNext();
+      }
+    };
+
+    const intervalId = setInterval(autoScroll, 3000);
+
+    return () => clearInterval(intervalId);
+  }, [emblaApi]);
 
   return (
-    <section className="py-20 bg-white">
+    <section id="works" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-8">
         <motion.h2
           className="text-portfolio-darker-green font-medium text-4xl lg:text-6xl mb-16 text-center"
@@ -459,9 +479,10 @@ const AfterMoviesSection = ({
         >
           AFTER MOVIES
         </motion.h2>
-
+      </div>
+      <div className="w-full overflow-hidden px-32">
         <motion.div
-          className="embla overflow-hidden rounded-lg"
+          className="embla"
           ref={emblaRef}
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -472,17 +493,17 @@ const AfterMoviesSection = ({
             {commercialImages.map((image, index) => (
               <motion.div
                 key={index}
-                className="embla__slide flex-none w-full lg:w-1/3 px-2"
-                whileHover={{ scale: 1.05 }}
+                className="embla__slide flex-none w-[70vw] md:w-[60vw] lg:w-[50vw] px-4"
+                whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
                 <div
-                  className="relative h-80 lg:h-96 bg-gray-200 rounded-lg overflow-hidden cursor-pointer"
-                  onClick={() => openModal(image, `After Movie ${index + 1}`)}
+                  className="relative h-[22rem] md:h-[26rem] lg:h-[32rem] bg-gray-200 rounded-lg overflow-hidden cursor-pointer shadow-lg"
+                  onClick={() => openModal(image, `Commercial ${index + 1}`)}
                 >
                   <img
                     src={image}
-                    alt={`After Movie ${index + 1}`}
+                    alt={`Commercial ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
@@ -516,7 +537,7 @@ const ArtistNamesSection = () => {
           {artistNames.map((artist, index) => (
             <motion.div
               key={artist.name}
-              className={`font-nunito font-bold text-lg lg:text-xl ${artist.color}`}
+              className={`font-nunito font-bold text-lg lg:text-xl ${artist.color} text-justify`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.05 }}
@@ -650,26 +671,27 @@ const InfiniteScrollRow = ({
 }) => {
   const animationClass = direction === "ltr" ? "animate-scrollLtr" : "animate-scrollRtl";
 
+  // Function to get image size based on index pattern
   const getImageSize = (index: number) => {
     const pattern = index % 3;
 
     if (pattern === 0) {
       return "w-96 h-40 lg:w-[20rem] lg:h-60";
     } else {
-      return "w-48 h-40 lg:w-50 lg:h-60";
+      return "w-48 h-40 lg:w-40 lg:h-60";
     }
   };
 
   return (
-    <div className="overflow-hidden mb-1">
-      <div className={`flex ${animationClass} w-max`}>
-        {/* Triple the images for seamless loop */}
-        {[...images, ...images, ...images].map((img, i) => (
+    <div className="overflow-hidden mb-2 w-full">
+      <div className={`flex ${animationClass}`} style={{ width: 'max-content' }}>
+        {/* Increase duplication for wider content */}
+        {[...images, ...images, ...images, ...images, ...images].map((img, i) => (
           <img
             key={i}
             src={img}
             alt={`Photo ${i % images.length}`}
-            className={`${getImageSize(i)} object-cover mr-1  cursor-pointer flex-shrink-0`}
+            className={`${getImageSize(i)} object-cover mr-2  cursor-pointer flex-shrink-0`}
             onClick={() => openModal(img, `Photo ${i % images.length}`)}
           />
         ))}
