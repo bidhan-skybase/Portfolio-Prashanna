@@ -6,7 +6,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ImageModal, useImageModal } from "../components/ImageModal";
 
 const heroImages = [
-  "https://cdn.builder.io/api/v1/image/assets/TEMP/645db85c77fd0d9accfed3c884df671d108fe73a?width=3154",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752210606/WhatsApp_Image_2025-06-23_at_15.43.27_9fd048e1_1_1_fom8pe.png",
   "https://cdn.builder.io/api/v1/image/assets/TEMP/d02c7c3fd5ef2e3678c8c7529d948623e15c8550?width=3943",
 ];
 
@@ -17,12 +17,22 @@ const commercialImages = [
 ];
 
 const galleryImages = [
-  "https://cdn.builder.io/api/v1/image/assets/TEMP/75d53e130505c6a48c6948b2e620ac6c1696971f?width=417",
-  "https://cdn.builder.io/api/v1/image/assets/TEMP/11851de92e667b3a5d33bfe81be5f6305288f783?width=416",
-  "https://cdn.builder.io/api/v1/image/assets/TEMP/a1baca21a02d40129b5a301604b04592aca7bed8?width=417",
-  "https://cdn.builder.io/api/v1/image/assets/TEMP/2d624fd7cb4fe13a91b84591ebc339014f98db7c?width=933",
-  "https://cdn.builder.io/api/v1/image/assets/TEMP/a30bc80037aa0286a3b3eb708f89c09857b84ce3?width=939",
-  "https://cdn.builder.io/api/v1/image/assets/TEMP/f11023693025a6872ff02e0ed4fe6074f59620cc?width=933",
+ "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/IMG_1646_Medium_x0mwhj.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/Master_01_Medium_d02vg3.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218516/Ig-anuv_02_Medium_obb6v4.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218516/DSC08662_Medium_buv5pj.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218516/fireworks01_Medium_biu3f5.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218515/DSC05271_Medium_oggrss.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218515/DSC01665_Medium_drasv5.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218515/DSC01656_Medium_p0ed4g.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218514/DSC00498_Medium_hhiyuo.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218514/DSC01231_Medium_o7shlj.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218514/DSC01046_Medium_swoz5j.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218513/atif_aslam_main_Medium_hhqzvs.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218513/Atif-slide_08_Medium_l16odb.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218513/Atif-slide_02_Medium_xjlix0.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218512/_MG_2039_Medium_kbkxva.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218512/_MG_1932_Medium_rgqyp6.jpg"
 ];
 
 const artistNames = [
@@ -347,7 +357,7 @@ const TrustedBySection = () => {
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="w-32 h-32 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    className="w-32 h-32 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain"
                   />
                 </motion.div>
               ))}
@@ -510,7 +520,7 @@ const PhotoGallery = ({
       </div>
 
       {/* Full-width scroll containers */}
-      <div className="w-full">
+      <div className="w-full px-[5rem]">
         <InfiniteScrollRow
           images={galleryImages.slice(0, Math.ceil(galleryImages.length / 2))}
           direction="ltr"
@@ -671,135 +681,135 @@ const BrandsAndArtistsSection = () => {
   const brandLogos = [
     // Row 1
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/44f40adb92f7fbbe64edb530566ae14aa4e3cecb?width=180",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Pepsi_mjk1q3.png",
       alt: "Pepsi",
       size: "w-20 h-20",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/7fe819b198544cbc65d8d6de21cbcf5c97422666?width=240",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Adidas_ihp4iy.png",
       alt: "Adidas",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/7b5cfe83b1265c8e81e5e082e0fabcde5367e9ee?width=242",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Chanpions_League_q1mnrh.png",
       alt: "Champions League",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/0341e5f33a40c139c90c0e1ce6f8c3eaca0fdd68?width=240",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Unilever_xzfmm9.png",
       alt: "Unilever",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/eb963fb811266ceeaa17a5d23e24983afc62c80a?width=242",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Tedx_ljvgef.png",
       alt: "TEDx",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/a621c69c312cca5c65cc205d15e62184891fe1ab?width=240",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Coca_Cola_l4ce9a.png",
       alt: "Coca Cola",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/69bdce7898caf7a3dbf52d6b2db22604e0d27d5b?width=242",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Expo_City_Dubai_qptndz.png",
       alt: "Expo City Dubai",
       size: "w-28 h-28",
     },
     // Row 2
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/e5db6c33474a62b281fe6d829b6deb70e31c484a?width=240",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Seres_odqyyp.png",
       alt: "Seres",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/638305edd55ac6c6b936131f353d2d1d94664658?width=240",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211235/Skoda_lgpmzg.png",
       alt: "Skoda",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/c270ac63c43c14f2061fb44f0337a7bfa3bdd3d2?width=242",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211233/Foton_bbyiyb.png",
       alt: "Foton",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/3c3ab22b023570c8af070ff45deb1c0bfce50e83?width=242",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211238/Yamaha_jovsop.png",
       alt: "Yamaha",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/e3e21b1c4b832c111a93a1725375e1a4f243dfb9?width=240",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211232/Changan_wk0gzr.png",
       alt: "Changan",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/3fa54c0cecd728b5b550c036e70521ab0040b60f?width=242",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Niu_ifpxku.png",
       alt: "Niu",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/868e2475b4f94faf0eba0f53097bd5be7de92a7c?width=240",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211237/Tuborg_iafgye.png",
       alt: "Tuborg",
       size: "w-28 h-28",
     },
     // Row 3
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/6e232075aad47f9c2ab713d971e772ad881ef45f?width=242",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Samsung_qc4q9b.png",
       alt: "Samsung",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/df4608e0cf2f6e66b2d0abc051f2311a74d80b12?width=240",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Ruslan_sa4aoz.png",
       alt: "Ruslan",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/599efa4bb19e6c74a3df99625a1bce33693c6b7a?width=398",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Gorkha_Brewery_a0xs61.png",
       alt: "Gorkha Brewery",
       size: "w-32 h-32",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/a3815f5fab7e929b8611adcc7b6c9547bbf298b6?width=242",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Nepal_Tourism_Board_sgefpx.png",
       alt: "Nepal Tourism Board",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/5fbd5af2bcd26a3dc69366e169cac349e7d463d4?width=292",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Crossfire_ta6avf.png",
       alt: "Crossfire",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/e891ddad87f2387fca4d0bd0640aac0a61b0433f?width=222",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Yatri_hfjq2j.png",
       alt: "Yatri",
       size: "w-28 h-28",
     },
     // Row 4
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/dc572a1d2133d0caabf2f08453b3833cce4f6138?width=242",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/KMG_z5smgs.png",
       alt: "KMG",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/ea257574a8290e0d1045d54e2ff432d725d9ca86?width=242",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211415/Yale_University_mgk88h.png",
       alt: "Yale University",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/40d72e39d6177fb704e7107bd5d9ee0999acb2cf?width=242",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Khalti_tquumc.png",
       alt: "Khalti",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/3d209037b240613b8c5969004fedb8d1e183db5a?width=240",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Httpool_ri0euy.png",
       alt: "Httpool",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/485de442379249f2d486e809041dcd1944b87184?width=240",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211413/SOS_uazsnq.png",
       alt: "SOS",
       size: "w-28 h-28",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/b3f43ab92c3d09c07e65f075ebcfba596b95eaaf?width=242",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/DAV_fjxice.png",
       alt: "DAV",
       size: "w-28 h-28",
     },
@@ -1005,9 +1015,9 @@ const InfiniteScrollRow = ({
     const pattern = index % 3;
 
     if (pattern === 0) {
-      return "w-96 h-40 lg:w-[20rem] lg:h-60";
+      return "w-100 h-100 lg:w-[40rem] lg:h-80";
     } else {
-      return "w-48 h-40 lg:w-40 lg:h-60";
+      return "w-60 h-0 lg:w-60 lg:h-80";
     }
   };
 
