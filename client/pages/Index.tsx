@@ -139,14 +139,28 @@ const Navigation = () => {
     </motion.nav>
   );
 };
-
 const HeroSection = () => {
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden rounded-b-3xl"
     >
-      <ScrollingBackground />
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {/* Optional overlay for better text readability */}
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+      </div>
+
       <Navigation />
 
       <motion.div
@@ -176,13 +190,13 @@ const HeroSection = () => {
         </motion.p>
       </motion.div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        <div className="w-3 h-1 bg-portfolio-accent-gold rounded-full"></div>
-        <div className="w-1 h-1 bg-white rounded-full"></div>
-        <div className="w-1 h-1 bg-white rounded-full"></div>
-        <div className="w-1 h-1 bg-white rounded-full"></div>
-        <div className="w-1 h-1 bg-white rounded-full"></div>
-      </div>
+      {/*<div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">*/}
+      {/*  <div className="w-3 h-1 bg-portfolio-accent-gold rounded-full"></div>*/}
+      {/*  <div className="w-1 h-1 bg-white rounded-full"></div>*/}
+      {/*  <div className="w-1 h-1 bg-white rounded-full"></div>*/}
+      {/*  <div className="w-1 h-1 bg-white rounded-full"></div>*/}
+      {/*  <div className="w-1 h-1 bg-white rounded-full"></div>*/}
+      {/*</div>*/}
     </section>
   );
 };
@@ -538,60 +552,45 @@ const PhotoGallery = ({
 
 
 const AfterMoviesSection = ({ openModal }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true,
-    align: "center",
-    slidesToScroll: 1,
-    containScroll: "trimSnaps",
-    inViewThreshold: 0.3,
-  });
-
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-
-  const commercialImages = [
+  const allCommercialImages = [
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/445332e065ddd1aafdfc7098cfe414b4b689b8e3?width=2898",
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/445332e065ddd1aafdfc7098cfe414b4b689b8e3?width=2898",
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/445332e065ddd1aafdfc7098cfe414b4b689b8e3?width=2898",
     "https://cdn.builder.io/api/v1/image/assets/TEMP/445332e065ddd1aafdfc7098cfe414b4b689b8e3?width=2898",
     "https://cdn.builder.io/api/v1/image/assets/TEMP/6b4b42669bf3e8c757ebab63cb074e9d404baaed?width=684",
     "https://cdn.builder.io/api/v1/image/assets/TEMP/6b4b42669bf3e8c757ebab63cb074e9d404baaed?width=684",
     "https://cdn.builder.io/api/v1/image/assets/TEMP/6b4b42669bf3e8c757ebab63cb074e9d404baaed?width=684",
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/6b4b42669bf3e8c757ebab63cb074e9d404baaed?width=684",
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/6b4b42669bf3e8c757ebab63cb074e9d404baaed?width=684",
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/6b4b42669bf3e8c757ebab63cb074e9d404baaed?width=684",
+
   ];
+  const [hasNextBeenPressed, setHasNextBeenPressed] = useState(false);
+  const [featuredImage, setFeaturedImage] = useState(allCommercialImages[0]);
+  const [thumbnailStartIndex, setThumbnailStartIndex] = useState(1);
+  const thumbnailsPerPage = 4;
+  const maxIndex = allCommercialImages.length - thumbnailsPerPage;
 
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const handleNext = () => {
+    setHasNextBeenPressed(true);
+    setThumbnailStartIndex((prev) =>
+      prev + thumbnailsPerPage > maxIndex ? 1 : prev + thumbnailsPerPage,
+    );
+  };
 
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    const onSelect = () => {
-      setSelectedIndex(emblaApi.selectedScrollSnap());
-    };
-
-    emblaApi.on("select", onSelect);
-    onSelect();
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    const autoScroll = () => {
-      if (!isHovered && emblaApi.canScrollNext()) {
-        emblaApi.scrollNext();
-      } else if (!isHovered) {
-        emblaApi.scrollTo(0);
-      }
-    };
-
-    const interval = setInterval(autoScroll, 3000);
-
-    return () => clearInterval(interval);
-  }, [emblaApi, isHovered]);
+  const handlePrevious = () => {
+    setThumbnailStartIndex((prev) =>
+      prev - thumbnailsPerPage < 1 ? maxIndex : prev - thumbnailsPerPage,
+    );
+  };
 
   return (
     <section id="works" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-8">
+        {/* Title */}
         <motion.h2
-          className="text-portfolio-darker-green font-medium text-4xl lg:text-6xl mb-16 text-center"
-          style={{ fontFamily: "CustomRegular" }}
+          className="text-4xl lg:text-6xl mb-10 text-center"
+          style={{ fontFamily: "CustomRegular", color: "#254736" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -599,78 +598,79 @@ const AfterMoviesSection = ({ openModal }) => {
         >
           AFTER MOVIES
         </motion.h2>
-      </div>
 
-      <div
-        className="w-full overflow-hidden px-8 lg:px-32 relative"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {/* LEFT PANEL */}
-        <div
-          className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer"
-          onClick={scrollPrev}
-        >
-          <div className="w-20 h-[22rem] md:h-[26rem] lg:h-[32rem] overflow-hidden rounded-l-xl shadow-md">
-            <img
-              src={
-                commercialImages[
-                (selectedIndex - 1 + commercialImages.length) %
-                commercialImages.length
-                  ]
-              }
-              alt="Previous"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-
-        {/* RIGHT PANEL */}
-        <div
-          className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer"
-          onClick={scrollNext}
-        >
-          <div className="w-20 h-[22rem] md:h-[26rem] lg:h-[32rem] overflow-hidden rounded-r-xl shadow-md">
-            <img
-              src={
-                commercialImages[(selectedIndex + 1) % commercialImages.length]
-              }
-              alt="Next"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-
-        {/* MAIN CAROUSEL */}
+        {/* Featured Image */}
         <motion.div
-          className="embla mt-6"
-          ref={emblaRef}
+          className="mb-4"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <div className="embla__container flex">
-            {commercialImages.map((image, index) => (
+          <div className="relative w-full h-72 lg:h-[500px] bg-gray-200 overflow-hidden cursor-pointer">
+            <img
+              src={featuredImage}
+              alt="Featured Commercial"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </motion.div>
+
+        {/* Thumbnail Grid */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          {allCommercialImages
+            .slice(thumbnailStartIndex, thumbnailStartIndex + thumbnailsPerPage)
+            .map((image, index) => (
               <motion.div
                 key={index}
-                className="embla__slide flex-none w-[75vw] sm:w-[65vw] lg:w-[50vw] px-4"
-                whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.4 }}
+                className="relative h-48 lg:h-40 bg-gray-200 overflow-hidden cursor-pointer"
+                onClick={() => setFeaturedImage(image)}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3 }}
               >
-                <div
-                  className="relative h-[22rem] md:h-[26rem] lg:h-[32rem] bg-gray-100 overflow-hidden shadow-xl cursor-pointer group"
-                  onClick={() => openModal(image, `Commercial ${index + 1}`)}
-                >
-                  <img
-                    src={image}
-                    alt={`Commercial ${index + 1}`}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"
-                  />
-                </div>
+                <img
+                  src={image}
+                  alt={`Commercial ${thumbnailStartIndex + index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300" />
               </motion.div>
             ))}
-          </div>
+        </motion.div>
+
+        {/* Navigation Buttons */}
+        <motion.div
+          className="flex justify-between"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          viewport={{ once: true }}
+        >
+          {hasNextBeenPressed ? (
+            <button
+              className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300"
+              style={{ fontFamily: "CustomRegular" }}
+              onClick={handlePrevious}
+            >
+              ← Previous
+            </button>
+          ) : (
+            <div />
+          )}
+
+          <button
+            className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300"
+            style={{ fontFamily: "CustomRegular" }}
+            onClick={handleNext}
+          >
+            Next →
+          </button>
         </motion.div>
       </div>
     </section>
@@ -895,18 +895,22 @@ const Footer = () => {
     {
       src: "https://cdn.builder.io/api/v1/image/assets/TEMP/5d7233e91a7ad3aa21da77027e2d10192eba739a?width=100",
       alt: "Twitter",
+      href:"https://www.linkedin.com/in/prashannabajracharya/"
     },
     {
       src: "https://cdn.builder.io/api/v1/image/assets/TEMP/c97ad2209f10b353eb66e4603f111ec06780f9fb?width=106",
       alt: "Facebook",
+      href:"https://www.youtube.com/@untitledNepal"
     },
     {
       src: "https://cdn.builder.io/api/v1/image/assets/TEMP/c1a7fcba71d20d8c3e72f6740a392f110eee9a8b?width=106",
       alt: "Instagram",
+      href:"https://www.behance.net/prashanbajrach"
     },
     {
       src: "https://cdn.builder.io/api/v1/image/assets/TEMP/47a0152d859b745c62e7a68a20b8483b89cf7671?width=100",
       alt: "LinkedIn",
+      href: "https://www.instagram.com/prashannabajracharya/"
     },
   ];
 
@@ -943,8 +947,9 @@ const Footer = () => {
                 {socialIcons.map((icon, index) => (
                   <motion.a
                     key={icon.alt}
-                    href="#"
+                    href={icon.href}
                     className="block"
+                    target="_blank"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
