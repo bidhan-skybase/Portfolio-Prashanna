@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import CountUp from "react-countup";
 import useEmblaCarousel from "embla-carousel-react";
 import { ImageModal, useImageModal } from "../components/ImageModal";
@@ -526,32 +526,55 @@ const PhotoGallery = ({
   );
 };
 
-// Updated CommercialSection with peeking images
+
 const AfterMoviesSection = ({ openModal }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: "center",
     slidesToScroll: 1,
     containScroll: "trimSnaps",
-    skipSnaps: false,
-    startIndex: 0,
-    dragFree: false,
     inViewThreshold: 0.3,
   });
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const commercialImages = [
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/445332e065ddd1aafdfc7098cfe414b4b689b8e3?width=2898",
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/6b4b42669bf3e8c757ebab63cb074e9d404baaed?width=684",
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/6b4b42669bf3e8c757ebab63cb074e9d404baaed?width=684",
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/6b4b42669bf3e8c757ebab63cb074e9d404baaed?width=684",
+  ];
+
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    };
+
+    emblaApi.on("select", onSelect);
+    onSelect();
+  }, [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;
 
     const autoScroll = () => {
-      if (emblaApi.canScrollNext()) {
+      if (!isHovered && emblaApi.canScrollNext()) {
         emblaApi.scrollNext();
+      } else if (!isHovered) {
+        emblaApi.scrollTo(0);
       }
     };
 
-    const intervalId = setInterval(autoScroll, 3000);
+    const interval = setInterval(autoScroll, 3000);
 
-    return () => clearInterval(intervalId);
-  }, [emblaApi]);
+    return () => clearInterval(interval);
+  }, [emblaApi, isHovered]);
 
   return (
     <section id="works" className="py-20 bg-white">
@@ -567,9 +590,50 @@ const AfterMoviesSection = ({ openModal }) => {
           AFTER MOVIES
         </motion.h2>
       </div>
-      <div className="w-full overflow-hidden px-32">
+
+      <div
+        className="w-full overflow-hidden px-8 lg:px-32 relative"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* LEFT PANEL */}
+        <div
+          className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer"
+          onClick={scrollPrev}
+        >
+          <div className="w-20 h-[22rem] md:h-[26rem] lg:h-[32rem] overflow-hidden rounded-l-xl shadow-md">
+            <img
+              src={
+                commercialImages[
+                (selectedIndex - 1 + commercialImages.length) %
+                commercialImages.length
+                  ]
+              }
+              alt="Previous"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* RIGHT PANEL */}
+        <div
+          className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer"
+          onClick={scrollNext}
+        >
+          <div className="w-20 h-[22rem] md:h-[26rem] lg:h-[32rem] overflow-hidden rounded-r-xl shadow-md">
+            <img
+              src={
+                commercialImages[(selectedIndex + 1) % commercialImages.length]
+              }
+              alt="Next"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* MAIN CAROUSEL */}
         <motion.div
-          className="embla"
+          className="embla mt-6"
           ref={emblaRef}
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -580,26 +644,19 @@ const AfterMoviesSection = ({ openModal }) => {
             {commercialImages.map((image, index) => (
               <motion.div
                 key={index}
-                className="embla__slide flex-none w-[70vw] md:w-[60vw] lg:w-[50vw] px-4"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
+                className="embla__slide flex-none w-[75vw] sm:w-[65vw] lg:w-[50vw] px-4"
+                whileHover={{ scale: 1.01 }}
+                transition={{ duration: 0.4 }}
               >
                 <div
-                  className="relative h-[22rem] md:h-[26rem] lg:h-[32rem] bg-gray-200 rounded-lg overflow-hidden cursor-pointer shadow-lg"
+                  className="relative h-[22rem] md:h-[26rem] lg:h-[32rem] bg-gray-100 overflow-hidden shadow-xl cursor-pointer group"
                   onClick={() => openModal(image, `Commercial ${index + 1}`)}
                 >
                   <img
                     src={image}
                     alt={`Commercial ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                    <div className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-16 h-16 border-2 border-white rounded-full flex items-center justify-center">
-                        <div className="w-0 h-0 border-l-8 border-r-0 border-t-4 border-b-4 border-l-white border-t-transparent border-b-transparent ml-1"></div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             ))}
