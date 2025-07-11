@@ -104,6 +104,8 @@
 
   body {
     @apply bg-background text-foreground;
+    cursor: url("/public/cursor.png") 50 50, auto;
+
   }
 }
 
@@ -136,7 +138,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #16382d;
+  background: #254736;
 }
 
 @font-face {
