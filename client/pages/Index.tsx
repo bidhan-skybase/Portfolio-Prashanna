@@ -806,13 +806,11 @@ const BrandsAndArtistsSection = () => {
   ];
 
   return (
-    <section className="py-20" style={{}}>
-      <div className=" mx-auto">
+    <section className="py-20">
+      <div className="mx-auto">
         <motion.h2
           className="text-center text-4xl lg:text-6xl mb-16"
-          style={{
-            fontFamily: "CustomRegular",
-          }}
+          style={{ fontFamily: "CustomRegular" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -822,7 +820,7 @@ const BrandsAndArtistsSection = () => {
         </motion.h2>
 
         <motion.div
-          className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 lg:gap-6 items-center justify-items-center px-40 py-20"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 sm:gap-6 items-center justify-items-center px-4 sm:px-10 lg:px-40 py-10 sm:py-20"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -832,7 +830,7 @@ const BrandsAndArtistsSection = () => {
           {brandLogos.map((logo, index) => (
             <motion.div
               key={index}
-              className="flex items-center justify-center p-4"
+              className="flex items-center justify-center p-2 sm:p-4"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.05 }}
@@ -842,7 +840,7 @@ const BrandsAndArtistsSection = () => {
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className={`${logo.size} object-contain filter brightness-0 invert`}
+                className={`${logo.size} min-w-[40px] min-h-[40px] object-contain filter brightness-0 invert`}
               />
             </motion.div>
           ))}
