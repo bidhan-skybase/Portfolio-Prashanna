@@ -154,7 +154,10 @@ const HeroSection = () => {
           muted
           playsInline
         >
-          <source src="/hero.mp4" type="video/mp4" />
+          <source
+            src="https://res.cloudinary.com/dzign6pg0/video/upload/v1752333676/Showreel_final_1_ynmuzp.mp4"
+            type="video/mp4"
+          />
           Your browser does not support the video tag.
         </video>
         {/* Optional overlay for better text readability */}
