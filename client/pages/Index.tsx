@@ -35,7 +35,6 @@ const galleryImages = [
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218512/_MG_1932_Medium_rgqyp6.jpg",
 ];
 
-
 const ScrollingBackground = () => {
   const [scrollY, setScrollY] = useState(0);
 
@@ -202,95 +201,108 @@ const CounterAnimation = ({ end, label }: { end: number; label: string }) => {
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2
-              className="text-portfolio-dark-green font-regular text-5xl lg:text-6xl mb-8 tracking-wider"
-              style={{ fontFamily: "CustomRegular" }}
+    <section id="about" className="bg-white relative overflow-hidden">
+      {/* Content with padding */}
+      <div className="py-0">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* Left column - Text content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className='py-16'
             >
-              PRASHANNA BAJRACHARYA
-            </h2>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
-                Prashanna Bajracharya is a dynamic visual storyteller and
-                creative entrepreneur based in Kathmandu, Nepal.
-              </p>
-              <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
-                A self-taught photographer and filmmaker, he has collaborated
-                with over 30 diverse brands, bringing narratives to life through
-                brand campaigns, documentaries, editorial projects, and event
-                coverage. With a keen eye for detail and a deep passion for
-                storytelling, his work seamlessly blends artistry and impact.
-              </p>
-              <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
-                In 2020, he founded{" "}
-                <a
-                  href="https://untitlednp.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-pink-500 hover:underline font-bold"
-                >
-                  untitled.np
-                </a>
-                , an emerging production and storytelling company dedicated to
-                reshaping visual narratives in Nepal. Built on collaboration and
-                innovation,{" "}
-                <a
-                  href="https://untitlednp.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-pink-500 hover:underline font-bold"
-                >
-                  untitled.np
-                </a>{" "}
-                aims to push creative boundaries and transform the country's
-                media landscape.
-              </p>
-              <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
-                <a
-                  href="https://untitlednp.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-pink-500 hover:underline font-bold"
-                >
-                  untitled.np
-                </a>{" "}
-                is not just a company, they are a collective of filmaholic and
-                visual craftsmen dedicated to shaping brand narratives through
-                artistry and innovation. The name reflects their refusal to be
-                confined by labels; instead, we focus on engineering visuals
-                that resonate, inspire, and elevate. At their core lies a
-                collaborative ethos; Unite diverse creative minds to deliver
-                tailored solutions that align with a brand’s heartbeat.
-              </p>
-            </div>
+              <h2
+                className="text-portfolio-dark-green font-regular text-5xl lg:text-6xl mb-8 tracking-wider"
+                style={{ fontFamily: "CustomRegular" }}
+              >
+                PRASHANNA BAJRACHARYA
+              </h2>
+              <div
+                style={{ display: "flex", flexDirection: "column", gap: 12 }}
+                className="pb-6"
+              >
+                <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
+                  Prashanna Bajracharya is a dynamic visual storyteller and
+                  creative entrepreneur based in Kathmandu, Nepal.
+                </p>
+                <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
+                  A self-taught photographer and filmmaker, he has collaborated
+                  with over 30 diverse brands, bringing narratives to life
+                  through brand campaigns, documentaries, editorial projects,
+                  and event coverage. With a keen eye for detail and a deep
+                  passion for storytelling, his work seamlessly blends artistry
+                  and impact.
+                </p>
+                <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
+                  In 2020, he founded{" "}
+                  <a
+                    href="https://www.instagram.com/untitled.np?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text hover:underline font-bold"
+                  >
+                    untitled.np
+                  </a>
+                  , an emerging production and storytelling company dedicated to
+                  reshaping visual narratives in Nepal. Built on collaboration
+                  and innovation,{" "}
+                  <a
+                    href="https://www.instagram.com/untitled.np?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text hover:underline font-bold"
+                  >
+                    untitled.np
+                  </a>{" "}
+                  aims to push creative boundaries and transform the country's
+                  media landscape.
+                </p>
+                <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
+                  <a
+                    href="https://www.instagram.com/untitled.np?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text hover:underline font-bold"
+                  >
+                    untitled.np
+                  </a>{" "}
+                  is not just a company, they are a collective of filmaholic and
+                  visual craftsmen dedicated to shaping brand narratives through
+                  artistry and innovation. The name reflects their refusal to be
+                  confined by labels; instead, we focus on engineering visuals
+                  that resonate, inspire, and elevate. At their core lies a
+                  collaborative ethos; Unite diverse creative minds to deliver
+                  tailored solutions that align with a brand's heartbeat.
+                </p>
+              </div>
 
-            <div className="grid grid-cols-2 gap-16">
-              <CounterAnimation end={6} label="Years Experience" />
-              <CounterAnimation end={95} label="Happy Clients" />
-            </div>
-          </motion.div>
+              <div className="grid grid-cols-2 gap-16">
+                <CounterAnimation end={6} label="Years Experience" />
+                <CounterAnimation end={95} label="Happy Clients" />
+              </div>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/a1713fc3a7af5a183f21190184819cb26c784935?width=1739"
-              alt="Prashanna Bajracharya"
-              className="w-full h-auto rounded-lg"
-            />
-          </motion.div>
+            {/* Right column - Image that extends to bottom */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative lg:h-full"
+            >
+              {/* Image container that extends beyond the padded area */}
+              <div className="lg:absolute lg:inset-0 lg:flex lg:items-end">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/a1713fc3a7af5a183f21190184819cb26c784935?width=1739"
+                  alt="Prashanna Bajracharya"
+                  className="w-full h-auto lg:h-full lg:object-cover lg:object-top rounded-lg lg:rounded-none"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
@@ -904,41 +916,119 @@ const BrandsAndArtistsSection = () => {
   const logoData = [
     // Row 1
     [
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Pepsi_mjk1q3.png", alt: "Pepsi" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Adidas_ihp4iy.png", alt: "Adidas" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Chanpions_League_q1mnrh.png", alt: "Champions League" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Unilever_xzfmm9.png", alt: "Unilever" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Tedx_ljvgef.png", alt: "TEDx" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Coca_Cola_l4ce9a.png", alt: "Coca Cola" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Expo_City_Dubai_qptndz.png", alt: "Expo City Dubai" },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Pepsi_mjk1q3.png",
+        alt: "Pepsi",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Adidas_ihp4iy.png",
+        alt: "Adidas",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Chanpions_League_q1mnrh.png",
+        alt: "Champions League",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Unilever_xzfmm9.png",
+        alt: "Unilever",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Tedx_ljvgef.png",
+        alt: "TEDx",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Coca_Cola_l4ce9a.png",
+        alt: "Coca Cola",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Expo_City_Dubai_qptndz.png",
+        alt: "Expo City Dubai",
+      },
     ],
     // Row 2
     [
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Seres_odqyyp.png", alt: "Seres" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211235/Skoda_lgpmzg.png", alt: "Skoda" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211233/Foton_bbyiyb.png", alt: "Foton" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211238/Yamaha_jovsop.png", alt: "Yamaha" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211232/Changan_wk0gzr.png", alt: "Changan" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Niu_ifpxku.png", alt: "Niu" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211237/Tuborg_iafgye.png", alt: "Tuborg" },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Seres_odqyyp.png",
+        alt: "Seres",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211235/Skoda_lgpmzg.png",
+        alt: "Skoda",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211233/Foton_bbyiyb.png",
+        alt: "Foton",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211238/Yamaha_jovsop.png",
+        alt: "Yamaha",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211232/Changan_wk0gzr.png",
+        alt: "Changan",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Niu_ifpxku.png",
+        alt: "Niu",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211237/Tuborg_iafgye.png",
+        alt: "Tuborg",
+      },
     ],
     // Row 3
     [
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Samsung_qc4q9b.png", alt: "Samsung" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Ruslan_sa4aoz.png", alt: "Ruslan" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Gorkha_Brewery_a0xs61.png", alt: "Gorkha Brewery" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Nepal_Tourism_Board_sgefpx.png", alt: "Nepal Tourism Board" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Crossfire_ta6avf.png", alt: "Crossfire" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Yatri_hfjq2j.png", alt: "Yatri" },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Samsung_qc4q9b.png",
+        alt: "Samsung",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Ruslan_sa4aoz.png",
+        alt: "Ruslan",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Gorkha_Brewery_a0xs61.png",
+        alt: "Gorkha Brewery",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Nepal_Tourism_Board_sgefpx.png",
+        alt: "Nepal Tourism Board",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Crossfire_ta6avf.png",
+        alt: "Crossfire",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Yatri_hfjq2j.png",
+        alt: "Yatri",
+      },
     ],
     // Row 4
     [
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/KMG_z5smgs.png", alt: "KMG" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211415/Yale_University_mgk88h.png", alt: "Yale University" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Khalti_tquumc.png", alt: "Khalti" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Httpool_ri0euy.png", alt: "Httpool" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211413/SOS_uazsnq.png", alt: "SOS" },
-      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/DAV_fjxice.png", alt: "DAV" },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/KMG_z5smgs.png",
+        alt: "KMG",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211415/Yale_University_mgk88h.png",
+        alt: "Yale University",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Khalti_tquumc.png",
+        alt: "Khalti",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Httpool_ri0euy.png",
+        alt: "Httpool",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211413/SOS_uazsnq.png",
+        alt: "SOS",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/DAV_fjxice.png",
+        alt: "DAV",
+      },
     ],
   ];
 
@@ -946,19 +1036,19 @@ const BrandsAndArtistsSection = () => {
   const getLogoSize = (alt) => {
     const sizeMap = {
       "Gorkha Brewery": "w-24 h-24 lg:w-32 lg:h-32",
-      "Crossfire": "w-20 h-20 lg:w-24 lg:h-24",
+      Crossfire: "w-20 h-20 lg:w-24 lg:h-24",
     };
     return sizeMap[alt] || "w-24 h-24 lg:w-20 lg:h-20";
   };
 
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 }
+    visible: { opacity: 1, y: 0 },
   };
 
   const logoVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+    visible: { opacity: 1, y: 0 },
   };
 
   const LogoGrid = ({ logos, rowIndex }) => (
@@ -1014,11 +1104,7 @@ const BrandsAndArtistsSection = () => {
         <div className="bg-black px-8 lg:px-20 py-20">
           <div className="max-w-6xl mx-auto">
             {logoData.map((row, rowIndex) => (
-              <LogoGrid
-                key={rowIndex}
-                logos={row}
-                rowIndex={rowIndex}
-              />
+              <LogoGrid key={rowIndex} logos={row} rowIndex={rowIndex} />
             ))}
           </div>
         </div>
@@ -1026,7 +1112,6 @@ const BrandsAndArtistsSection = () => {
     </section>
   );
 };
-
 
 const ArtistNamesSection = () => {
   // Organized artist names by rows with alternating colors
