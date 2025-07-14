@@ -58,13 +58,13 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         portfolio: {
-          "dark-green": "#16382D",
-          "darker-green": "#0C2619",
-          "accent-gold": "#C8AA92",
-          "light-beige": "#EEE0D5",
+          "dark-green": "#000000",
+          "darker-green": "#000000",
+          "accent-gold": "#ffffff",
+          "light-beige": "#ffffff",
           "text-dark": "#000000",
           "text-light": "#FFFFFF",
-          "brown-red": "rgba(147, 45, 7, 1)",
+          "brown-red": "#646464",
         },
       },
       borderRadius: {

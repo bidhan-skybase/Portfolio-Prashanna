@@ -17,7 +17,7 @@ const commercialImages = [
 ];
 
 const galleryImages = [
- "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/IMG_1646_Medium_x0mwhj.jpg",
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/IMG_1646_Medium_x0mwhj.jpg",
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/Master_01_Medium_d02vg3.jpg",
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218516/Ig-anuv_02_Medium_obb6v4.jpg",
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218516/DSC08662_Medium_buv5pj.jpg",
@@ -32,7 +32,7 @@ const galleryImages = [
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218513/Atif-slide_08_Medium_l16odb.jpg",
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218513/Atif-slide_02_Medium_xjlix0.jpg",
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218512/_MG_2039_Medium_kbkxva.jpg",
-  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218512/_MG_1932_Medium_rgqyp6.jpg"
+  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218512/_MG_1932_Medium_rgqyp6.jpg",
 ];
 
 const artistNames = [
@@ -143,7 +143,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden rounded-b-3xl"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden "
     >
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
@@ -246,23 +246,64 @@ const AboutSection = () => {
             >
               PRASHANNA BAJRACHARYA
             </h2>
-
-            <p className="font-nunito text-lg lg:text-xl text-gray-800 mb-12 leading-relaxed">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English. Many desktop
-              publishing packages and web page editors now use Lorem Ipsum as
-              their default model text, and a search for 'lorem ipsum' will
-              uncover many web sites still in their infancy. Various versions
-              have evolved over the years, sometimes by accident, sometimes on
-              purpose.
-            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
+                Prashanna Bajracharya is a dynamic visual storyteller and
+                creative entrepreneur based in Kathmandu, Nepal.
+              </p>
+              <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
+                A self-taught photographer and filmmaker, he has collaborated
+                with over 30 diverse brands, bringing narratives to life through
+                brand campaigns, documentaries, editorial projects, and event
+                coverage. With a keen eye for detail and a deep passion for
+                storytelling, his work seamlessly blends artistry and impact.
+              </p>
+              <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
+                In 2020, he founded{" "}
+                <a
+                  href="https://untitlednp.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pink-500 hover:underline font-bold"
+                >
+                  untitled.np
+                </a>
+                , an emerging production and storytelling company dedicated to
+                reshaping visual narratives in Nepal. Built on collaboration and
+                innovation,{" "}
+                <a
+                  href="https://untitlednp.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pink-500 hover:underline font-bold"
+                >
+                  untitled.np
+                </a>{" "}
+                aims to push creative boundaries and transform the country's
+                media landscape.
+              </p>
+              <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
+                <a
+                  href="https://untitlednp.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pink-500 hover:underline font-bold"
+                >
+                  untitled.np
+                </a>{" "}
+                is not just a company, they are a collective of filmaholic and
+                visual craftsmen dedicated to shaping brand narratives through
+                artistry and innovation. The name reflects their refusal to be
+                confined by labels; instead, we focus on engineering visuals
+                that resonate, inspire, and elevate. At their core lies a
+                collaborative ethos; Unite diverse creative minds to deliver
+                tailored solutions that align with a brand’s heartbeat.
+              </p>
+            </div>
 
             <div className="grid grid-cols-2 gap-16">
-              <CounterAnimation end={8} label="Years Experience" />
-              <CounterAnimation end={34} label="Clients Served" />
+              <CounterAnimation end={6} label="Years Experience" />
+              <CounterAnimation end={95} label="Happy Clients" />
             </div>
           </motion.div>
 
@@ -334,7 +375,7 @@ const TrustedBySection = () => {
         <motion.h2
           style={{
             fontFamily: "CustomRegular",
-            color: "#254736",
+            color: "#000000",
           }}
           className="text-4xl lg:text-6xl mb-12"
           initial={{ opacity: 0, y: 30 }}
@@ -395,7 +436,7 @@ const CommercialSection = () => {
     const patterns = [
       /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
       /facebook\.com\/.*\/videos\/(\d+)/,
-      /instagram\.com\/(?:p|reel)\/([A-Za-z0-9_-]+)/
+      /instagram\.com\/(?:p|reel)\/([A-Za-z0-9_-]+)/,
     ];
 
     for (const pattern of patterns) {
@@ -408,9 +449,11 @@ const CommercialSection = () => {
   const allCommercialVideos = [
     {
       url: "https://www.facebook.com/singaporebeverages/videos/732463532422643/",
-      id: extractVideoId("https://www.facebook.com/singaporebeverages/videos/732463532422643/"),
+      id: extractVideoId(
+        "https://www.facebook.com/singaporebeverages/videos/732463532422643/",
+      ),
       title: "Singapore Beverages",
-      platform: "facebook"
+      platform: "facebook",
     },
     // {
     //   url: "https://www.instagram.com/reel/Cqk3XUcPvp8/",
@@ -422,44 +465,44 @@ const CommercialSection = () => {
       url: "https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z",
       id: extractVideoId("https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z"),
       title: "Janakpur Bolts Anthem",
-      platform: "youtube"
+      platform: "youtube",
     },
     {
       url: "https://www.youtube.com/watch?v=S7DRJNuYrhs",
       id: extractVideoId("https://www.youtube.com/watch?v=S7DRJNuYrhs"),
       title: "Lumbini Allstars Anthem",
-      platform: "youtube"
+      platform: "youtube",
     },
 
     {
       url: "https://youtu.be/pjCOsZZPB3c",
       id: extractVideoId("https://youtu.be/pjCOsZZPB3c"),
       title: "Naami Launch Video",
-      platform: "youtube"
+      platform: "youtube",
     },
     {
       url: "https://youtu.be/ZmxUV8x5Bt4",
       id: extractVideoId("https://youtu.be/ZmxUV8x5Bt4"),
       title: "Skoda Testimonial",
-      platform: "youtube"
+      platform: "youtube",
     },
     {
       url: "https://youtu.be/tI--w9k7P0g",
       id: extractVideoId("https://youtu.be/tI--w9k7P0g"),
       title: "Samsung Testimonial",
-      platform: "youtube"
+      platform: "youtube",
     },
     {
       url: "https://youtu.be/AlRhi6xPrHc",
       id: extractVideoId("https://youtu.be/AlRhi6xPrHc"),
       title: "Yatri Review",
-      platform: "youtube"
+      platform: "youtube",
     },
     {
       url: "https://youtu.be/uzTDHZ4qpeY",
       id: extractVideoId("https://youtu.be/uzTDHZ4qpeY"),
       title: "Pokhara World School",
-      platform: "youtube"
+      platform: "youtube",
     },
     // {
     //   url: "https://www.youtube.com/watch?v=0xxofHCllXU",
@@ -471,45 +514,46 @@ const CommercialSection = () => {
       url: "https://www.youtube.com/watch?v=81D9H2Z3Vcw",
       id: extractVideoId("https://www.youtube.com/watch?v=81D9H2Z3Vcw"),
       title: "Foton",
-      platform: "youtube"
+      platform: "youtube",
     },
     {
       url: "https://www.youtube.com/watch?v=y7BtAkW5LKA",
       id: extractVideoId("https://www.youtube.com/watch?v=y7BtAkW5LKA"),
       title: "Commercial 11",
-      platform: "youtube"
+      platform: "youtube",
     },
     {
       url: "https://www.youtube.com/watch?v=kexCWZSRx7Q",
       id: extractVideoId("https://www.youtube.com/watch?v=kexCWZSRx7Q"),
       title: "Commercial 12",
-      platform: "youtube"
+      platform: "youtube",
     },
     {
       url: "https://www.youtube.com/watch?v=Nylgt4CtsKo",
       id: extractVideoId("https://www.youtube.com/watch?v=Nylgt4CtsKo"),
       title: "Commercial 13",
-      platform: "youtube"
+      platform: "youtube",
     },
     {
       url: "https://www.youtube.com/watch?v=IUigcSW0lfo&list=PLN88_j1xLvkU6PyWd_CD7TZEFeIzJsS8T",
-      id: extractVideoId("https://www.youtube.com/watch?v=IUigcSW0lfo&list=PLN88_j1xLvkU6PyWd_CD7TZEFeIzJsS8T"),
+      id: extractVideoId(
+        "https://www.youtube.com/watch?v=IUigcSW0lfo&list=PLN88_j1xLvkU6PyWd_CD7TZEFeIzJsS8T",
+      ),
       title: "Commercial 14",
-      platform: "youtube"
+      platform: "youtube",
     },
     {
       url: "https://www.youtube.com/watch?v=D5PdEPD6O14",
       id: extractVideoId("https://www.youtube.com/watch?v=D5PdEPD6O14"),
       title: "Commercial 15",
-      platform: "youtube"
+      platform: "youtube",
     },
     {
       url: "https://youtu.be/NOqkE2YJtkY?si=DAz3MhArAbVKFZDb",
       id: extractVideoId("https://youtu.be/NOqkE2YJtkY?si=DAz3MhArAbVKFZDb"),
       title: "Kantipur TV",
-      platform: "youtube"
+      platform: "youtube",
     },
-
   ];
 
   const [hasNextBeenPressed, setHasNextBeenPressed] = useState(false);
@@ -569,7 +613,7 @@ const CommercialSection = () => {
         {/* Title */}
         <motion.h2
           className="text-4xl lg:text-6xl mb-10 text-center"
-          style={{ fontFamily: "CustomRegular", color: "#254736" }}
+          style={{ fontFamily: "CustomRegular", color: "#000000" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -633,7 +677,6 @@ const CommercialSection = () => {
                     </svg>
                   </div>
                 </div>
-
               </motion.div>
             ))}
         </motion.div>
@@ -708,13 +751,12 @@ const PhotoGallery = ({
   );
 };
 
-
 const AfterMoviesSection = () => {
   // Extract YouTube video IDs from URLs
   const extractVideoId = (url) => {
     const patterns = [
       /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
-      /facebook\.com\/.*\/videos\/(\d+)/
+      /facebook\.com\/.*\/videos\/(\d+)/,
     ];
 
     for (const pattern of patterns) {
@@ -729,21 +771,20 @@ const AfterMoviesSection = () => {
       url: "https://youtu.be/mWnv5-lHahE",
       id: extractVideoId("https://youtu.be/mWnv5-lHahE"),
       title: "After movie reel",
-      platform: "youtube"
+      platform: "youtube",
     },
     {
       url: "https://www.youtube.com/watch?v=m8BX-viWnoc",
       id: extractVideoId("https://www.youtube.com/watch?v=m8BX-viWnoc"),
       title: "Lumbini Allstars Anthem",
-      platform: "youtube"
+      platform: "youtube",
     },
     {
       url: "https://www.youtube.com/watch?v=uE5IU9oPwJQ",
       id: extractVideoId("https://www.youtube.com/watch?v=uE5IU9oPwJQ"),
       title: "Lumbini Allstars Anthem",
-      platform: "youtube"
+      platform: "youtube",
     },
-
   ];
 
   const [hasNextBeenPressed, setHasNextBeenPressed] = useState(false);
@@ -787,7 +828,7 @@ const AfterMoviesSection = () => {
         {/* Title */}
         <motion.h2
           className="text-4xl lg:text-6xl mb-10 text-center"
-          style={{ fontFamily: "CustomRegular", color: "#254736" }}
+          style={{ fontFamily: "CustomRegular", color: "#000000" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -851,7 +892,6 @@ const AfterMoviesSection = () => {
                     </svg>
                   </div>
                 </div>
-
               </motion.div>
             ))}
         </motion.div>
@@ -899,12 +939,12 @@ const BrandsAndArtistsSection = () => {
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Adidas_ihp4iy.png",
       alt: "Adidas",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Chanpions_League_q1mnrh.png",
       alt: "Champions League",
-      size: "w-28 h-28",
+      size: "w- h-28",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Unilever_xzfmm9.png",
@@ -940,38 +980,38 @@ const BrandsAndArtistsSection = () => {
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211233/Foton_bbyiyb.png",
       alt: "Foton",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211238/Yamaha_jovsop.png",
       alt: "Yamaha",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211232/Changan_wk0gzr.png",
       alt: "Changan",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Niu_ifpxku.png",
       alt: "Niu",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211237/Tuborg_iafgye.png",
       alt: "Tuborg",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     // Row 3
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Samsung_qc4q9b.png",
       alt: "Samsung",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Ruslan_sa4aoz.png",
       alt: "Ruslan",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Gorkha_Brewery_a0xs61.png",
@@ -981,48 +1021,48 @@ const BrandsAndArtistsSection = () => {
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Nepal_Tourism_Board_sgefpx.png",
       alt: "Nepal Tourism Board",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Crossfire_ta6avf.png",
       alt: "Crossfire",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Yatri_hfjq2j.png",
       alt: "Yatri",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     // Row 4
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/KMG_z5smgs.png",
       alt: "KMG",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211415/Yale_University_mgk88h.png",
       alt: "Yale University",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Khalti_tquumc.png",
       alt: "Khalti",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Httpool_ri0euy.png",
       alt: "Httpool",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211413/SOS_uazsnq.png",
       alt: "SOS",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
     {
       src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/DAV_fjxice.png",
       alt: "DAV",
-      size: "w-28 h-28",
+      size: "w-16 h-16",
     },
   ];
 
@@ -1041,27 +1081,27 @@ const BrandsAndArtistsSection = () => {
         </motion.h2>
 
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 sm:gap-6 items-center justify-items-center px-4 sm:px-10 lg:px-40 py-10 sm:py-20"
+          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-0 items-center justify-items-center px-2 sm:px-4 py-6 sm:py-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          style={{ backgroundColor: "#254736" }}
+          style={{ backgroundColor: "black" }}
         >
           {brandLogos.map((logo, index) => (
             <motion.div
               key={index}
-              className="flex items-center justify-center p-2 sm:p-4"
+              className="flex items-center justify-center p-1 sm:p-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.05 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }}
             >
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className={`${logo.size} min-w-[40px] min-h-[40px] object-contain filter brightness-0 invert`}
+                className={`${logo.size || "w-12 h-12"} object-contain filter brightness-0 invert`}
               />
             </motion.div>
           ))}
@@ -1106,27 +1146,27 @@ const Footer = () => {
     {
       src: "https://cdn.builder.io/api/v1/image/assets/TEMP/5d7233e91a7ad3aa21da77027e2d10192eba739a?width=100",
       alt: "Twitter",
-      href:"https://www.linkedin.com/in/prashannabajracharya/"
+      href: "https://www.linkedin.com/in/prashannabajracharya/",
     },
     {
       src: "https://cdn.builder.io/api/v1/image/assets/TEMP/c97ad2209f10b353eb66e4603f111ec06780f9fb?width=106",
       alt: "Facebook",
-      href:"https://www.youtube.com/@untitledNepal"
+      href: "https://www.youtube.com/@untitledNepal",
     },
     {
       src: "https://cdn.builder.io/api/v1/image/assets/TEMP/c1a7fcba71d20d8c3e72f6740a392f110eee9a8b?width=106",
       alt: "Instagram",
-      href:"https://www.behance.net/prashanbajrach"
+      href: "https://www.behance.net/prashanbajrach",
     },
     {
       src: "https://cdn.builder.io/api/v1/image/assets/TEMP/47a0152d859b745c62e7a68a20b8483b89cf7671?width=100",
       alt: "LinkedIn",
-      href: "https://www.instagram.com/prashannabajracharya/"
+      href: "https://www.instagram.com/prashannabajracharya/",
     },
   ];
 
   return (
-    <footer id="contact" className="bg-portfolio-dark-green rounded-t-3xl">
+    <footer id="contact" className="bg-portfolio-dark-green">
       <div className="max-w-7xl mx-auto px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -1175,11 +1215,11 @@ const Footer = () => {
                 FOR BUSINESS ENQUIRY:
               </h3>
               <a
-                href="mailto:prashanna.bajracharya@gmail.com"
+                href="mailto:Prashanna2022@gmail.com"
                 className="text-portfolio-accent-gold text-2xl lg:text-3xl hover:underline"
                 style={{ fontFamily: "CustomRegular" }}
               >
-                prashanna.bajracharya@gmail.com
+                Prashanna2022@gmail.com
               </a>
             </div>
           </motion.div>
@@ -1197,7 +1237,7 @@ export default function Index() {
       <HeroSection />
       <AboutSection />
       <TrustedBySection />
-      <CommercialSection  />
+      <CommercialSection />
       <PhotoGallery openModal={openModal} />
       <AfterMoviesSection />
       <BrandsAndArtistsSection />
