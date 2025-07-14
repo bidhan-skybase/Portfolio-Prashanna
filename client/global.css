@@ -141,6 +141,10 @@
   background: #254736;
 }
 
+.pause-on-hover:hover {
+  animation-play-state: paused;
+}
+
 @font-face {
   font-family: 'CustomItalic'; /* Name you want to use for the font */
   src: url("/fonts/m_italic.otf") format('opentype');

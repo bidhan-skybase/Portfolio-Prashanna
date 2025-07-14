@@ -35,35 +35,6 @@ const galleryImages = [
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218512/_MG_1932_Medium_rgqyp6.jpg",
 ];
 
-const artistNames = [
-  { name: "Aastha Gill", color: "text-portfolio-darker-green" },
-  { name: "Alok", color: "text-portfolio-brown-red" },
-  { name: "Anuv Jain", color: "text-portfolio-darker-green" },
-  { name: "Arijit Singh", color: "text-portfolio-brown-red" },
-  { name: "Atif Aslam", color: "text-portfolio-darker-green" },
-  { name: "Burak Yeter", color: "text-portfolio-brown-red" },
-  { name: "Clean Bandit", color: "text-portfolio-darker-green" },
-  { name: "Diplo", color: "text-portfolio-brown-red" },
-  { name: "Diljit Dosanjh", color: "text-portfolio-darker-green" },
-  { name: "Divine", color: "text-portfolio-brown-red" },
-  { name: "Green Day", color: "text-portfolio-darker-green" },
-  { name: "King", color: "text-portfolio-brown-red" },
-  { name: "Lil Pump", color: "text-portfolio-darker-green" },
-  { name: "Lollapalooza India", color: "text-portfolio-brown-red" },
-  { name: "Louis Tomlinson", color: "text-portfolio-darker-green" },
-  { name: "Manu Chao", color: "text-portfolio-brown-red" },
-  { name: "Maroon 5", color: "text-portfolio-darker-green" },
-  { name: "Martin Garrix", color: "text-portfolio-brown-red" },
-  { name: "Prateek Kuhad", color: "text-portfolio-darker-green" },
-  { name: "Rishab Rikhiram Sharma", color: "text-portfolio-brown-red" },
-  { name: "Shawn Mendez", color: "text-portfolio-darker-green" },
-  { name: "Neetesh Jung Kunwar", color: "text-portfolio-brown-red" },
-  { name: "Arthur Gunn", color: "text-portfolio-darker-green" },
-  { name: "Underside", color: "text-portfolio-brown-red" },
-  { name: "1974 AD", color: "text-portfolio-darker-green" },
-  { name: "5:55", color: "text-portfolio-brown-red" },
-  { name: "Sushant KC", color: "text-portfolio-darker-green" },
-];
 
 const ScrollingBackground = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -929,213 +900,206 @@ const AfterMoviesSection = () => {
   );
 };
 const BrandsAndArtistsSection = () => {
-  const brandLogos = [
+  // Consolidated logo data with special sizing rules
+  const logoData = [
     // Row 1
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Pepsi_mjk1q3.png",
-      alt: "Pepsi",
-      size: "w-20 h-20",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Adidas_ihp4iy.png",
-      alt: "Adidas",
-      size: "w-16 h-16",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Chanpions_League_q1mnrh.png",
-      alt: "Champions League",
-      size: "w- h-28",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Unilever_xzfmm9.png",
-      alt: "Unilever",
-      size: "w-28 h-28",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Tedx_ljvgef.png",
-      alt: "TEDx",
-      size: "w-28 h-28",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Coca_Cola_l4ce9a.png",
-      alt: "Coca Cola",
-      size: "w-28 h-28",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Expo_City_Dubai_qptndz.png",
-      alt: "Expo City Dubai",
-      size: "w-28 h-28",
-    },
+    [
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Pepsi_mjk1q3.png", alt: "Pepsi" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Adidas_ihp4iy.png", alt: "Adidas" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Chanpions_League_q1mnrh.png", alt: "Champions League" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Unilever_xzfmm9.png", alt: "Unilever" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Tedx_ljvgef.png", alt: "TEDx" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Coca_Cola_l4ce9a.png", alt: "Coca Cola" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Expo_City_Dubai_qptndz.png", alt: "Expo City Dubai" },
+    ],
     // Row 2
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Seres_odqyyp.png",
-      alt: "Seres",
-      size: "w-28 h-28",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211235/Skoda_lgpmzg.png",
-      alt: "Skoda",
-      size: "w-28 h-28",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211233/Foton_bbyiyb.png",
-      alt: "Foton",
-      size: "w-16 h-16",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211238/Yamaha_jovsop.png",
-      alt: "Yamaha",
-      size: "w-16 h-16",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211232/Changan_wk0gzr.png",
-      alt: "Changan",
-      size: "w-16 h-16",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Niu_ifpxku.png",
-      alt: "Niu",
-      size: "w-16 h-16",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211237/Tuborg_iafgye.png",
-      alt: "Tuborg",
-      size: "w-16 h-16",
-    },
+    [
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Seres_odqyyp.png", alt: "Seres" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211235/Skoda_lgpmzg.png", alt: "Skoda" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211233/Foton_bbyiyb.png", alt: "Foton" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211238/Yamaha_jovsop.png", alt: "Yamaha" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211232/Changan_wk0gzr.png", alt: "Changan" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Niu_ifpxku.png", alt: "Niu" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211237/Tuborg_iafgye.png", alt: "Tuborg" },
+    ],
     // Row 3
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Samsung_qc4q9b.png",
-      alt: "Samsung",
-      size: "w-16 h-16",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Ruslan_sa4aoz.png",
-      alt: "Ruslan",
-      size: "w-16 h-16",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Gorkha_Brewery_a0xs61.png",
-      alt: "Gorkha Brewery",
-      size: "w-32 h-32",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Nepal_Tourism_Board_sgefpx.png",
-      alt: "Nepal Tourism Board",
-      size: "w-16 h-16",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Crossfire_ta6avf.png",
-      alt: "Crossfire",
-      size: "w-16 h-16",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Yatri_hfjq2j.png",
-      alt: "Yatri",
-      size: "w-16 h-16",
-    },
+    [
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Samsung_qc4q9b.png", alt: "Samsung" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Ruslan_sa4aoz.png", alt: "Ruslan" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Gorkha_Brewery_a0xs61.png", alt: "Gorkha Brewery" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Nepal_Tourism_Board_sgefpx.png", alt: "Nepal Tourism Board" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Crossfire_ta6avf.png", alt: "Crossfire" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Yatri_hfjq2j.png", alt: "Yatri" },
+    ],
     // Row 4
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/KMG_z5smgs.png",
-      alt: "KMG",
-      size: "w-16 h-16",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211415/Yale_University_mgk88h.png",
-      alt: "Yale University",
-      size: "w-16 h-16",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Khalti_tquumc.png",
-      alt: "Khalti",
-      size: "w-16 h-16",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Httpool_ri0euy.png",
-      alt: "Httpool",
-      size: "w-16 h-16",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211413/SOS_uazsnq.png",
-      alt: "SOS",
-      size: "w-16 h-16",
-    },
-    {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/DAV_fjxice.png",
-      alt: "DAV",
-      size: "w-16 h-16",
-    },
+    [
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/KMG_z5smgs.png", alt: "KMG" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211415/Yale_University_mgk88h.png", alt: "Yale University" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Khalti_tquumc.png", alt: "Khalti" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Httpool_ri0euy.png", alt: "Httpool" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211413/SOS_uazsnq.png", alt: "SOS" },
+      { src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/DAV_fjxice.png", alt: "DAV" },
+    ],
   ];
 
+  // Special sizing rules for specific logos
+  const getLogoSize = (alt) => {
+    const sizeMap = {
+      "Gorkha Brewery": "w-24 h-24 lg:w-32 lg:h-32",
+      "Crossfire": "w-20 h-20 lg:w-24 lg:h-24",
+    };
+    return sizeMap[alt] || "w-24 h-24 lg:w-20 lg:h-20";
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const logoVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const LogoGrid = ({ logos, rowIndex }) => (
+    <motion.div
+      className="flex justify-center items-center gap-10 lg:gap-20 mb-8 flex-wrap"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      transition={{ duration: 0.8, delay: 0.4 + rowIndex * 0.2 }}
+      viewport={{ once: true }}
+    >
+      {logos.map((logo, index) => (
+        <motion.div
+          key={`${logo.alt}-${index}`}
+          className="flex items-center justify-center"
+          variants={logoVariants}
+          transition={{ duration: 0.3, delay: 0.2 + index * 0.1 }}
+          whileHover={{ scale: 1.1 }}
+        >
+          <img
+            src={logo.src}
+            alt={logo.alt}
+            className={`object-contain filter brightness-0 invert ${getLogoSize(logo.alt)}`}
+            loading="lazy"
+          />
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+
   return (
-    <section className="py-20">
-      <div className="mx-auto">
+    <section
+      className="py-16"
+      style={{
+        background: "linear-gradient(to bottom, white 132px, black 132px)",
+      }}
+    >
+      <div className="max-w-full">
+        {/* Title */}
         <motion.h2
-          className="text-center text-4xl lg:text-6xl mb-16"
-          style={{ fontFamily: "CustomRegular" }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="text-4xl lg:text-6xl mb-16 text-center"
+          style={{ fontFamily: "CustomRegular", color: "#000000" }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
           BRANDS & ARTISTS
         </motion.h2>
 
-        <motion.div
-          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-0 items-center justify-items-center px-2 sm:px-4 py-6 sm:py-10"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          style={{ backgroundColor: "black" }}
-        >
-          {brandLogos.map((logo, index) => (
-            <motion.div
-              key={index}
-              className="flex items-center justify-center p-1 sm:p-2"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.05 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                className={`${logo.size || "w-12 h-12"} object-contain filter brightness-0 invert`}
+        {/* Black background section */}
+        <div className="bg-black px-8 lg:px-20 py-20">
+          <div className="max-w-6xl mx-auto">
+            {logoData.map((row, rowIndex) => (
+              <LogoGrid
+                key={rowIndex}
+                logos={row}
+                rowIndex={rowIndex}
               />
-            </motion.div>
-          ))}
-        </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
+
 const ArtistNamesSection = () => {
+  // Organized artist names by rows with alternating colors
+  const artistRows = [
+    [
+      { name: "Aastha\nGill", color: "text-black" },
+      { name: "Alok", color: "text-gray-500" },
+      { name: "Anuv\nJain", color: "text-black" },
+      { name: "Arijit\nSingh", color: "text-gray-500" },
+      { name: "Atif\nAslam", color: "text-black" },
+      { name: "Burak\nYeter", color: "text-gray-500" },
+    ],
+    [
+      { name: "Clean\nBandit", color: "text-black" },
+      { name: "Diplo", color: "text-gray-500" },
+      { name: "Diljit\nDosanjh", color: "text-black" },
+      { name: "Divine", color: "text-gray-500" },
+      { name: "Green\nDay", color: "text-black" },
+      { name: "King", color: "text-gray-500" },
+      { name: "Lil\nPump", color: "text-black" },
+      { name: "Lollapalooza\nIndia", color: "text-gray-500" },
+    ],
+    [
+      { name: "louis\nTomlinson", color: "text-black" },
+      { name: "Manu\nChao", color: "text-gray-500" },
+      { name: "Maroon\n5", color: "text-black" },
+      { name: "Martin\nGarrix", color: "text-gray-500" },
+      { name: "Prateek\nKuhad", color: "text-black" },
+      { name: "Rishab Rikhiram\nSharma", color: "text-gray-500" },
+    ],
+    [
+      { name: "Shawn\nMendez", color: "text-black" },
+      { name: "Neetesh\nJung Kunwar", color: "text-gray-500" },
+      { name: "Arthur\nGun", color: "text-black" },
+      { name: "Underside", color: "text-gray-500" },
+      { name: "1974AD", color: "text-black" },
+      { name: "555", color: "text-gray-500" },
+      { name: "Sushant\nKC", color: "text-black" },
+    ],
+  ];
+
   return (
-    <section className="py-20 bg-white">
+    <section className="py-40 bg-white">
       <div className="max-w-6xl mx-auto px-8">
-        <motion.div
-          className="grid grid-cols-2 lg:grid-cols-6 gap-8 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          {artistNames.map((artist, index) => (
+        <div className="space-y-9">
+          {artistRows.map((row, rowIndex) => (
             <motion.div
-              key={artist.name}
-              className={`font-nunito font-bold text-lg lg:text-xl ${artist.color} text-justify`}
-              initial={{ opacity: 0, y: 20 }}
+              key={rowIndex}
+              className="flex justify-center items-center gap-6 lg:gap-12 flex-wrap"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.05 }}
+              transition={{ duration: 0.8, delay: rowIndex * 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.1 }}
             >
-              {artist.name}
+              {row.map((artist, index) => (
+                <motion.div
+                  key={`${rowIndex}-${index}`}
+                  className={`font-nunito font-bold text-lg text-center whitespace-pre-line ${artist.color}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: rowIndex * 0.2 + index * 0.05,
+                  }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {artist.name}
+                </motion.div>
+              ))}
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -1280,17 +1244,16 @@ const InfiniteScrollRow = ({
   return (
     <div className="overflow-hidden mb-2 w-full">
       <div
-        className={`flex ${animationClass}`}
+        className={`flex ${animationClass} pause-on-hover`}
         style={{ width: "max-content" }}
       >
-        {/* Increase duplication for wider content */}
         {[...images, ...images, ...images, ...images, ...images].map(
           (img, i) => (
             <img
               key={i}
               src={img}
               alt={`Photo ${i % images.length}`}
-              className={`${getImageSize(i)} object-cover mr-2  cursor-pointer flex-shrink-0`}
+              className={`${getImageSize(i)} object-cover mr-2 cursor-pointer flex-shrink-0`}
               onClick={() => openModal(img, `Photo ${i % images.length}`)}
             />
           ),
