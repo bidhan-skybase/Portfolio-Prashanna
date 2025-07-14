@@ -212,14 +212,17 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className='py-16'
+              className="py-16"
             >
               <h2
-                className="text-portfolio-dark-green font-regular text-5xl lg:text-6xl mb-8 tracking-wider"
+                className="text-portfolio-dark-green font-regular text-5xl lg:text-6xl mb-1 tracking-wider"
                 style={{ fontFamily: "CustomRegular" }}
               >
                 PRASHANNA BAJRACHARYA
               </h2>
+              <h1 className="text-portfolio-brown-red font-bold text-2xl lg:text:3xl tracking-wider mb-8">
+                PRODUCER | DIRECTOR | EDITOR
+              </h1>
               <div
                 style={{ display: "flex", flexDirection: "column", gap: 12 }}
                 className="pb-6"
