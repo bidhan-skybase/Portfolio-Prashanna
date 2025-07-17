@@ -214,12 +214,12 @@ const AboutSection = () => {
               viewport={{ once: true }}
               className="py-16"
             >
-              <h2
+              <h3
                 className="text-portfolio-dark-green font-regular text-5xl lg:text-6xl mb-1 tracking-wider"
                 style={{ fontFamily: "CustomRegular" }}
               >
                 PRASHANNA BAJRACHARYA
-              </h2>
+              </h3>
               <h1 className="text-portfolio-brown-red font-bold text-2xl lg:text:3xl tracking-wider mb-8">
                 PRODUCER | DIRECTOR | EDITOR
               </h1>
@@ -356,7 +356,7 @@ const TrustedBySection = () => {
   const totalWidth = greenLogos.length * logoWidth;
 
   return (
-    <section className="py-20 bg-yellow-50 overflow-hidden">
+    <section className="py-20  overflow-hidden" style={{backgroundColor:"#F0F0F0"}}>
       <div className="max-w-7xl mx-auto px-8 text-center">
         <motion.h2
           style={{
@@ -409,8 +409,8 @@ const TrustedBySection = () => {
           </div>
 
           {/* Gradient overlays for smooth fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-yellow-50 to-transparent pointer-events-none z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-yellow-50 to-transparent pointer-events-none z-10"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-lightGray to-transparent pointer-events-none z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-lightGray to-transparent pointer-events-none z-10"></div>
         </div>
       </div>
     </section>
@@ -948,8 +948,39 @@ const BrandsAndArtistsSection = () => {
         alt: "Expo City Dubai",
       },
     ],
+    [
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211237/Tuborg_iafgye.png",
+        alt: "Tuborg",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211415/Yale_University_mgk88h.png",
+        alt: "Yale University",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Httpool_ri0euy.png",
+        alt: "Httpool",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Samsung_qc4q9b.png",
+        alt: "Samsung",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211413/SOS_uazsnq.png",
+        alt: "SOS",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/DAV_fjxice.png",
+        alt: "DAV",
+      },
+
+    ],
     // Row 2
     [
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Khalti_tquumc.png",
+        alt: "Khalti",
+      },
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Seres_odqyyp.png",
         alt: "Seres",
@@ -974,17 +1005,15 @@ const BrandsAndArtistsSection = () => {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Niu_ifpxku.png",
         alt: "Niu",
       },
-      {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211237/Tuborg_iafgye.png",
-        alt: "Tuborg",
-      },
+
     ],
     // Row 3
     [
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Samsung_qc4q9b.png",
-        alt: "Samsung",
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/KMG_z5smgs.png",
+        alt: "KMG",
       },
+
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Ruslan_sa4aoz.png",
         alt: "Ruslan",
@@ -993,6 +1022,7 @@ const BrandsAndArtistsSection = () => {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Gorkha_Brewery_a0xs61.png",
         alt: "Gorkha Brewery",
       },
+
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Nepal_Tourism_Board_sgefpx.png",
         alt: "Nepal Tourism Board",
@@ -1006,33 +1036,7 @@ const BrandsAndArtistsSection = () => {
         alt: "Yatri",
       },
     ],
-    // Row 4
-    [
-      {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/KMG_z5smgs.png",
-        alt: "KMG",
-      },
-      {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211415/Yale_University_mgk88h.png",
-        alt: "Yale University",
-      },
-      {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Khalti_tquumc.png",
-        alt: "Khalti",
-      },
-      {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Httpool_ri0euy.png",
-        alt: "Httpool",
-      },
-      {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211413/SOS_uazsnq.png",
-        alt: "SOS",
-      },
-      {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/DAV_fjxice.png",
-        alt: "DAV",
-      },
-    ],
+
   ];
 
   // Special sizing rules for specific logos
@@ -1125,7 +1129,6 @@ const ArtistNamesSection = () => {
       { name: "Anuv\nJain", color: "text-black" },
       { name: "Arijit\nSingh", color: "text-gray-500" },
       { name: "Atif\nAslam", color: "text-black" },
-      { name: "Burak\nYeter", color: "text-gray-500" },
     ],
     [
       { name: "Clean\nBandit", color: "text-black" },
@@ -1134,11 +1137,11 @@ const ArtistNamesSection = () => {
       { name: "Divine", color: "text-gray-500" },
       { name: "Green\nDay", color: "text-black" },
       { name: "King", color: "text-gray-500" },
-      { name: "Lil\nPump", color: "text-black" },
+      { name: "Sajjan Raj Vaidya", color: "text-black" },
       { name: "Lollapalooza\nIndia", color: "text-gray-500" },
     ],
     [
-      { name: "louis\nTomlinson", color: "text-black" },
+      { name: "Louis\nTomlinson", color: "text-black" },
       { name: "Manu\nChao", color: "text-gray-500" },
       { name: "Maroon\n5", color: "text-black" },
       { name: "Martin\nGarrix", color: "text-gray-500" },
@@ -1146,7 +1149,7 @@ const ArtistNamesSection = () => {
       { name: "Rishab Rikhiram\nSharma", color: "text-gray-500" },
     ],
     [
-      { name: "Shawn\nMendez", color: "text-black" },
+      { name: "Shawn\nMendes", color: "text-black" },
       { name: "Neetesh\nJung Kunwar", color: "text-gray-500" },
       { name: "Arthur\nGun", color: "text-black" },
       { name: "Underside", color: "text-gray-500" },
