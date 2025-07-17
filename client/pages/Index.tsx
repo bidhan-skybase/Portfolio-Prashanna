@@ -65,10 +65,10 @@ const ScrollingBackground = () => {
     </div>
   );
 };
-
 const Navigation = () => {
   const navItems = ["HOME", "ABOUT", "WORKS", "CONTACT"];
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,35 +80,124 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 flex justify-center pt-8 pb-8 transition-all duration-300 ${
-        scrolled
-          ? "bg-portfolio-dark-green shadow-lg backdrop-blur-sm"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="flex space-x-16">
-        {navItems.map((item, index) => (
-          <motion.a
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            className="text-white font-oswald text-xl hover:text-portfolio-accent-gold transition-colors duration-300"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            whileHover={{ scale: 1.05 }}
+    <>
+      <motion.nav
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-portfolio-dark-green shadow-lg backdrop-blur-sm"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="flex justify-between items-center px-6 py-4 md:justify-center md:px-8 md:py-8">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex space-x-8 lg:space-x-16">
+            {navItems.map((item, index) => (
+              <motion.a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="text-white font-oswald text-lg lg:text-xl hover:text-portfolio-accent-gold transition-colors duration-300"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                {item}
+              </motion.a>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <motion.button
+            className="md:hidden text-white z-60 relative"
+            onClick={toggleMobileMenu}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {item}
-          </motion.a>
-        ))}
-      </div>
-    </motion.nav>
+            <div className="w-6 h-6 flex flex-col justify-center items-center">
+              <motion.span
+                className={`block w-6 h-0.5 bg-white mb-1 transition-all duration-300 ${
+                  isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""
+                }`}
+              />
+              <motion.span
+                className={`block w-6 h-0.5 bg-white mb-1 transition-all duration-300 ${
+                  isMobileMenuOpen ? "opacity-0" : ""
+                }`}
+              />
+              <motion.span
+                className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
+                  isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
+                }`}
+              />
+            </div>
+          </motion.button>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Menu Overlay */}
+      <motion.div
+        className={`fixed inset-0 bg-portfolio-dark-green z-40 md:hidden ${
+          isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isMobileMenuOpen ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="flex flex-col items-center justify-center h-full space-y-8">
+          {navItems.map((item, index) => (
+            <motion.a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="text-white font-oswald text-2xl hover:text-portfolio-accent-gold transition-colors duration-300"
+              onClick={closeMobileMenu}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{
+                opacity: isMobileMenuOpen ? 1 : 0,
+                y: isMobileMenuOpen ? 0 : 20
+              }}
+              transition={{
+                duration: 0.3,
+                delay: isMobileMenuOpen ? index * 0.1 : 0
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {item}
+            </motion.a>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Mobile Menu Backdrop */}
+      {isMobileMenuOpen && (
+        <motion.div
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+          onClick={closeMobileMenu}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        />
+      )}
+    </>
   );
 };
+
+
 const HeroSection = () => {
   return (
     <section
@@ -284,7 +373,7 @@ const AboutSection = () => {
 
               <div className="grid grid-cols-2 gap-16">
                 <CounterAnimation end={6} label="Years Experience" />
-                <CounterAnimation end={95} label="Happy Clients" />
+                <CounterAnimation end={69} label="Happy Clients" />
               </div>
             </motion.div>
 
@@ -700,16 +789,16 @@ const CommercialSection = () => {
   );
 };
 const PhotoGallery = ({
-  openModal,
-}: {
+                        openModal,
+                      }: {
   openModal: (src: string, alt: string) => void;
 }) => {
   return (
     <section className="py-20 bg-white overflow-hidden">
       {/* Keep max-width only for the title */}
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <motion.h2
-          className="text-portfolio-dark-green font-medium text-4xl lg:text-6xl mb-16 text-center"
+          className="text-portfolio-dark-green font-medium text-3xl sm:text-4xl lg:text-6xl mb-8 sm:mb-16 text-center"
           style={{ fontFamily: "CustomRegular" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -721,17 +810,32 @@ const PhotoGallery = ({
       </div>
 
       {/* Full-width scroll containers */}
-      <div className="w-full px-[5rem]">
-        <InfiniteScrollRow
-          images={galleryImages.slice(0, Math.ceil(galleryImages.length / 2))}
-          direction="ltr"
-          openModal={openModal}
-        />
-        <InfiniteScrollRow
-          images={galleryImages.slice(Math.ceil(galleryImages.length / 2))}
-          direction="rtl"
-          openModal={openModal}
-        />
+      <div className="w-full px-4 sm:px-8 lg:px-[5rem]">
+        {/* Mobile: Show only one row */}
+        <div className="block sm:hidden">
+          <InfiniteScrollRow
+            images={galleryImages}
+            direction="ltr"
+            openModal={openModal}
+            isMobile={true}
+          />
+        </div>
+
+        {/* Desktop: Show both rows */}
+        <div className="hidden sm:block">
+          <InfiniteScrollRow
+            images={galleryImages.slice(0, Math.ceil(galleryImages.length / 2))}
+            direction="ltr"
+            openModal={openModal}
+            isMobile={false}
+          />
+          <InfiniteScrollRow
+            images={galleryImages.slice(Math.ceil(galleryImages.length / 2))}
+            direction="rtl"
+            openModal={openModal}
+            isMobile={false}
+          />
+        </div>
       </div>
     </section>
   );
@@ -1310,25 +1414,31 @@ export default function Index() {
 }
 
 const InfiniteScrollRow = ({
-  images,
-  direction,
-  openModal,
-}: {
+                             images,
+                             direction,
+                             openModal,
+                             isMobile = false,
+                           }: {
   images: string[];
   direction: "ltr" | "rtl";
   openModal: (src: string, alt: string) => void;
+  isMobile?: boolean;
 }) => {
   const animationClass =
     direction === "ltr" ? "animate-scrollLtr" : "animate-scrollRtl";
 
   // Function to get image size based on index pattern
   const getImageSize = (index: number) => {
-    const pattern = index % 3;
+    if (isMobile) {
+      return "w-80 h-80 sm:w-40 sm:h-40";
+    }
 
+    // Desktop: existing pattern
+    const pattern = index % 3;
     if (pattern === 0) {
-      return "w-100 h-100 lg:w-[40rem] lg:h-80";
+      return "w-60 h-60 md:w-80 md:h-60 lg:w-[40rem] lg:h-80";
     } else {
-      return "w-60 h-0 lg:w-60 lg:h-80";
+      return "w-48 h-48 md:w-60 md:h-60 lg:w-60 lg:h-80";
     }
   };
 
@@ -1344,7 +1454,7 @@ const InfiniteScrollRow = ({
               key={i}
               src={img}
               alt={`Photo ${i % images.length}`}
-              className={`${getImageSize(i)} object-cover mr-2 cursor-pointer flex-shrink-0`}
+              className={`${getImageSize(i)} object-cover mr-2 cursor-pointer flex-shrink-0 rounded-sm`}
               onClick={() => openModal(img, `Photo ${i % images.length}`)}
             />
           ),
