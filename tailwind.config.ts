@@ -102,6 +102,7 @@ export default {
         oswald: ["Oswald", "sans-serif"],
         nunito: ["Nunito", "sans-serif"],
         akira: ["Akira Expanded", "sans-serif"],
+        helvetica: ["Helvetica", "sans-serif"],
       },
     },
   },

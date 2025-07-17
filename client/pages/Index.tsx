@@ -279,7 +279,7 @@ const CounterAnimation = ({ end, label }: { end: number; label: string }) => {
     >
       <div
         className="text-portfolio-dark-green font-regular text-6xl lg:text-8xl mb-2"
-        style={{ fontFamily: "CustomRegular" }}
+        style={{ fontFamily: "Helvetica Compressed" }}
       >
         {inView && <CountUp start={0} end={end} duration={2} />}+
       </div>
@@ -293,8 +293,8 @@ const AboutSection = () => {
     <section id="about" className="bg-white relative overflow-hidden">
       {/* Content with padding */}
       <div className="py-0">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="max-w-8xl mx-auto px-4 sm:px-8 md:px-16 lg:px-31">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-15 items-start">
             {/* Left column - Text content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -304,8 +304,8 @@ const AboutSection = () => {
               className="py-16"
             >
               <h3
-                className="text-portfolio-dark-green font-regular text-5xl lg:text-6xl mb-1 tracking-wider"
-                style={{ fontFamily: "CustomRegular" }}
+                className="text-portfolio-dark-green font-regular text-6xl lg:text6-xl mb-1 tracking-wider"
+                style={{ fontFamily: "Helvetica Compressed" }}
               >
                 PRASHANNA BAJRACHARYA
               </h3>
@@ -449,7 +449,7 @@ const TrustedBySection = () => {
       <div className="max-w-7xl mx-auto px-8 text-center">
         <motion.h2
           style={{
-            fontFamily: "CustomRegular",
+            fontFamily: "Helvetica Compressed",
             color: "#000000",
           }}
           className="text-4xl lg:text-6xl mb-12"
@@ -688,7 +688,7 @@ const CommercialSection = () => {
         {/* Title */}
         <motion.h2
           className="text-4xl lg:text-6xl mb-10 text-center"
-          style={{ fontFamily: "CustomRegular", color: "#000000" }}
+          style={{ fontFamily: "Helvetica Compressed", color: "#000000" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -767,7 +767,7 @@ const CommercialSection = () => {
           {hasNextBeenPressed ? (
             <button
               className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300"
-              style={{ fontFamily: "CustomRegular" }}
+              style={{ fontFamily: "Helvetica Compressed" }}
               onClick={handlePrevious}
             >
               ← Previous
@@ -778,7 +778,7 @@ const CommercialSection = () => {
 
           <button
             className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300"
-            style={{ fontFamily: "CustomRegular" }}
+            style={{ fontFamily: "Helvetica Compressed" }}
             onClick={handleNext}
           >
             Next →
@@ -799,7 +799,7 @@ const PhotoGallery = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <motion.h2
           className="text-portfolio-dark-green font-medium text-3xl sm:text-4xl lg:text-6xl mb-8 sm:mb-16 text-center"
-          style={{ fontFamily: "CustomRegular" }}
+          style={{ fontFamily: "Helvetica Compressed" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -918,7 +918,7 @@ const AfterMoviesSection = () => {
         {/* Title */}
         <motion.h2
           className="text-4xl lg:text-6xl mb-10 text-center"
-          style={{ fontFamily: "CustomRegular", color: "#000000" }}
+          style={{ fontFamily: "Helvetica Compressed", color: "#000000" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -997,7 +997,7 @@ const AfterMoviesSection = () => {
           {hasNextBeenPressed ? (
             <button
               className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300"
-              style={{ fontFamily: "CustomRegular" }}
+              style={{ fontFamily: "Helvetica Compressed" }}
               onClick={handlePrevious}
             >
               ← Previous
@@ -1008,7 +1008,7 @@ const AfterMoviesSection = () => {
 
           <button
             className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300"
-            style={{ fontFamily: "CustomRegular" }}
+            style={{ fontFamily: "Helvetica Compressed" }}
             onClick={handleNext}
           >
             Next →
@@ -1201,7 +1201,7 @@ const BrandsAndArtistsSection = () => {
         {/* Title */}
         <motion.h2
           className="text-4xl lg:text-6xl mb-16 text-center"
-          style={{ fontFamily: "CustomRegular", color: "#000000" }}
+          style={{ fontFamily: "Helvetica Compressed", color: "#000000" }}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -1350,7 +1350,7 @@ const Footer = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-white font-oswald font-bold text-lg mb-4">
+              <h3 className="text-white font-bold text-lg mb-4" style={{fontFamily:"Helvetica"}}>
                 CONNECT WITH ME:
               </h3>
               <div className="flex space-x-4">
@@ -1370,13 +1370,13 @@ const Footer = () => {
             </div>
 
             <div>
-              <h3 className="text-white font-oswald text-xs mb-4">
+              <h3 className="text-white  text-xs mb-4" style={{fontFamily:"Helvetica"}}>
                 FOR BUSINESS ENQUIRY:
               </h3>
               <a
                 href="mailto:Prashanna2022@gmail.com"
                 className="text-portfolio-accent-gold text-2xl lg:text-3xl hover:underline"
-                style={{ fontFamily: "CustomRegular" }}
+                style={{ fontFamily: "Helvetica" }}
               >
                 Prashanna2022@gmail.com
               </a>

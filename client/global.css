@@ -159,3 +159,25 @@
   font-style: normal; /* Adjust if your font has specific styles */
 }
 
+@font-face {
+  font-family: 'Helvetica'; /* Name you want to use for the font */
+  src: url("/fonts/h_normal.ttf") format('opentype');
+  font-weight: normal; /* Adjust if your font has specific weights */
+  font-style: normal; /* Adjust if your font has specific styles */
+}
+
+@font-face {
+  font-family: 'Helvetica Compressed'; /* Name you want to use for the font */
+  src: url("/fonts/h_compressed.otf") format('opentype');
+  font-weight: normal; /* Adjust if your font has specific weights */
+  font-style: normal; /* Adjust if your font has specific styles */
+}
+@font-face {
+  font-family: 'Helvetica Light'; /* Name you want to use for the font */
+  src: url("/fonts/h_light.ttf") format('opentype');
+  font-weight: normal; /* Adjust if your font has specific weights */
+  font-style: normal; /* Adjust if your font has specific styles */
+}
+
+
+
