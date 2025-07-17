@@ -14,6 +14,7 @@ export const ImageModal = ({ isOpen, onClose, src, alt }: ImageModalProps) => {
     <AnimatePresence>
       {isOpen && (
         <>
+          <div onClick={onClose}>
           {/* Backdrop */}
           <motion.div
             className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4"
@@ -43,10 +44,12 @@ export const ImageModal = ({ isOpen, onClose, src, alt }: ImageModalProps) => {
               <img
                 src={src}
                 alt={alt}
+                onClick={onClose}
                 className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
               />
             </motion.div>
           </motion.div>
+          </div>
         </>
       )}
     </AnimatePresence>

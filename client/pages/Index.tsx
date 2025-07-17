@@ -1162,9 +1162,11 @@ const BrandsAndArtistsSection = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  const LogoGrid = ({ logos, rowIndex }) => (
+  const LogoGrid = ({ logos, rowIndex ,isLastRow}) => (
     <motion.div
-      className="flex justify-center items-center gap-10 lg:gap-20 mb-8 flex-wrap"
+      className={`flex justify-center items-center gap-10 lg:gap-20 flex-wrap ${
+        isLastRow ? "" : "mb-12"
+      }`}
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
@@ -1192,7 +1194,7 @@ const BrandsAndArtistsSection = () => {
 
   return (
     <section
-      className="py-16"
+      className=""
       style={{
         background: "linear-gradient(to bottom, white 132px, black 132px)",
       }}
@@ -1215,7 +1217,7 @@ const BrandsAndArtistsSection = () => {
         <div className="bg-black px-8 lg:px-20 py-20">
           <div className="max-w-6xl mx-auto">
             {logoData.map((row, rowIndex) => (
-              <LogoGrid key={rowIndex} logos={row} rowIndex={rowIndex} />
+              <LogoGrid key={rowIndex} logos={row} rowIndex={rowIndex}  isLastRow={rowIndex==logoData.length-1}/>
             ))}
           </div>
         </div>
@@ -1264,7 +1266,7 @@ const ArtistNamesSection = () => {
   ];
 
   return (
-    <section className="py-40 bg-white">
+    <section className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-8">
         <div className="space-y-9">
           {artistRows.map((row, rowIndex) => (
