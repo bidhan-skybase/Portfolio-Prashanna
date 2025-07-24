@@ -1293,24 +1293,28 @@ const ArtistNamesSection = () => {
 const Footer = () => {
   const socialIcons = [
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/5d7233e91a7ad3aa21da77027e2d10192eba739a?width=100",
-      alt: "Twitter",
-      href: "https://www.linkedin.com/in/prashannabajracharya/",
-    },
-    {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/c97ad2209f10b353eb66e4603f111ec06780f9fb?width=106",
-      alt: "Facebook",
-      href: "https://www.youtube.com/@untitledNepal",
-    },
-    {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/c1a7fcba71d20d8c3e72f6740a392f110eee9a8b?width=106",
-      alt: "Instagram",
+      src: "/Behance.svg",
+      alt: "Behance",
       href: "https://www.behance.net/prashanbajrach",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/47a0152d859b745c62e7a68a20b8483b89cf7671?width=100",
-      alt: "LinkedIn",
+      src: "/Linkedin.svg",
+      alt: "Linkedin",
+      href: "https://www.linkedin.com/in/prashannabajracharya/",
+    },
+    {
+      src: "/Facebook.svg",
+      alt: "Facebook",
+      href: "https://www.facebook.com/prashanna07/",
+    },
+    {
+      src: "/Instagram.svg",
+      alt: "Instagram",
       href: "https://www.instagram.com/prashannabajracharya/",
+    },{
+      src: "/Youtube.svg",
+      alt: "YouTube",
+      href: "https://www.youtube.com/@untitledNepal",
     },
   ];
 
