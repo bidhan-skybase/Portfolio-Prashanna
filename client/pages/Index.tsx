@@ -280,7 +280,7 @@ const AboutSection = () => {
   return (
     <section id="about" className="bg-white relative overflow-hidden">
       {/* Content with padding */}
-      <div className="py-0">
+      <div className="pt-12">
         <div className="max-w-8xl mx-auto px-4 sm:px-8 md:px-16 lg:px-31">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-15 items-start">
             {/* Left column - Text content */}
@@ -392,35 +392,35 @@ const AboutSection = () => {
 const TrustedBySection = () => {
   const greenLogos = [
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/50114e2ce130e994f8ffcfc731638c0c04ccad11?width=258",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335646/image_11_ltvxgb.png",
       alt: "Pepsi Green",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/b6dcdc9800d040aceb209f77096e060f3dde51c1?width=258",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335646/image_12_tqzwry.png",
       alt: "Skoda Green",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/48c66daddf4446a6e79c0a813b7117ec81879f46?width=258",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335646/image_13_ztcd9r.png",
       alt: "TEDx Green",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/1c5af3980f2e3e7e207821edbf60fd331a615207?width=258",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335647/image_14_a6saxg.png",
       alt: "Tuborg Green",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/3ce998db40b1a2642a762189bcf3420b2f8718b8?width=258",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335647/image_15_lcfn07.png",
       alt: "Adidas Green",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/305437d501d5488fbf8819957f426e8ef6f25b1d?width=256",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335648/image_16_g2eqd8.png",
       alt: "Unilever Green",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/2aa5b91936031749aa6616da44210f34ab6aa75c?width=258",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335649/image_17_zcenzx.png",
       alt: "Champions League Green",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/023f2cc31153a1f439046ebef70d95e2b4ae36c2?width=258",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335649/image_18_acxlef.png",
       alt: "Coke Logo Green",
     },
   ];
