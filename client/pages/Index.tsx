@@ -156,11 +156,11 @@ const Navigation = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{
                 opacity: isMenuOpen ? 1 : 0,
-                y: isMenuOpen ? 0 : 20
+                y: isMenuOpen ? 0 : 20,
               }}
               transition={{
                 duration: 0.3,
-                delay: isMenuOpen ? index * 0.1 : 0
+                delay: isMenuOpen ? index * 0.1 : 0,
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -433,7 +433,10 @@ const TrustedBySection = () => {
   const totalWidth = greenLogos.length * logoWidth;
 
   return (
-    <section className="py-20  overflow-hidden" style={{backgroundColor:"#F0F0F0"}}>
+    <section
+      className="py-20  overflow-hidden"
+      style={{ backgroundColor: "#F0F0F0" }}
+    >
       <div className="max-w-7xl mx-auto px-8 text-center">
         <motion.h2
           style={{
@@ -777,8 +780,8 @@ const CommercialSection = () => {
   );
 };
 const PhotoGallery = ({
-                        openModal,
-                      }: {
+  openModal,
+}: {
   openModal: (src: string, alt: string) => void;
 }) => {
   return (
@@ -1065,7 +1068,6 @@ const BrandsAndArtistsSection = () => {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/DAV_fjxice.png",
         alt: "DAV",
       },
-
     ],
     // Row 2
     [
@@ -1097,7 +1099,6 @@ const BrandsAndArtistsSection = () => {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Niu_ifpxku.png",
         alt: "Niu",
       },
-
     ],
     // Row 3
     [
@@ -1128,7 +1129,6 @@ const BrandsAndArtistsSection = () => {
         alt: "Yatri",
       },
     ],
-
   ];
 
   // Special sizing rules for specific logos
@@ -1150,7 +1150,7 @@ const BrandsAndArtistsSection = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  const LogoGrid = ({ logos, rowIndex ,isLastRow}) => (
+  const LogoGrid = ({ logos, rowIndex, isLastRow }) => (
     <motion.div
       className={`flex justify-center items-center gap-10 lg:gap-20 flex-wrap ${
         isLastRow ? "" : "mb-12"
@@ -1205,7 +1205,12 @@ const BrandsAndArtistsSection = () => {
         <div className="bg-black px-8 lg:px-20 py-20">
           <div className="max-w-6xl mx-auto">
             {logoData.map((row, rowIndex) => (
-              <LogoGrid key={rowIndex} logos={row} rowIndex={rowIndex}  isLastRow={rowIndex==logoData.length-1}/>
+              <LogoGrid
+                key={rowIndex}
+                logos={row}
+                rowIndex={rowIndex}
+                isLastRow={rowIndex == logoData.length - 1}
+              />
             ))}
           </div>
         </div>
@@ -1218,38 +1223,44 @@ const ArtistNamesSection = () => {
   // Organized artist names by rows with alternating colors
   const artistRows = [
     [
-      { name: "Aastha\nGill", color: "text-black" },
-      { name: "Alok", color: "text-gray-500" },
-      { name: "Anuv\nJain", color: "text-black" },
+      { name: "Alok", color: "text-black" },
       { name: "Arijit\nSingh", color: "text-gray-500" },
+      { name: "Aastha\nGill", color: "text-black" },
+
+      { name: "Anuv\nJain", color: "text-gray-500" },
+
       { name: "Atif\nAslam", color: "text-black" },
+      { name: "Clean\nBandit", color: "text-gray-500" },
     ],
     [
-      { name: "Clean\nBandit", color: "text-black" },
-      { name: "Diplo", color: "text-gray-500" },
-      { name: "Diljit\nDosanjh", color: "text-black" },
-      { name: "Divine", color: "text-gray-500" },
-      { name: "Green\nDay", color: "text-black" },
-      { name: "King", color: "text-gray-500" },
-      { name: "Sajjan Raj Vaidya", color: "text-black" },
-      { name: "Lollapalooza\nIndia", color: "text-gray-500" },
+      { name: "Diplo", color: "text-black" },
+      { name: "Diljit\nDosanjh", color: "text-gray-500" },
+      { name: "Divine", color: "text-black" },
+      { name: "Green\nDay", color: "text-gray-500" },
+      { name: "King", color: "text-black" },
+      { name: "Keep\n Hush", color: "text-gray-500" },
+      { name: "Lollapalooza\nIndia", color: "text-black" },
+      { name: "Louis\nTomlinson", color: "text-gray-500" },
+
+      // { name: "Sajjan Raj Vaidya", color: "text-black" },
     ],
     [
-      { name: "Louis\nTomlinson", color: "text-black" },
       { name: "Manu\nChao", color: "text-gray-500" },
       { name: "Maroon\n5", color: "text-black" },
       { name: "Martin\nGarrix", color: "text-gray-500" },
       { name: "Prateek\nKuhad", color: "text-black" },
       { name: "Rishab Rikhiram\nSharma", color: "text-gray-500" },
-    ],
-    [
       { name: "Shawn\nMendes", color: "text-black" },
       { name: "Neetesh\nJung Kunwar", color: "text-gray-500" },
+    ],
+    [
       { name: "Arthur\nGun", color: "text-black" },
-      { name: "Underside", color: "text-gray-500" },
+      { name: "Sajjan Raj\n Vaidya", color: "text-gray-500" },
+      { name: "Satish\n Ghalan", color: "text-black" },
+      { name: "Sushant\nKC", color: "text-gray-500" },
       { name: "1974AD", color: "text-black" },
       { name: "555", color: "text-gray-500" },
-      { name: "Sushant\nKC", color: "text-black" },
+      { name: "Yabesh Thapa", color: "text-black" },
     ],
   ];
 
@@ -1311,7 +1322,8 @@ const Footer = () => {
       src: "/Instagram.svg",
       alt: "Instagram",
       href: "https://www.instagram.com/prashannabajracharya/",
-    },{
+    },
+    {
       src: "/Youtube.svg",
       alt: "YouTube",
       href: "https://www.youtube.com/@untitledNepal",
@@ -1344,7 +1356,10 @@ const Footer = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-white font-bold text-lg mb-4" style={{fontFamily:"Helvetica"}}>
+              <h3
+                className="text-white font-bold text-lg mb-4"
+                style={{ fontFamily: "Helvetica" }}
+              >
                 CONNECT WITH ME:
               </h3>
               <div className="flex space-x-4">
@@ -1364,7 +1379,10 @@ const Footer = () => {
             </div>
 
             <div>
-              <h3 className="text-white  text-xs mb-4" style={{fontFamily:"Helvetica"}}>
+              <h3
+                className="text-white  text-xs mb-4"
+                style={{ fontFamily: "Helvetica" }}
+              >
                 FOR BUSINESS ENQUIRY:
               </h3>
               <a
@@ -1408,11 +1426,11 @@ export default function Index() {
 }
 
 const InfiniteScrollRow = ({
-                             images,
-                             direction,
-                             openModal,
-                             isMobile = false,
-                           }: {
+  images,
+  direction,
+  openModal,
+  isMobile = false,
+}: {
   images: string[];
   direction: "ltr" | "rtl";
   openModal: (src: string, alt: string) => void;
