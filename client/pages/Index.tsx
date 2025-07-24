@@ -289,7 +289,7 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="py-16"
+              className="py-12 pl-4 sm:pl-8 md:pl-20 lg:pl-40"
             >
               <h3
                 className="text-portfolio-dark-green font-regular text-6xl lg:text6-xl mb-1 tracking-wider"
