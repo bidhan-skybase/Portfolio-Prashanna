@@ -292,7 +292,7 @@ const AboutSection = () => {
               className="py-12 pl-4 sm:pl-8 md:pl-20 lg:pl-40"
             >
               <h3
-                className="text-portfolio-dark-green font-regular text-6xl lg:text6-xl mb-1 tracking-wider"
+                className="text-portfolio-dark-green font-regular text-6xl lg:text6-xl mb-1 tracking-widest leading-relaxed"
                 style={{ fontFamily: "Helvetica Compressed" }}
               >
                 PRASHANNA BAJRACHARYA
