@@ -152,7 +152,7 @@ const Navigation = () => {
               key={item}
               href={`#${item.toLowerCase()}`}
               className="text-white text-4xl hover:text-portfolio-accent-gold transition-colors duration-300"
-              style={{fontFamily:"Staatliches"}}
+              style={{ fontFamily: "Staatliches" }}
               onClick={closeMenu}
               initial={{ opacity: 0, y: 20 }}
               animate={{
@@ -272,7 +272,12 @@ const CounterAnimation = ({ end, label }: { end: number; label: string }) => {
       >
         {inView && <CountUp start={0} end={end} duration={2} />}+
       </div>
-      <div className="text-gray-500 text-xl lg:text-2xl" style={{fontFamily:"Staatliches"}}>{label}</div>
+      <div
+        className="text-gray-500 text-xl lg:text-2xl"
+        style={{ fontFamily: "Staatliches" }}
+      >
+        {label}
+      </div>
     </motion.div>
   );
 };
@@ -294,13 +299,13 @@ const AboutSection = () => {
             >
               <h3
                 className="text-4xl lg:text-6xl text-portfolio-dark-green font-regular mb-1 tracking-widest leading-relaxed"
-                style={{ fontFamily: 'Staatliches' }}
+                style={{ fontFamily: "Staatliches" }}
               >
                 PRASHANNA BAJRACHARYA
               </h3>
               <h1
                 className="text-portfolio-brown-red font-regular tracking-wider mb-8 mt-2"
-                style={{ fontSize: '1.3rem' ,fontFamily:"Staatliches" }}
+                style={{ fontSize: "1.3rem", fontFamily: "Staatliches" }}
               >
                 PRODUCER | DIRECTOR | PHOTOGRAPHER | EDITOR
               </h1>
@@ -308,11 +313,17 @@ const AboutSection = () => {
                 style={{ display: "flex", flexDirection: "column", gap: 12 }}
                 className="pb-6"
               >
-                <p className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide" style={{fontSize:"20px"}}>
+                <p
+                  className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide"
+                  style={{ fontSize: "20px" }}
+                >
                   Prashanna Bajracharya is a dynamic visual storyteller and
                   creative entrepreneur based in Kathmandu, Nepal.
                 </p>
-                <p className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide" style={{fontSize:"20px"}}>
+                <p
+                  className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide"
+                  style={{ fontSize: "20px" }}
+                >
                   A self-taught photographer and filmmaker, he has collaborated
                   with over 30 diverse brands, bringing narratives to life
                   through brand campaigns, documentaries, editorial projects,
@@ -320,7 +331,10 @@ const AboutSection = () => {
                   passion for storytelling, his work seamlessly blends artistry
                   and impact.
                 </p>
-                <p className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide" style={{fontSize:"20px"}}>
+                <p
+                  className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide"
+                  style={{ fontSize: "20px" }}
+                >
                   In 2020, he founded{" "}
                   <a
                     href="https://www.instagram.com/untitled.np?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D"
@@ -344,7 +358,10 @@ const AboutSection = () => {
                   aims to push creative boundaries and transform the country's
                   media landscape.
                 </p>
-                <p className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide" style={{fontSize:"20px"}}>
+                <p
+                  className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide"
+                  style={{ fontSize: "20px" }}
+                >
                   <a
                     href="https://www.instagram.com/untitled.np?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D"
                     target="_blank"
@@ -800,7 +817,7 @@ const PhotoGallery = ({
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          PHOTOS / STILLS
+          Photos / Brand Key Visuals
         </motion.h2>
       </div>
 
@@ -1284,10 +1301,10 @@ const ArtistNamesSection = () => {
               {row.map((artist, index) => (
                 <motion.div
                   key={`${rowIndex}-${index}`}
-                  className={`text-lg text-center whitespace-pre-line ${artist.color}` }
+                  className={`text-lg text-center whitespace-pre-line ${artist.color}`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  style={{fontFamily:"Staatliches" ,fontSize:"24px"}}
+                  style={{ fontFamily: "Staatliches", fontSize: "24px" }}
                   transition={{
                     duration: 0.6,
                     delay: rowIndex * 0.2 + index * 0.05,
