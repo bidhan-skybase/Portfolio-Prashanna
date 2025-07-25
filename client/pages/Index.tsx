@@ -151,7 +151,8 @@ const Navigation = () => {
             <motion.a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="text-white font-oswald text-3xl hover:text-portfolio-accent-gold transition-colors duration-300"
+              className="text-white text-4xl hover:text-portfolio-accent-gold transition-colors duration-300"
+              style={{fontFamily:"Staatliches"}}
               onClick={closeMenu}
               initial={{ opacity: 0, y: 20 }}
               animate={{
@@ -267,11 +268,11 @@ const CounterAnimation = ({ end, label }: { end: number; label: string }) => {
     >
       <div
         className="text-portfolio-dark-green font-regular text-6xl lg:text-8xl mb-2"
-        style={{ fontFamily: "Helvetica Compressed" }}
+        style={{ fontFamily: "Staatliches" }}
       >
         {inView && <CountUp start={0} end={end} duration={2} />}+
       </div>
-      <div className="text-black font-oswald text-xl lg:text-2xl">{label}</div>
+      <div className="text-gray-500 text-xl lg:text-2xl" style={{fontFamily:"Staatliches"}}>{label}</div>
     </motion.div>
   );
 };
@@ -289,26 +290,29 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="py-12 pl-4 sm:pl-8 md:pl-20 lg:pl-40"
+              className="py-12 pl-4 sm:pl-8 md:pl-20 lg:pl-30"
             >
               <h3
-                className="text-portfolio-dark-green font-regular text-6xl lg:text6-xl mb-1 tracking-widest leading-relaxed"
-                style={{ fontFamily: "Helvetica Compressed" }}
+                className="text-4xl lg:text-6xl text-portfolio-dark-green font-regular mb-1 tracking-widest leading-relaxed"
+                style={{ fontFamily: 'Staatliches' }}
               >
                 PRASHANNA BAJRACHARYA
               </h3>
-              <h1 className="text-portfolio-brown-red font-bold text-2xl lg:text:3xl tracking-wider mb-8">
-                PRODUCER | DIRECTOR | EDITOR
+              <h1
+                className="text-portfolio-brown-red font-regular tracking-wider mb-8 mt-2"
+                style={{ fontSize: '1.3rem' ,fontFamily:"Staatliches" }}
+              >
+                PRODUCER | DIRECTOR | PHOTOGRAPHER | EDITOR
               </h1>
               <div
                 style={{ display: "flex", flexDirection: "column", gap: 12 }}
                 className="pb-6"
               >
-                <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
+                <p className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide" style={{fontSize:"20px"}}>
                   Prashanna Bajracharya is a dynamic visual storyteller and
                   creative entrepreneur based in Kathmandu, Nepal.
                 </p>
-                <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
+                <p className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide" style={{fontSize:"20px"}}>
                   A self-taught photographer and filmmaker, he has collaborated
                   with over 30 diverse brands, bringing narratives to life
                   through brand campaigns, documentaries, editorial projects,
@@ -316,7 +320,7 @@ const AboutSection = () => {
                   passion for storytelling, his work seamlessly blends artistry
                   and impact.
                 </p>
-                <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
+                <p className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide" style={{fontSize:"20px"}}>
                   In 2020, he founded{" "}
                   <a
                     href="https://www.instagram.com/untitled.np?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D"
@@ -340,7 +344,7 @@ const AboutSection = () => {
                   aims to push creative boundaries and transform the country's
                   media landscape.
                 </p>
-                <p className="font-nunito text-lg lg:text-xl text-gray-800 leading-relaxed">
+                <p className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide" style={{fontSize:"20px"}}>
                   <a
                     href="https://www.instagram.com/untitled.np?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D"
                     target="_blank"
@@ -440,7 +444,7 @@ const TrustedBySection = () => {
       <div className="max-w-7xl mx-auto px-8 text-center">
         <motion.h2
           style={{
-            fontFamily: "Helvetica Compressed",
+            fontFamily: "Staatliches",
             color: "#000000",
           }}
           className="text-4xl lg:text-6xl mb-12"
@@ -455,7 +459,7 @@ const TrustedBySection = () => {
         <div className="relative">
           <div className="overflow-hidden">
             <motion.div
-              className="flex items-center gap-8 md:gap-12 lg:gap-16"
+              className="flex items-center gap-8 md:gap-12 lg:gap-16 mt-4"
               animate={{
                 x: [0, -totalWidth],
               }}
@@ -675,11 +679,11 @@ const CommercialSection = () => {
 
   return (
     <section id="works" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="max-w-7xl mx-auto px-8 mt-16">
         {/* Title */}
         <motion.h2
           className="text-4xl lg:text-6xl mb-10 text-center"
-          style={{ fontFamily: "Helvetica Compressed", color: "#000000" }}
+          style={{ fontFamily: "Staatliches", color: "#000000" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -758,7 +762,7 @@ const CommercialSection = () => {
           {hasNextBeenPressed ? (
             <button
               className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300"
-              style={{ fontFamily: "Helvetica Compressed" }}
+              style={{ fontFamily: "Staatliches" }}
               onClick={handlePrevious}
             >
               ← Previous
@@ -769,7 +773,7 @@ const CommercialSection = () => {
 
           <button
             className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300"
-            style={{ fontFamily: "Helvetica Compressed" }}
+            style={{ fontFamily: "Staatliches" }}
             onClick={handleNext}
           >
             Next →
@@ -790,7 +794,7 @@ const PhotoGallery = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <motion.h2
           className="text-portfolio-dark-green font-medium text-3xl sm:text-4xl lg:text-6xl mb-8 sm:mb-16 text-center"
-          style={{ fontFamily: "Helvetica Compressed" }}
+          style={{ fontFamily: "Staatliches" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -909,7 +913,7 @@ const AfterMoviesSection = () => {
         {/* Title */}
         <motion.h2
           className="text-4xl lg:text-6xl mb-10 text-center"
-          style={{ fontFamily: "Helvetica Compressed", color: "#000000" }}
+          style={{ fontFamily: "Staatliches", color: "#000000" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -988,7 +992,7 @@ const AfterMoviesSection = () => {
           {hasNextBeenPressed ? (
             <button
               className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300"
-              style={{ fontFamily: "Helvetica Compressed" }}
+              style={{ fontFamily: "Staatliches" }}
               onClick={handlePrevious}
             >
               ← Previous
@@ -999,7 +1003,7 @@ const AfterMoviesSection = () => {
 
           <button
             className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300"
-            style={{ fontFamily: "Helvetica Compressed" }}
+            style={{ fontFamily: "Staatliches" }}
             onClick={handleNext}
           >
             Next →
@@ -1191,7 +1195,7 @@ const BrandsAndArtistsSection = () => {
         {/* Title */}
         <motion.h2
           className="text-4xl lg:text-6xl mb-16 text-center"
-          style={{ fontFamily: "Helvetica Compressed", color: "#000000" }}
+          style={{ fontFamily: "Staatliches", color: "#000000" }}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -1280,9 +1284,10 @@ const ArtistNamesSection = () => {
               {row.map((artist, index) => (
                 <motion.div
                   key={`${rowIndex}-${index}`}
-                  className={`font-nunito font-bold text-lg text-center whitespace-pre-line ${artist.color}`}
+                  className={`text-lg text-center whitespace-pre-line ${artist.color}` }
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  style={{fontFamily:"Staatliches" ,fontSize:"24px"}}
                   transition={{
                     duration: 0.6,
                     delay: rowIndex * 0.2 + index * 0.05,

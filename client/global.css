@@ -179,5 +179,12 @@
   font-style: normal; /* Adjust if your font has specific styles */
 }
 
+@font-face {
+  font-family: 'Staatliches'; /* Name you want to use for the font */
+  src: url("/fonts/staatlitches.ttf") format('opentype');
+  font-weight: normal; /* Adjust if your font has specific weights */
+  font-style: normal; /* Adjust if your font has specific styles */
+}
+
 
 
