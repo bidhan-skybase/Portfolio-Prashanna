@@ -298,14 +298,22 @@ const AboutSection = () => {
               className="py-12 pl-4 sm:pl-8 md:pl-20 lg:pl-30"
             >
               <h3
-                className="text-4xl lg:text-6xl text-portfolio-dark-green font-regular mb-1 tracking-widest leading-relaxed"
-                style={{ fontFamily: "Staatliches" }}
+                className="text-portfolio-dark-green font-medium text-3xl sm:text-4xl lg:text-6xl mb-8"
+                style={{
+                  fontFamily: "Staatliches",
+                  fontSize: "clamp(58px, 8vw, 106px)",
+                  wordSpacing: "0.3em",
+                  lineHeight: 1.1, // 👈 tighter line height
+                }}
               >
                 PRASHANNA BAJRACHARYA
               </h3>
               <h1
-                className="text-portfolio-brown-red font-regular tracking-wider mb-8 mt-2"
-                style={{ fontSize: "1.3rem", fontFamily: "Staatliches" }}
+                className="text-portfolio-brown-red font-medium mb-8 mt-2"
+                style={{
+                  fontSize: "1.3rem",
+                  fontFamily: '"Helvetica Neue", Arial, sans-serif',
+                }}
               >
                 PRODUCER | DIRECTOR | PHOTOGRAPHER | EDITOR
               </h1>
@@ -314,15 +322,23 @@ const AboutSection = () => {
                 className="pb-6"
               >
                 <p
-                  className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide"
-                  style={{ fontSize: "20px" }}
+                  className="text-gray-800 leading-relaxed tracking-wider"
+                  style={{
+                    fontSize: "clamp(21px, 1.2vw, 34px)",
+                    fontFamily: '"Helvetica Neue", Arial, sans-serif',
+                    letterSpacing: "0.05em",
+                  }}
                 >
                   Prashanna Bajracharya is a dynamic visual storyteller and
                   creative entrepreneur based in Kathmandu, Nepal.
                 </p>
+
                 <p
-                  className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide"
-                  style={{ fontSize: "20px" }}
+                  className="text-gray-800 leading-relaxed tracking-wide"
+                  style={{
+                    fontSize: "clamp(21px, 1.2vw, 30px)",
+                    fontFamily: '"Helvetica Neue", Arial, sans-serif',
+                  }}
                 >
                   A self-taught photographer and filmmaker, he has collaborated
                   with over 30 diverse brands, bringing narratives to life
@@ -331,9 +347,13 @@ const AboutSection = () => {
                   passion for storytelling, his work seamlessly blends artistry
                   and impact.
                 </p>
+
                 <p
-                  className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide"
-                  style={{ fontSize: "20px" }}
+                  className="text-gray-800 leading-relaxed tracking-wide"
+                  style={{
+                    fontSize: "clamp(21px, 1.2vw, 30px)",
+                    fontFamily: '"Helvetica Neue", Arial, sans-serif',
+                  }}
                 >
                   In 2020, he founded{" "}
                   <a
@@ -358,9 +378,13 @@ const AboutSection = () => {
                   aims to push creative boundaries and transform the country's
                   media landscape.
                 </p>
+
                 <p
-                  className="font-helvetica text-lg lg:text-xltext-gray-800 leading-relaxed tracking-wide"
-                  style={{ fontSize: "20px" }}
+                  className="text-gray-800 leading-relaxed tracking-wide"
+                  style={{
+                    fontSize: "clamp(21px, 1.2vw, 30px)",
+                    fontFamily: '"Helvetica Neue", Arial, sans-serif',
+                  }}
                 >
                   <a
                     href="https://www.instagram.com/untitled.np?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D"
@@ -462,7 +486,7 @@ const TrustedBySection = () => {
         <motion.h2
           style={{
             fontFamily: "Staatliches",
-            color: "#000000",
+            fontSize: "clamp(58px, 8vw, 98px)",
           }}
           className="text-4xl lg:text-6xl mb-12"
           initial={{ opacity: 0, y: 30 }}
@@ -700,7 +724,10 @@ const CommercialSection = () => {
         {/* Title */}
         <motion.h2
           className="text-4xl lg:text-6xl mb-10 text-center"
-          style={{ fontFamily: "Staatliches", color: "#000000" }}
+          style={{
+            fontFamily: "Staatliches",
+            fontSize: "clamp(58px, 8vw, 98px)",
+          }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -811,7 +838,10 @@ const PhotoGallery = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <motion.h2
           className="text-portfolio-dark-green font-medium text-3xl sm:text-4xl lg:text-6xl mb-8 sm:mb-16 text-center"
-          style={{ fontFamily: "Staatliches" }}
+          style={{
+            fontFamily: "Staatliches",
+            fontSize: "clamp(58px, 8vw, 98px)",
+          }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -930,7 +960,10 @@ const AfterMoviesSection = () => {
         {/* Title */}
         <motion.h2
           className="text-4xl lg:text-6xl mb-10 text-center"
-          style={{ fontFamily: "Staatliches", color: "#000000" }}
+          style={{
+            fontFamily: "Staatliches",
+            fontSize: "clamp(58px, 8vw, 98px)",
+          }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -1074,7 +1107,7 @@ const BrandsAndArtistsSection = () => {
         alt: "Lollapaloza",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592853/Titan_k9zhgv.png",
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753594298/image_19_lcrj4p.png",
         alt: "Titan",
       },
 
@@ -1094,7 +1127,6 @@ const BrandsAndArtistsSection = () => {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211235/Skoda_lgpmzg.png",
         alt: "Skoda",
       },
-
     ],
     // Row 2
     [
@@ -1119,10 +1151,9 @@ const BrandsAndArtistsSection = () => {
         alt: "Niu",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/Believe_logo_o5prcy.png",
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753593921/Believe_logo_1_yr9zuu.png",
         alt: "Believe",
       },
-
 
       // {
       //   src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211235/Skoda_lgpmzg.png",
@@ -1160,7 +1191,6 @@ const BrandsAndArtistsSection = () => {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Khalti_tquumc.png",
         alt: "Khalti",
       },
-
     ],
     [
       {
@@ -1175,11 +1205,12 @@ const BrandsAndArtistsSection = () => {
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Yatri_hfjq2j.png",
         alt: "Yatri",
-      },  {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/Janakpur_Logo_gwkocx.png",
-      alt: "Janakpur Bolts",
-    },
-    ]
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753593728/Janakpur_Logo_1_nuqx0f.png",
+        alt: "Janakpur Bolts",
+      },
+    ],
   ];
 
   // Special sizing rules for specific logos
@@ -1223,7 +1254,7 @@ const BrandsAndArtistsSection = () => {
           <img
             src={logo.src}
             alt={logo.alt}
-            className={`object-contain filter brightness-0 invert ${getLogoSize(logo.alt)}`}
+            className={`object-contain ${getLogoSize(logo.alt)}`}
             loading="lazy"
           />
         </motion.div>
@@ -1242,7 +1273,10 @@ const BrandsAndArtistsSection = () => {
         {/* Title */}
         <motion.h2
           className="text-4xl lg:text-6xl mb-16 text-center"
-          style={{ fontFamily: "Staatliches", color: "#000000" }}
+          style={{
+            fontFamily: "Staatliches",
+            fontSize: "clamp(58px, 8vw, 98px)",
+          }}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
