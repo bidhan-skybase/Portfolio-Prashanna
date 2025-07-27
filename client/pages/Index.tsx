@@ -1047,10 +1047,10 @@ const BrandsAndArtistsSection = () => {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Chanpions_League_q1mnrh.png",
         alt: "Champions League",
       },
-      {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Unilever_xzfmm9.png",
-        alt: "Unilever",
-      },
+      // {
+      //   src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Unilever_xzfmm9.png",
+      //   alt: "Unilever",
+      // },
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Tedx_ljvgef.png",
         alt: "TEDx",
@@ -1066,16 +1066,21 @@ const BrandsAndArtistsSection = () => {
     ],
     [
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211237/Tuborg_iafgye.png",
-        alt: "Tuborg",
-      },
-      {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211415/Yale_University_mgk88h.png",
         alt: "Yale University",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Httpool_ri0euy.png",
-        alt: "Httpool",
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/Lolla_India_sc2oxo.png",
+        alt: "Lollapaloza",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592853/Titan_k9zhgv.png",
+        alt: "Titan",
+      },
+
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211237/Tuborg_iafgye.png",
+        alt: "Tuborg",
       },
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Samsung_qc4q9b.png",
@@ -1086,28 +1091,13 @@ const BrandsAndArtistsSection = () => {
         alt: "SOS",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/DAV_fjxice.png",
-        alt: "DAV",
-      },
-    ],
-    // Row 2
-    [
-      {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Khalti_tquumc.png",
-        alt: "Khalti",
-      },
-      {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Seres_odqyyp.png",
-        alt: "Seres",
-      },
-      {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211235/Skoda_lgpmzg.png",
         alt: "Skoda",
       },
-      {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211233/Foton_bbyiyb.png",
-        alt: "Foton",
-      },
+
+    ],
+    // Row 2
+    [
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211238/Yamaha_jovsop.png",
         alt: "Yamaha",
@@ -1117,20 +1107,41 @@ const BrandsAndArtistsSection = () => {
         alt: "Changan",
       },
       {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211233/Foton_bbyiyb.png",
+        alt: "Foton",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Seres_odqyyp.png",
+        alt: "Seres",
+      },
+      {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Niu_ifpxku.png",
         alt: "Niu",
       },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/Believe_logo_o5prcy.png",
+        alt: "Believe",
+      },
+
+
+      // {
+      //   src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211235/Skoda_lgpmzg.png",
+      //   alt: "Skoda",
+      // },
     ],
     // Row 3
     [
       {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Nepal_Tourism_Board_sgefpx.png",
+        alt: "Nepal Tourism Board",
+      },
+      {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/KMG_z5smgs.png",
         alt: "KMG",
       },
-
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Ruslan_sa4aoz.png",
-        alt: "Ruslan",
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/MOuntain_i1uokl.png",
+        alt: "Mountain Lodge of Nepal",
       },
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Gorkha_Brewery_a0xs61.png",
@@ -1138,9 +1149,25 @@ const BrandsAndArtistsSection = () => {
       },
 
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Nepal_Tourism_Board_sgefpx.png",
-        alt: "Nepal Tourism Board",
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Ruslan_sa4aoz.png",
+        alt: "Ruslan",
       },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/Metal_for_nepal_lxuugv.jpg",
+        alt: "Metal for Nepal",
+      },
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Khalti_tquumc.png",
+        alt: "Khalti",
+      },
+
+    ],
+    [
+      {
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/DAV_fjxice.png",
+        alt: "DAV",
+      },
+
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Crossfire_ta6avf.png",
         alt: "Crossfire",
@@ -1148,8 +1175,11 @@ const BrandsAndArtistsSection = () => {
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Yatri_hfjq2j.png",
         alt: "Yatri",
-      },
-    ],
+      },  {
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/Janakpur_Logo_gwkocx.png",
+      alt: "Janakpur Bolts",
+    },
+    ]
   ];
 
   // Special sizing rules for specific logos
@@ -1326,25 +1356,27 @@ const ArtistNamesSection = () => {
 const Footer = () => {
   const socialIcons = [
     {
-      src: "/Behance.svg",
-      alt: "Behance",
-      href: "https://www.behance.net/prashanbajrach",
-    },
-    {
       src: "/Linkedin.svg",
       alt: "Linkedin",
       href: "https://www.linkedin.com/in/prashannabajracharya/",
-    },
-    {
-      src: "/Facebook.svg",
-      alt: "Facebook",
-      href: "https://www.facebook.com/prashanna07/",
     },
     {
       src: "/Instagram.svg",
       alt: "Instagram",
       href: "https://www.instagram.com/prashannabajracharya/",
     },
+    {
+      src: "/Behance.svg",
+      alt: "Behance",
+      href: "https://www.behance.net/prashanbajrach",
+    },
+
+    {
+      src: "/Facebook.svg",
+      alt: "Facebook",
+      href: "https://www.facebook.com/prashanna07/",
+    },
+
     {
       src: "/Youtube.svg",
       alt: "YouTube",
