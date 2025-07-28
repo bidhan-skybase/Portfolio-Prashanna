@@ -10,11 +10,6 @@ const heroImages = [
   "https://cdn.builder.io/api/v1/image/assets/TEMP/d02c7c3fd5ef2e3678c8c7529d948623e15c8550?width=3943",
 ];
 
-const commercialImages = [
-  "https://cdn.builder.io/api/v1/image/assets/TEMP/22e3e86375e89ea7b1f6f71d85d350d176fb1add?width=3336",
-  "https://cdn.builder.io/api/v1/image/assets/TEMP/9cb002352ff194efae175c568236c526a27ab935?width=716",
-  "https://cdn.builder.io/api/v1/image/assets/TEMP/8cd272271ffe987fb08364155adec5ef167eed02?width=716",
-];
 
 const galleryImages = [
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/IMG_1646_Medium_x0mwhj.jpg",
@@ -151,7 +146,7 @@ const Navigation = () => {
             <motion.a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="text-white text-4xl hover:text-portfolio-accent-gold transition-colors duration-300"
+              className="text-white text-6xl hover:text-portfolio-accent-gold transition-colors duration-300"
               style={{ fontFamily: "Staatliches" }}
               onClick={closeMenu}
               initial={{ opacity: 0, y: 20 }}
@@ -573,31 +568,6 @@ const CommercialSection = () => {
     //   platform: "instagram"
     // },
     {
-      url: "https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z",
-      id: extractVideoId("https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z"),
-      title: "Janakpur Bolts Anthem",
-      platform: "youtube",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=S7DRJNuYrhs",
-      id: extractVideoId("https://www.youtube.com/watch?v=S7DRJNuYrhs"),
-      title: "Lumbini Allstars Anthem",
-      platform: "youtube",
-    },
-
-    {
-      url: "https://youtu.be/pjCOsZZPB3c",
-      id: extractVideoId("https://youtu.be/pjCOsZZPB3c"),
-      title: "Naami Launch Video",
-      platform: "youtube",
-    },
-    {
-      url: "https://youtu.be/ZmxUV8x5Bt4",
-      id: extractVideoId("https://youtu.be/ZmxUV8x5Bt4"),
-      title: "Skoda Testimonial",
-      platform: "youtube",
-    },
-    {
       url: "https://youtu.be/tI--w9k7P0g",
       id: extractVideoId("https://youtu.be/tI--w9k7P0g"),
       title: "Samsung Testimonial",
@@ -615,6 +585,33 @@ const CommercialSection = () => {
       title: "Pokhara World School",
       platform: "youtube",
     },
+    {
+      url: "https://www.youtube.com/watch?v=S7DRJNuYrhs",
+      id: extractVideoId("https://www.youtube.com/watch?v=S7DRJNuYrhs"),
+      title: "Lumbini Allstars Anthem",
+      platform: "youtube",
+    },
+    {
+      url: "https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z",
+      id: extractVideoId("https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z"),
+      title: "Janakpur Bolts Anthem",
+      platform: "youtube",
+    },
+
+
+    {
+      url: "https://youtu.be/pjCOsZZPB3c",
+      id: extractVideoId("https://youtu.be/pjCOsZZPB3c"),
+      title: "Naami Launch Video",
+      platform: "youtube",
+    },
+    {
+      url: "https://youtu.be/ZmxUV8x5Bt4",
+      id: extractVideoId("https://youtu.be/ZmxUV8x5Bt4"),
+      title: "Skoda Testimonial",
+      platform: "youtube",
+    },
+
     // {
     //   url: "https://www.youtube.com/watch?v=0xxofHCllXU",
     //   id: extractVideoId("https://www.youtube.com/watch?v=0xxofHCllXU"),
@@ -699,7 +696,7 @@ const CommercialSection = () => {
 
   const getThumbnailUrl = (video) => {
     if (video.platform === "youtube") {
-      return `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`;
+      return `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
     } else if (video.platform === "facebook") {
       // Facebook Graph API approach (requires access token)
       // return `https://graph.facebook.com/v18.0/${video.id}/picture?access_token=YOUR_ACCESS_TOKEN`;
@@ -884,31 +881,37 @@ const PhotoGallery = ({
 };
 
 const AfterMoviesSection = () => {
-  // Extract YouTube video IDs from URLs
   const extractVideoId = (url) => {
     const patterns = [
-      /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+      // YouTube patterns - updated to handle query parameters correctly
+      /(?:youtube\.com\/watch\?v=)([^&\n?#]+)/,
+      /(?:youtu\.be\/)([^&\n?#]+)/,
+      /(?:youtube\.com\/embed\/)([^&\n?#]+)/,
+      // Facebook pattern
       /facebook\.com\/.*\/videos\/(\d+)/,
     ];
 
     for (const pattern of patterns) {
       const match = url.match(pattern);
-      if (match) return match[1];
+      if (match) {
+        // Clean the ID by removing any query parameters
+        return match[1].split('?')[0];
+      }
     }
     return null;
   };
 
   const allCommercialVideos = [
     {
-      url: "https://youtu.be/mWnv5-lHahE",
-      id: extractVideoId("https://youtu.be/mWnv5-lHahE"),
+      url: "https://youtu.be/LXQGcVf3lr8",
+      id: extractVideoId("https://youtu.be/LXQGcVf3lr8"),
       title: "After movie reel",
       platform: "youtube",
     },
     {
-      url: "https://www.youtube.com/watch?v=m8BX-viWnoc",
-      id: extractVideoId("https://www.youtube.com/watch?v=m8BX-viWnoc"),
-      title: "Lumbini Allstars Anthem",
+      url: "https://youtu.be/m8BX-viWnoc?si=sktxXaAt5dHX2EJ0",
+      id: extractVideoId("https://youtu.be/m8BX-viWnoc?si=sktxXaAt5dHX2EJ0"),
+      title: "Unbelievable energy",
       platform: "youtube",
     },
     {
@@ -949,9 +952,9 @@ const AfterMoviesSection = () => {
 
   const getThumbnailUrl = (video) => {
     if (video.platform === "youtube") {
-      return `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`;
+      return `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
     }
-    return `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`;
+    return ""; // Handle other platforms as needed
   };
 
   return (
@@ -972,25 +975,26 @@ const AfterMoviesSection = () => {
           AFTER MOVIES
         </motion.h2>
 
-        {/* Featured Video */}
-        <motion.div
-          className="mb-4"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <div className="relative w-full h-72 lg:h-[500px] bg-gray-200 overflow-hidden">
-            <iframe
-              src={getEmbedUrl(featuredVideo)}
-              title={featuredVideo.title}
-              className="w-full h-full"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </motion.div>
+        <div className="overflow-x-hidden">
+          <motion.div
+            className="mb-4 overflow-hidden"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative w-full h-72 lg:h-[500px] bg-gray-200 overflow-hidden">
+              <iframe
+                src={getEmbedUrl(featuredVideo)}
+                title={featuredVideo.title}
+                className="block w-full h-full max-w-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </motion.div>
+        </div>
 
         {/* Thumbnail Grid */}
         <motion.div
@@ -1071,6 +1075,7 @@ const BrandsAndArtistsSection = () => {
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Pepsi_mjk1q3.png",
         alt: "Pepsi",
+        customSize: "w-16 h-16", // Reduced size
       },
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Adidas_ihp4iy.png",
@@ -1096,18 +1101,21 @@ const BrandsAndArtistsSection = () => {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Expo_City_Dubai_qptndz.png",
         alt: "Expo City Dubai",
       },
-    ],
-    [
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211415/Yale_University_mgk88h.png",
         alt: "Yale University",
+        customSize: "w-30 h-32", // Increased size
       },
+    ],
+    [
+
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/Lolla_India_sc2oxo.png",
         alt: "Lollapaloza",
+        customSize: "w-28 h-32", // Increased size
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753594298/image_19_lcrj4p.png",
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753679710/Titan_Logo_Vector_1_1_vmyw4m.png",
         alt: "Titan",
       },
 
@@ -1130,6 +1138,8 @@ const BrandsAndArtistsSection = () => {
     ],
     // Row 2
     [
+
+
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211238/Yamaha_jovsop.png",
         alt: "Yamaha",
@@ -1154,11 +1164,6 @@ const BrandsAndArtistsSection = () => {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753593921/Believe_logo_1_yr9zuu.png",
         alt: "Believe",
       },
-
-      // {
-      //   src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211235/Skoda_lgpmzg.png",
-      //   alt: "Skoda",
-      // },
     ],
     // Row 3
     [
@@ -1169,6 +1174,7 @@ const BrandsAndArtistsSection = () => {
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/KMG_z5smgs.png",
         alt: "KMG",
+        customSize: "w-16 h-16", // Reduced size
       },
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/MOuntain_i1uokl.png",
@@ -1177,6 +1183,7 @@ const BrandsAndArtistsSection = () => {
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Gorkha_Brewery_a0xs61.png",
         alt: "Gorkha Brewery",
+        customSize: "w-32 h-32", // Increased size
       },
 
       {
@@ -1196,11 +1203,13 @@ const BrandsAndArtistsSection = () => {
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/DAV_fjxice.png",
         alt: "DAV",
+        customSize: "w-16 h-16", // Reduced size
       },
 
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Crossfire_ta6avf.png",
         alt: "Crossfire",
+        customSize: "w-32 h-32", // Increased size
       },
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Yatri_hfjq2j.png",
@@ -1212,8 +1221,6 @@ const BrandsAndArtistsSection = () => {
       },
     ],
   ];
-
-
 
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -1247,7 +1254,7 @@ const BrandsAndArtistsSection = () => {
           <img
             src={logo.src}
             alt={logo.alt}
-            className={`w-24 h-24 object-contain`} // or object-cover
+            className={`${logo.customSize || "w-24 h-24"} object-contain`}
             loading="lazy"
           />
         </motion.div>
@@ -1296,7 +1303,6 @@ const BrandsAndArtistsSection = () => {
     </section>
   );
 };
-
 const ArtistNamesSection = () => {
   // Organized artist names by rows with alternating colors
   const artistRows = [
@@ -1505,18 +1511,31 @@ export default function Index() {
     </div>
   );
 }
-
 const InfiniteScrollRow = ({
-  images,
-  direction,
-  openModal,
-  isMobile = false,
-}: {
+                             images,
+                             direction,
+                             openModal,
+                             isMobile = false,
+                           }: {
   images: string[];
   direction: "ltr" | "rtl";
   openModal: (src: string, alt: string) => void;
   isMobile?: boolean;
 }) => {
+
+  const [orientations, setOrientations] = useState<{ [key: number]: "portrait" | "landscape" }>({});
+
+  useEffect(() => {
+    images.forEach((img, index) => {
+      const image = new Image();
+      image.src = img;
+      image.onload = () => {
+        const orientation = image.naturalHeight > image.naturalWidth ? "portrait" : "landscape";
+        setOrientations((prev) => ({ ...prev, [index]: orientation }));
+      };
+    });
+  }, [images]);
+
   const animationClass =
     direction === "ltr" ? "animate-scrollLtr" : "animate-scrollRtl";
 
@@ -1547,7 +1566,7 @@ const InfiniteScrollRow = ({
               key={i}
               src={img}
               alt={`Photo ${i % images.length}`}
-              className={`${getImageSize(i)} object-cover mr-2 cursor-pointer flex-shrink-0 rounded-sm`}
+              className={`${getImageSize(i)} ${orientations[i % images.length] === "portrait" ? "object-contain" : "object-cover"} mr-2 cursor-pointer flex-shrink-0 rounded-sm bg-black`}
               onClick={() => openModal(img, `Photo ${i % images.length}`)}
             />
           ),
