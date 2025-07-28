@@ -10,7 +10,6 @@ const heroImages = [
   "https://cdn.builder.io/api/v1/image/assets/TEMP/d02c7c3fd5ef2e3678c8c7529d948623e15c8550?width=3943",
 ];
 
-
 const galleryImages = [
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/IMG_1646_Medium_x0mwhj.jpg",
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/Master_01_Medium_d02vg3.jpg",
@@ -598,7 +597,6 @@ const CommercialSection = () => {
       platform: "youtube",
     },
 
-
     {
       url: "https://youtu.be/pjCOsZZPB3c",
       id: extractVideoId("https://youtu.be/pjCOsZZPB3c"),
@@ -832,12 +830,14 @@ const PhotoGallery = ({
   return (
     <section className="py-20 bg-white overflow-hidden">
       {/* Keep max-width only for the title */}
+
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <motion.h2
           className="text-portfolio-dark-green font-medium text-3xl sm:text-4xl lg:text-6xl mb-8 sm:mb-16 text-center"
           style={{
             fontFamily: "Staatliches",
             fontSize: "clamp(58px, 8vw, 76px)",
+            lineHeight: 1.1, // 👈 tighter line height
           }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -883,19 +883,16 @@ const PhotoGallery = ({
 const AfterMoviesSection = () => {
   const extractVideoId = (url) => {
     const patterns = [
-      // YouTube patterns - updated to handle query parameters correctly
       /(?:youtube\.com\/watch\?v=)([^&\n?#]+)/,
       /(?:youtu\.be\/)([^&\n?#]+)/,
       /(?:youtube\.com\/embed\/)([^&\n?#]+)/,
-      // Facebook pattern
       /facebook\.com\/.*\/videos\/(\d+)/,
     ];
 
     for (const pattern of patterns) {
       const match = url.match(pattern);
       if (match) {
-        // Clean the ID by removing any query parameters
-        return match[1].split('?')[0];
+        return match[1].split("?")[0];
       }
     }
     return null;
@@ -907,166 +904,251 @@ const AfterMoviesSection = () => {
       id: extractVideoId("https://youtu.be/LXQGcVf3lr8"),
       title: "After movie reel",
       platform: "youtube",
+      thumbnail: "/thumbnails/after-movie-reel.jpg",
     },
     {
       url: "https://youtu.be/m8BX-viWnoc?si=sktxXaAt5dHX2EJ0",
       id: extractVideoId("https://youtu.be/m8BX-viWnoc?si=sktxXaAt5dHX2EJ0"),
       title: "Unbelievable energy",
       platform: "youtube",
+      thumbnail: "/thumbnails/unbelievable-energy.jpg",
     },
     {
       url: "https://www.youtube.com/watch?v=uE5IU9oPwJQ",
       id: extractVideoId("https://www.youtube.com/watch?v=uE5IU9oPwJQ"),
       title: "Lumbini Allstars Anthem",
       platform: "youtube",
+      thumbnail: "/thumbnails/lumbini-anthem.jpg",
     },
   ];
 
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1024,
+  );
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [thumbnailStartIndex, setThumbnailStartIndex] = useState(0);
   const [hasNextBeenPressed, setHasNextBeenPressed] = useState(false);
-  const [featuredVideo, setFeaturedVideo] = useState(allCommercialVideos[0]);
-  const [thumbnailStartIndex, setThumbnailStartIndex] = useState(1);
-  const thumbnailsPerPage = 4;
-  const maxIndex = allCommercialVideos.length - thumbnailsPerPage;
+  const [thumbnailsPerPage, setThumbnailsPerPage] = useState(
+    getThumbnailsPerPage(window.innerWidth),
+  );
+
+  function getThumbnailsPerPage(width) {
+    return width < 768 ? 4 : 8;
+  }
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setWindowWidth(width);
+      setThumbnailsPerPage(getThumbnailsPerPage(width));
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleNext = () => {
     setHasNextBeenPressed(true);
-    setThumbnailStartIndex((prev) =>
-      prev + thumbnailsPerPage > maxIndex ? 1 : prev + thumbnailsPerPage,
-    );
+    setThumbnailStartIndex((prev) => {
+      const nextIndex = prev + thumbnailsPerPage;
+      return nextIndex >= allCommercialVideos.length ? 0 : nextIndex;
+    });
   };
 
   const handlePrevious = () => {
-    setThumbnailStartIndex((prev) =>
-      prev - thumbnailsPerPage < 1 ? maxIndex : prev - thumbnailsPerPage,
-    );
+    setThumbnailStartIndex((prev) => {
+      const prevIndex = prev - thumbnailsPerPage;
+      return prevIndex < 0
+        ? Math.max(0, allCommercialVideos.length - thumbnailsPerPage)
+        : prevIndex;
+    });
+  };
+
+  const openModal = (video) => {
+    setSelectedVideo(video);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedVideo(null);
   };
 
   const getEmbedUrl = (video) => {
     if (video.platform === "youtube") {
-      return `https://www.youtube.com/embed/${video.id}?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0`;
+      return `https://www.youtube.com/embed/${video.id}?autoplay=1&mute=0&controls=1&modestbranding=1&rel=0`;
     } else if (video.platform === "facebook") {
-      return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.url)}&show_text=false&width=560&height=315`;
+      return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.url)}&show_text=false&width=560&height=315&autoplay=true`;
     }
     return "";
   };
 
-  const getThumbnailUrl = (video) => {
-    if (video.platform === "youtube") {
-      return `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") closeModal();
+    };
+    if (isModalOpen) {
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
     }
-    return ""; // Handle other platforms as needed
-  };
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
+    };
+  }, [isModalOpen]);
 
   return (
-    <section id="works" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-8">
-        {/* Title */}
-        <motion.h2
-          className="text-4xl lg:text-6xl mb-10 text-center"
-          style={{
-            fontFamily: "Staatliches",
-            fontSize: "clamp(58px, 12vw, 76px)",
-          }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          AFTER MOVIES
-        </motion.h2>
+    <>
+      <section id="works" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-8">
+          <motion.h2
+            className="text-4xl lg:text-6xl mb-10 text-center"
+            style={{
+              fontFamily: "Staatliches",
+              fontSize: "clamp(58px, 12vw, 76px)",
+            }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            AFTER MOVIES
+          </motion.h2>
 
-        <div className="overflow-x-hidden">
+          {/* Responsive Grid */}
           <motion.div
-            className="mb-4 overflow-hidden"
-            initial={{ opacity: 0, y: 50 }}
+            className={`mb-8 gap-4 
+            scrollbar-hide
+    flex overflow-x-auto md:overflow-visible 
+    md:grid md:grid-cols-2 lg:grid-cols-4 
+    ${allCommercialVideos.length >= 4 ? "md:grid-rows-2" : ""}
+    snap-x snap-mandatory
+  `}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="relative w-full h-72 lg:h-[500px] bg-gray-200 overflow-hidden">
-              <iframe
-                src={getEmbedUrl(featuredVideo)}
-                title={featuredVideo.title}
-                className="block w-full h-full max-w-full"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
+            {allCommercialVideos
+              .slice(
+                thumbnailStartIndex,
+                thumbnailStartIndex + thumbnailsPerPage,
+              )
+              .map((video, index) => (
+                <motion.div
+                  key={index}
+                  className="relative h-48 lg:h-56 w-[100vw] md:w-auto flex-shrink-0 bg-gray-200 overflow-hidden cursor-pointer group rounded-lg shadow-lg snap-start"
+                  onClick={() => openModal(video)}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src={video.thumbnail}
+                    alt={video.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                    }}
+                  />
+
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex flex-col items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-2 border-white rounded-sm backdrop-blur-sm">
+                      <h3
+                        className="text-whitefont-semibold text-center whitespace-nowrap tracking-wide"
+                        style={{
+                          fontFamily: "Staatliches",
+                          fontSize: "22px",
+                          color: "white",
+                        }}
+                      >
+                        {video.title}
+                      </h3>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+          </motion.div>
+
+          {/* Navigation */}
+          {allCommercialVideos.length > thumbnailsPerPage && (
+            <motion.div
+              className="hidden md:flex justify-between items-center mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              {hasNextBeenPressed ? (
+                <button
+                  className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300 flex items-center gap-2"
+                  style={{ fontFamily: "Staatliches" }}
+                  onClick={handlePrevious}
+                >
+                  ← Previous
+                </button>
+              ) : (
+                <div />
+              )}
+              <button
+                className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300 flex items-center gap-2"
+                style={{ fontFamily: "Staatliches" }}
+                onClick={handleNext}
+              >
+                Next →
+              </button>
+            </motion.div>
+          )}
+        </div>
+      </section>
+
+      {/* Modal */}
+      {isModalOpen && selectedVideo && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
+          onClick={closeModal}
+        >
+          <motion.div
+            className="relative w-full max-w-4xl aspect-video bg-black rounded-lg overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <button
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black bg-opacity-50 hover:bg-opacity-75 rounded-full flex items-center justify-center text-white transition-all duration-200"
+              onClick={closeModal}
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <iframe
+              src={getEmbedUrl(selectedVideo)}
+              title={selectedVideo.title}
+              className="w-full h-full"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+
           </motion.div>
         </div>
-
-        {/* Thumbnail Grid */}
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          {allCommercialVideos
-            .slice(thumbnailStartIndex, thumbnailStartIndex + thumbnailsPerPage)
-            .map((video, index) => (
-              <motion.div
-                key={index}
-                className="relative h-48 lg:h-40 bg-gray-200 overflow-hidden cursor-pointer group"
-                onClick={() => setFeaturedVideo(video)}
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.3 }}
-              >
-                <img
-                  src={getThumbnailUrl(video)}
-                  alt={video.title}
-                  className="w-full h-full object-cover"
-                />
-                {/* Play button overlay */}
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                    <svg
-                      className="w-6 h-6 text-white"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-        </motion.div>
-
-        {/* Navigation Buttons */}
-        <motion.div
-          className="flex justify-between"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          {hasNextBeenPressed ? (
-            <button
-              className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300"
-              style={{ fontFamily: "Staatliches" }}
-              onClick={handlePrevious}
-            >
-              ← Previous
-            </button>
-          ) : (
-            <div />
-          )}
-
-          <button
-            className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300"
-            style={{ fontFamily: "Staatliches" }}
-            onClick={handleNext}
-          >
-            Next →
-          </button>
-        </motion.div>
-      </div>
-    </section>
+      )}
+    </>
   );
 };
+
 const BrandsAndArtistsSection = () => {
   // Consolidated logo data with special sizing rules
   const logoData = [
@@ -1108,7 +1190,6 @@ const BrandsAndArtistsSection = () => {
       },
     ],
     [
-
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/Lolla_India_sc2oxo.png",
         alt: "Lollapaloza",
@@ -1138,8 +1219,6 @@ const BrandsAndArtistsSection = () => {
     ],
     // Row 2
     [
-
-
       {
         src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211238/Yamaha_jovsop.png",
         alt: "Yamaha",
@@ -1512,25 +1591,27 @@ export default function Index() {
   );
 }
 const InfiniteScrollRow = ({
-                             images,
-                             direction,
-                             openModal,
-                             isMobile = false,
-                           }: {
+  images,
+  direction,
+  openModal,
+  isMobile = false,
+}: {
   images: string[];
   direction: "ltr" | "rtl";
   openModal: (src: string, alt: string) => void;
   isMobile?: boolean;
 }) => {
-
-  const [orientations, setOrientations] = useState<{ [key: number]: "portrait" | "landscape" }>({});
+  const [orientations, setOrientations] = useState<{
+    [key: number]: "portrait" | "landscape";
+  }>({});
 
   useEffect(() => {
     images.forEach((img, index) => {
       const image = new Image();
       image.src = img;
       image.onload = () => {
-        const orientation = image.naturalHeight > image.naturalWidth ? "portrait" : "landscape";
+        const orientation =
+          image.naturalHeight > image.naturalWidth ? "portrait" : "landscape";
         setOrientations((prev) => ({ ...prev, [index]: orientation }));
       };
     });
