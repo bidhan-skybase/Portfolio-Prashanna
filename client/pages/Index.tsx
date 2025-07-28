@@ -301,7 +301,7 @@ const AboutSection = () => {
                 className="text-portfolio-dark-green font-medium text-3xl sm:text-4xl lg:text-6xl mb-8"
                 style={{
                   fontFamily: "Staatliches",
-                  fontSize: "clamp(58px, 8vw, 106px)",
+                  fontSize: "clamp(58px, 8vw, 96px)",
                   wordSpacing: "0.3em",
                   lineHeight: 1.1, // 👈 tighter line height
                 }}
@@ -355,7 +355,7 @@ const AboutSection = () => {
                     fontFamily: '"Helvetica Neue", Arial, sans-serif',
                   }}
                 >
-                  In 2020, he founded{" "}
+                  In 2021, he founded{" "}
                   <a
                     href="https://www.instagram.com/untitled.np?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D"
                     target="_blank"
@@ -445,7 +445,7 @@ const TrustedBySection = () => {
       alt: "Skoda Green",
     },
     {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335646/image_13_ztcd9r.png",
+      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753677717/tedx_pibuc5.png",
       alt: "TEDx Green",
     },
     {
@@ -486,7 +486,7 @@ const TrustedBySection = () => {
         <motion.h2
           style={{
             fontFamily: "Staatliches",
-            fontSize: "clamp(58px, 8vw, 98px)",
+            fontSize: "clamp(58px, 8vw, 76px)",
           }}
           className="text-4xl lg:text-6xl mb-12"
           initial={{ opacity: 0, y: 30 }}
@@ -726,7 +726,7 @@ const CommercialSection = () => {
           className="text-4xl lg:text-6xl mb-10 text-center"
           style={{
             fontFamily: "Staatliches",
-            fontSize: "clamp(58px, 8vw, 98px)",
+            fontSize: "clamp(58px, 8vw, 76px)",
           }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -840,7 +840,7 @@ const PhotoGallery = ({
           className="text-portfolio-dark-green font-medium text-3xl sm:text-4xl lg:text-6xl mb-8 sm:mb-16 text-center"
           style={{
             fontFamily: "Staatliches",
-            fontSize: "clamp(58px, 8vw, 98px)",
+            fontSize: "clamp(58px, 8vw, 76px)",
           }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -962,7 +962,7 @@ const AfterMoviesSection = () => {
           className="text-4xl lg:text-6xl mb-10 text-center"
           style={{
             fontFamily: "Staatliches",
-            fontSize: "clamp(58px, 8vw, 98px)",
+            fontSize: "clamp(58px, 12vw, 76px)",
           }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -1213,14 +1213,7 @@ const BrandsAndArtistsSection = () => {
     ],
   ];
 
-  // Special sizing rules for specific logos
-  const getLogoSize = (alt) => {
-    const sizeMap = {
-      "Gorkha Brewery": "w-24 h-24 lg:w-32 lg:h-32",
-      Crossfire: "w-20 h-20 lg:w-24 lg:h-24",
-    };
-    return sizeMap[alt] || "w-24 h-24 lg:w-20 lg:h-20";
-  };
+
 
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -1248,13 +1241,13 @@ const BrandsAndArtistsSection = () => {
           key={`${logo.alt}-${index}`}
           className="flex items-center justify-center"
           variants={logoVariants}
-          transition={{ duration: 0.3, delay: 0.2 + index * 0.1 }}
-          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.3, delay: 0.1 + index * 0.1 }}
+          whileHover={{ scale: 1.2 }}
         >
           <img
             src={logo.src}
             alt={logo.alt}
-            className={`object-contain ${getLogoSize(logo.alt)}`}
+            className={`w-24 h-24 object-contain`} // or object-cover
             loading="lazy"
           />
         </motion.div>
@@ -1275,7 +1268,7 @@ const BrandsAndArtistsSection = () => {
           className="text-4xl lg:text-6xl mb-16 text-center"
           style={{
             fontFamily: "Staatliches",
-            fontSize: "clamp(58px, 8vw, 98px)",
+            fontSize: "clamp(58px, 8vw, 76px)",
           }}
           variants={containerVariants}
           initial="hidden"
