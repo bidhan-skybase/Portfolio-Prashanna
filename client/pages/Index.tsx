@@ -349,7 +349,7 @@ const AboutSection = () => {
                     fontFamily: '"Helvetica Neue", Arial, sans-serif',
                   }}
                 >
-                  In 2021, he founded{" "}
+                  In 2021, he co-founded{" "}
                   <a
                     href="https://www.instagram.com/untitled.np?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D"
                     target="_blank"
