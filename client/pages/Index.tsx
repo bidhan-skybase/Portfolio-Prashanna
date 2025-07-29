@@ -794,7 +794,7 @@ const CommercialSection = () => {
                 >
                   <img
                     src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                    alt={video.title}
+                    alt={getDisplayTitle(video)}
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       // Fallback to medium quality if high quality fails
@@ -805,15 +805,17 @@ const CommercialSection = () => {
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex flex-col items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-2 border-white rounded-sm backdrop-blur-sm">
                       <h3
-                        className="text-whitefont-semibold text-center whitespace-nowrap tracking-wide"
+                        className="text-white font-semibold text-center tracking-wide whitespace-normal break-words px-2"
                         style={{
                           fontFamily: "Staatliches",
                           fontSize: "22px",
                           color: "white",
+                          maxWidth: "90%", // Optional: restrict width for wrapping
                         }}
                       >
-                        {getDisplayTitle(video)}{" "}
+                        {getDisplayTitle(video)}
                       </h3>
+
                     </div>
                   </div>
                 </motion.div>
@@ -979,23 +981,17 @@ const AfterMoviesSection = () => {
     {
       url: "https://youtu.be/LXQGcVf3lr8",
       id: extractVideoId("https://youtu.be/LXQGcVf3lr8"),
-      title: "After movie reel",
       platform: "youtube",
-      thumbnail: "/thumbnails/after-movie-reel.jpg",
     },
     {
       url: "https://youtu.be/m8BX-viWnoc?si=sktxXaAt5dHX2EJ0",
       id: extractVideoId("https://youtu.be/m8BX-viWnoc?si=sktxXaAt5dHX2EJ0"),
-      title: "Unbelievable energy",
       platform: "youtube",
-      thumbnail: "/thumbnails/unbelievable-energy.jpg",
     },
     {
       url: "https://www.youtube.com/watch?v=uE5IU9oPwJQ",
       id: extractVideoId("https://www.youtube.com/watch?v=uE5IU9oPwJQ"),
-      title: "Lumbini Allstars Anthem",
       platform: "youtube",
-      thumbnail: "/thumbnails/lumbini-anthem.jpg",
     },
   ];
 
@@ -1020,20 +1016,66 @@ const AfterMoviesSection = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const [videoTitles, setVideoTitles] = useState({});
+
+  const fetchYouTubeTitle = async (videoId) => {
+    try {
+      const response = await fetch(
+        `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`,
+      );
+      const data = await response.json();
+      return data.title;
+    } catch (error) {
+      console.error("Error fetching video title:", error);
+      return null;
+    }
+  };
+
+  // Fetch titles for all videos when component mounts
+  useEffect(() => {
+    const fetchAllTitles = async () => {
+      const titles = {};
+      for (const video of afterMovies) {
+        const title = await fetchYouTubeTitle(video.id);
+        if (title) {
+          titles[video.id] = title;
+        }
+      }
+      setVideoTitles(titles);
+    };
+
+    fetchAllTitles();
+  }, []);
+
+  // In your JSX, use the fetched title or fallback to your custom title:
+  const getDisplayTitle = (video) => {
+    return videoTitles[video.id] || video.title;
+  };
+
   const handleNext = () => {
     setHasNextBeenPressed(true);
     setThumbnailStartIndex((prev) => {
       const nextIndex = prev + thumbnailsPerPage;
-      return nextIndex >= afterMovies.length ? 0 : nextIndex;
+      // If nextIndex would go beyond the array, reset to 0
+      // But only if there are actually more videos to show from the beginning
+      if (nextIndex >= afterMovies.length) {
+        return 0;
+      }
+      return nextIndex;
     });
   };
 
   const handlePrevious = () => {
     setThumbnailStartIndex((prev) => {
       const prevIndex = prev - thumbnailsPerPage;
-      return prevIndex < 0
-        ? Math.max(0, afterMovies.length - thumbnailsPerPage)
-        : prevIndex;
+      if (prevIndex < 0) {
+        // Go to the last possible starting index that shows remaining videos
+        const lastPageStartIndex =
+          Math.floor((afterMovies.length - 1) / thumbnailsPerPage) *
+          thumbnailsPerPage;
+        return lastPageStartIndex;
+      }
+      return prevIndex;
     });
   };
 
@@ -1116,26 +1158,29 @@ const AfterMoviesSection = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <img
-                    src={video.thumbnail}
-                    alt={video.title}
+                    src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+                    alt={getDisplayTitle(video)}
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                      // Fallback to medium quality if high quality fails
+                      e.target.src = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
                     }}
                   />
 
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex flex-col items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-2 border-white rounded-sm backdrop-blur-sm">
                       <h3
-                        className="text-whitefont-semibold text-center whitespace-nowrap tracking-wide"
+                        className="text-white font-semibold text-center tracking-wide whitespace-normal break-words px-2"
                         style={{
                           fontFamily: "Staatliches",
                           fontSize: "22px",
                           color: "white",
+                          maxWidth: "90%", // Optional: restrict width for wrapping
                         }}
                       >
-                        {video.title}
+                        {getDisplayTitle(video)}
                       </h3>
+
                     </div>
                   </div>
                 </motion.div>
