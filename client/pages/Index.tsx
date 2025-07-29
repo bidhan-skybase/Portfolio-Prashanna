@@ -535,352 +535,7 @@ const TrustedBySection = () => {
     </section>
   );
 };
-
 const CommercialSection = () => {
-  const extractVideoId = (url) => {
-    const patterns = [
-      /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
-      /facebook\.com\/.*\/videos\/(\d+)/,
-      /instagram\.com\/(?:p|reel)\/([A-Za-z0-9_-]+)/,
-    ];
-
-    for (const pattern of patterns) {
-      const match = url.match(pattern);
-      if (match) return match[1];
-    }
-    return null;
-  };
-
-  const allCommercialVideos = [
-    {
-      url: "https://www.facebook.com/singaporebeverages/videos/732463532422643/",
-      id: extractVideoId(
-        "https://www.facebook.com/singaporebeverages/videos/732463532422643/",
-      ),
-      title: "Singapore Beverages",
-      platform: "facebook",
-    },
-    // {
-    //   url: "https://www.instagram.com/reel/Cqk3XUcPvp8/",
-    //   id: extractVideoId("https://www.instagram.com/reel/Cqk3XUcPvp8/"),
-    //   title: "Kantipur TV",
-    //   platform: "instagram"
-    // },
-    {
-      url: "https://youtu.be/tI--w9k7P0g",
-      id: extractVideoId("https://youtu.be/tI--w9k7P0g"),
-      title: "Samsung Testimonial",
-      platform: "youtube",
-    },
-    {
-      url: "https://youtu.be/AlRhi6xPrHc",
-      id: extractVideoId("https://youtu.be/AlRhi6xPrHc"),
-      title: "Yatri Review",
-      platform: "youtube",
-    },
-    {
-      url: "https://youtu.be/uzTDHZ4qpeY",
-      id: extractVideoId("https://youtu.be/uzTDHZ4qpeY"),
-      title: "Pokhara World School",
-      platform: "youtube",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=S7DRJNuYrhs",
-      id: extractVideoId("https://www.youtube.com/watch?v=S7DRJNuYrhs"),
-      title: "Lumbini Allstars Anthem",
-      platform: "youtube",
-    },
-    {
-      url: "https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z",
-      id: extractVideoId("https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z"),
-      title: "Janakpur Bolts Anthem",
-      platform: "youtube",
-    },
-
-    {
-      url: "https://youtu.be/pjCOsZZPB3c",
-      id: extractVideoId("https://youtu.be/pjCOsZZPB3c"),
-      title: "Naami Launch Video",
-      platform: "youtube",
-    },
-    {
-      url: "https://youtu.be/ZmxUV8x5Bt4",
-      id: extractVideoId("https://youtu.be/ZmxUV8x5Bt4"),
-      title: "Skoda Testimonial",
-      platform: "youtube",
-    },
-
-    // {
-    //   url: "https://www.youtube.com/watch?v=0xxofHCllXU",
-    //   id: extractVideoId("https://www.youtube.com/watch?v=0xxofHCllXU"),
-    //   title: "Pepsi UCL",
-    //   platform: "youtube"
-    // },
-    {
-      url: "https://www.youtube.com/watch?v=81D9H2Z3Vcw",
-      id: extractVideoId("https://www.youtube.com/watch?v=81D9H2Z3Vcw"),
-      title: "Foton",
-      platform: "youtube",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=y7BtAkW5LKA",
-      id: extractVideoId("https://www.youtube.com/watch?v=y7BtAkW5LKA"),
-      title: "Commercial 11",
-      platform: "youtube",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=kexCWZSRx7Q",
-      id: extractVideoId("https://www.youtube.com/watch?v=kexCWZSRx7Q"),
-      title: "Commercial 12",
-      platform: "youtube",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=Nylgt4CtsKo",
-      id: extractVideoId("https://www.youtube.com/watch?v=Nylgt4CtsKo"),
-      title: "Commercial 13",
-      platform: "youtube",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=IUigcSW0lfo&list=PLN88_j1xLvkU6PyWd_CD7TZEFeIzJsS8T",
-      id: extractVideoId(
-        "https://www.youtube.com/watch?v=IUigcSW0lfo&list=PLN88_j1xLvkU6PyWd_CD7TZEFeIzJsS8T",
-      ),
-      title: "Commercial 14",
-      platform: "youtube",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=D5PdEPD6O14",
-      id: extractVideoId("https://www.youtube.com/watch?v=D5PdEPD6O14"),
-      title: "Commercial 15",
-      platform: "youtube",
-    },
-    {
-      url: "https://youtu.be/NOqkE2YJtkY?si=DAz3MhArAbVKFZDb",
-      id: extractVideoId("https://youtu.be/NOqkE2YJtkY?si=DAz3MhArAbVKFZDb"),
-      title: "Kantipur TV",
-      platform: "youtube",
-    },
-  ];
-
-  const [hasNextBeenPressed, setHasNextBeenPressed] = useState(false);
-  const [featuredVideo, setFeaturedVideo] = useState(allCommercialVideos[0]);
-  const [thumbnailStartIndex, setThumbnailStartIndex] = useState(1);
-  const thumbnailsPerPage = 4;
-  const maxIndex = allCommercialVideos.length - thumbnailsPerPage;
-
-  const handleNext = () => {
-    setHasNextBeenPressed(true);
-    setThumbnailStartIndex((prev) =>
-      prev + thumbnailsPerPage > maxIndex ? 1 : prev + thumbnailsPerPage,
-    );
-  };
-
-  const handlePrevious = () => {
-    setThumbnailStartIndex((prev) =>
-      prev - thumbnailsPerPage < 1 ? maxIndex : prev - thumbnailsPerPage,
-    );
-  };
-
-  const getEmbedUrl = (video) => {
-    if (video.platform === "youtube") {
-      return `https://www.youtube.com/embed/${video.id}?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0`;
-    } else if (video.platform === "facebook") {
-      return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.url)}&show_text=false&width=560&height=315`;
-    } else if (video.platform === "instagram") {
-      return `https://www.instagram.com/p/${video.id}/embed/`;
-    }
-    return "";
-  };
-
-  const getThumbnailUrl = (video) => {
-    if (video.platform === "youtube") {
-      return `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
-    } else if (video.platform === "facebook") {
-      // Facebook Graph API approach (requires access token)
-      // return `https://graph.facebook.com/v18.0/${video.id}/picture?access_token=YOUR_ACCESS_TOKEN`;
-
-      // Alternative: Use Facebook's thumbnail service
-      return `https://graph.facebook.com/${video.id}/picture?type=large`;
-    } else if (video.platform === "instagram") {
-      // Instagram doesn't provide direct thumbnail API
-      // Option 1: Use a placeholder with Instagram branding
-      return "https://via.placeholder.com/480x360/E4405F/ffffff?text=Instagram+Reel";
-
-      // Option 2: You could use a service like Instagram Basic Display API
-      // But it requires authentication and is complex for just thumbnails
-    }
-    // Fallback placeholder
-    return "https://via.placeholder.com/480x360/cccccc/666666?text=Video+Thumbnail";
-  };
-
-  return (
-    <section id="works" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-8 mt-16">
-        {/* Title */}
-        <motion.h2
-          className="text-4xl lg:text-6xl mb-10 text-center"
-          style={{
-            fontFamily: "Staatliches",
-            fontSize: "clamp(58px, 8vw, 76px)",
-          }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          COMMERCIALS
-        </motion.h2>
-
-        {/* Featured Video */}
-        <motion.div
-          className="mb-4"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <div className="relative w-full h-72 lg:h-[500px] bg-gray-200 overflow-hidden">
-            <iframe
-              src={getEmbedUrl(featuredVideo)}
-              title={featuredVideo.title}
-              className="w-full h-full"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </motion.div>
-
-        {/* Thumbnail Grid */}
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          {allCommercialVideos
-            .slice(thumbnailStartIndex, thumbnailStartIndex + thumbnailsPerPage)
-            .map((video, index) => (
-              <motion.div
-                key={index}
-                className="relative h-48 lg:h-40 bg-gray-200 overflow-hidden cursor-pointer group"
-                onClick={() => setFeaturedVideo(video)}
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.3 }}
-              >
-                <img
-                  src={getThumbnailUrl(video)}
-                  alt={video.title}
-                  className="w-full h-full object-cover"
-                />
-                {/* Play button overlay */}
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                    <svg
-                      className="w-6 h-6 text-white"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-        </motion.div>
-
-        {/* Navigation Buttons */}
-        <motion.div
-          className="flex justify-between"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          {hasNextBeenPressed ? (
-            <button
-              className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300"
-              style={{ fontFamily: "Staatliches" }}
-              onClick={handlePrevious}
-            >
-              ← Previous
-            </button>
-          ) : (
-            <div />
-          )}
-
-          <button
-            className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300"
-            style={{ fontFamily: "Staatliches" }}
-            onClick={handleNext}
-          >
-            Next →
-          </button>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-const PhotoGallery = ({
-  openModal,
-}: {
-  openModal: (src: string, alt: string) => void;
-}) => {
-  return (
-    <section className="py-20 bg-white overflow-hidden">
-      {/* Keep max-width only for the title */}
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        <motion.h2
-          className="text-portfolio-dark-green font-medium text-3xl sm:text-4xl lg:text-6xl mb-8 sm:mb-16 text-center"
-          style={{
-            fontFamily: "Staatliches",
-            fontSize: "clamp(58px, 8vw, 76px)",
-            lineHeight: 1.1, // 👈 tighter line height
-          }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          Photos / Brand Key Visuals
-        </motion.h2>
-      </div>
-
-      {/* Full-width scroll containers */}
-      <div className="w-full px-4 sm:px-8 lg:px-[5rem]">
-        {/* Mobile: Show only one row */}
-        <div className="block sm:hidden">
-          <InfiniteScrollRow
-            images={galleryImages}
-            direction="ltr"
-            openModal={openModal}
-            isMobile={true}
-          />
-        </div>
-
-        {/* Desktop: Show both rows */}
-        <div className="hidden sm:block">
-          <InfiniteScrollRow
-            images={galleryImages.slice(0, Math.ceil(galleryImages.length / 2))}
-            direction="ltr"
-            openModal={openModal}
-            isMobile={false}
-          />
-          <InfiniteScrollRow
-            images={galleryImages.slice(Math.ceil(galleryImages.length / 2))}
-            direction="rtl"
-            openModal={openModal}
-            isMobile={false}
-          />
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const AfterMoviesSection = () => {
   const extractVideoId = (url) => {
     const patterns = [
       /(?:youtube\.com\/watch\?v=)([^&\n?#]+)/,
@@ -900,31 +555,81 @@ const AfterMoviesSection = () => {
 
   const allCommercialVideos = [
     {
-      url: "https://youtu.be/LXQGcVf3lr8",
-      id: extractVideoId("https://youtu.be/LXQGcVf3lr8"),
-      title: "After movie reel",
+      url: "https://youtu.be/tI--w9k7P0g",
+      id: extractVideoId("https://youtu.be/tI--w9k7P0g"),
       platform: "youtube",
-      thumbnail: "/thumbnails/after-movie-reel.jpg",
     },
     {
-      url: "https://youtu.be/m8BX-viWnoc?si=sktxXaAt5dHX2EJ0",
-      id: extractVideoId("https://youtu.be/m8BX-viWnoc?si=sktxXaAt5dHX2EJ0"),
-      title: "Unbelievable energy",
+      url: "https://youtu.be/AlRhi6xPrHc",
+      id: extractVideoId("https://youtu.be/AlRhi6xPrHc"),
       platform: "youtube",
-      thumbnail: "/thumbnails/unbelievable-energy.jpg",
     },
     {
-      url: "https://www.youtube.com/watch?v=uE5IU9oPwJQ",
-      id: extractVideoId("https://www.youtube.com/watch?v=uE5IU9oPwJQ"),
-      title: "Lumbini Allstars Anthem",
+      url: "https://youtu.be/uzTDHZ4qpeY",
+      id: extractVideoId("https://youtu.be/uzTDHZ4qpeY"),
       platform: "youtube",
-      thumbnail: "/thumbnails/lumbini-anthem.jpg",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=S7DRJNuYrhs",
+      id: extractVideoId("https://www.youtube.com/watch?v=S7DRJNuYrhs"),
+      platform: "youtube",
+    },
+    {
+      url: "https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z",
+      id: extractVideoId("https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z"),
+      platform: "youtube",
+    },
+
+    {
+      url: "https://youtu.be/pjCOsZZPB3c",
+      id: extractVideoId("https://youtu.be/pjCOsZZPB3c"),
+      platform: "youtube",
+    },
+    {
+      url: "https://youtu.be/ZmxUV8x5Bt4",
+      id: extractVideoId("https://youtu.be/ZmxUV8x5Bt4"),
+      platform: "youtube",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=81D9H2Z3Vcw",
+      id: extractVideoId("https://www.youtube.com/watch?v=81D9H2Z3Vcw"),
+      platform: "youtube",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=y7BtAkW5LKA",
+      id: extractVideoId("https://www.youtube.com/watch?v=y7BtAkW5LKA"),
+      platform: "youtube",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=kexCWZSRx7Q",
+      id: extractVideoId("https://www.youtube.com/watch?v=kexCWZSRx7Q"),
+      platform: "youtube",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=Nylgt4CtsKo",
+      id: extractVideoId("https://www.youtube.com/watch?v=Nylgt4CtsKo"),
+      title: "Commercial 13",
+      platform: "youtube",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=IUigcSW0lfo&list=PLN88_j1xLvkU6PyWd_CD7TZEFeIzJsS8T",
+      id: extractVideoId(
+        "https://www.youtube.com/watch?v=IUigcSW0lfo&list=PLN88_j1xLvkU6PyWd_CD7TZEFeIzJsS8T",
+      ),
+      platform: "youtube",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=D5PdEPD6O14",
+      id: extractVideoId("https://www.youtube.com/watch?v=D5PdEPD6O14"),
+      platform: "youtube",
+    },
+    {
+      url: "https://youtu.be/NOqkE2YJtkY?si=DAz3MhArAbVKFZDb",
+      id: extractVideoId("https://youtu.be/NOqkE2YJtkY?si=DAz3MhArAbVKFZDb"),
+      platform: "youtube",
     },
   ];
 
-  const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 1024,
-  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [thumbnailStartIndex, setThumbnailStartIndex] = useState(0);
@@ -932,6 +637,42 @@ const AfterMoviesSection = () => {
   const [thumbnailsPerPage, setThumbnailsPerPage] = useState(
     getThumbnailsPerPage(window.innerWidth),
   );
+  const [videoTitles, setVideoTitles] = useState({});
+
+  // Function to fetch YouTube video title
+  const fetchYouTubeTitle = async (videoId) => {
+    try {
+      const response = await fetch(
+        `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`,
+      );
+      const data = await response.json();
+      return data.title;
+    } catch (error) {
+      console.error("Error fetching video title:", error);
+      return null;
+    }
+  };
+
+  // Fetch titles for all videos when component mounts
+  useEffect(() => {
+    const fetchAllTitles = async () => {
+      const titles = {};
+      for (const video of allCommercialVideos) {
+        const title = await fetchYouTubeTitle(video.id);
+        if (title) {
+          titles[video.id] = title;
+        }
+      }
+      setVideoTitles(titles);
+    };
+
+    fetchAllTitles();
+  }, []);
+
+  // In your JSX, use the fetched title or fallback to your custom title:
+  const getDisplayTitle = (video) => {
+    return videoTitles[video.id] || video.title;
+  };
 
   function getThumbnailsPerPage(width) {
     return width < 768 ? 4 : 8;
@@ -940,7 +681,6 @@ const AfterMoviesSection = () => {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      setWindowWidth(width);
       setThumbnailsPerPage(getThumbnailsPerPage(width));
     };
     window.addEventListener("resize", handleResize);
@@ -951,16 +691,26 @@ const AfterMoviesSection = () => {
     setHasNextBeenPressed(true);
     setThumbnailStartIndex((prev) => {
       const nextIndex = prev + thumbnailsPerPage;
-      return nextIndex >= allCommercialVideos.length ? 0 : nextIndex;
+      // If nextIndex would go beyond the array, reset to 0
+      // But only if there are actually more videos to show from the beginning
+      if (nextIndex >= allCommercialVideos.length) {
+        return 0;
+      }
+      return nextIndex;
     });
   };
 
   const handlePrevious = () => {
     setThumbnailStartIndex((prev) => {
       const prevIndex = prev - thumbnailsPerPage;
-      return prevIndex < 0
-        ? Math.max(0, allCommercialVideos.length - thumbnailsPerPage)
-        : prevIndex;
+      if (prevIndex < 0) {
+        // Go to the last possible starting index that shows remaining videos
+        const lastPageStartIndex =
+          Math.floor((allCommercialVideos.length - 1) / thumbnailsPerPage) *
+          thumbnailsPerPage;
+        return lastPageStartIndex;
+      }
+      return prevIndex;
     });
   };
 
@@ -1012,7 +762,7 @@ const AfterMoviesSection = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            AFTER MOVIES
+            Commercials
           </motion.h2>
 
           {/* Responsive Grid */}
@@ -1043,11 +793,12 @@ const AfterMoviesSection = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <img
-                    src={video.thumbnail}
+                    src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
                     alt={video.title}
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                      // Fallback to medium quality if high quality fails
+                      e.target.src = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
                     }}
                   />
 
@@ -1061,7 +812,7 @@ const AfterMoviesSection = () => {
                           color: "white",
                         }}
                       >
-                        {video.title}
+                        {getDisplayTitle(video)}{" "}
                       </h3>
                     </div>
                   </div>
@@ -1141,7 +892,328 @@ const AfterMoviesSection = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
+          </motion.div>
+        </div>
+      )}
+    </>
+  );
+};
 
+const PhotoGallery = ({
+  openModal,
+}: {
+  openModal: (src: string, alt: string) => void;
+}) => {
+  return (
+    <section className="py-20 bg-white overflow-hidden">
+      {/* Keep max-width only for the title */}
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        <motion.h2
+          className="text-portfolio-dark-green font-medium text-3xl sm:text-4xl lg:text-6xl mb-8 sm:mb-16 text-center"
+          style={{
+            fontFamily: "Staatliches",
+            fontSize: "clamp(58px, 8vw, 76px)",
+            lineHeight: 1.1, // 👈 tighter line height
+          }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          Photos / Brand Key Visuals
+        </motion.h2>
+      </div>
+
+      {/* Full-width scroll containers */}
+      <div className="w-full px-4 sm:px-8 lg:px-[5rem]">
+        {/* Mobile: Show only one row */}
+        <div className="block sm:hidden">
+          <InfiniteScrollRow
+            images={galleryImages}
+            direction="ltr"
+            openModal={openModal}
+            isMobile={true}
+          />
+        </div>
+
+        {/* Desktop: Show both rows */}
+        <div className="hidden sm:block">
+          <InfiniteScrollRow
+            images={galleryImages.slice(0, Math.ceil(galleryImages.length / 2))}
+            direction="ltr"
+            openModal={openModal}
+            isMobile={false}
+          />
+          <InfiniteScrollRow
+            images={galleryImages.slice(Math.ceil(galleryImages.length / 2))}
+            direction="rtl"
+            openModal={openModal}
+            isMobile={false}
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const AfterMoviesSection = () => {
+  const extractVideoId = (url) => {
+    const patterns = [
+      /(?:youtube\.com\/watch\?v=)([^&\n?#]+)/,
+      /(?:youtu\.be\/)([^&\n?#]+)/,
+      /(?:youtube\.com\/embed\/)([^&\n?#]+)/,
+      /facebook\.com\/.*\/videos\/(\d+)/,
+    ];
+
+    for (const pattern of patterns) {
+      const match = url.match(pattern);
+      if (match) {
+        return match[1].split("?")[0];
+      }
+    }
+    return null;
+  };
+
+  const afterMovies = [
+    {
+      url: "https://youtu.be/LXQGcVf3lr8",
+      id: extractVideoId("https://youtu.be/LXQGcVf3lr8"),
+      title: "After movie reel",
+      platform: "youtube",
+      thumbnail: "/thumbnails/after-movie-reel.jpg",
+    },
+    {
+      url: "https://youtu.be/m8BX-viWnoc?si=sktxXaAt5dHX2EJ0",
+      id: extractVideoId("https://youtu.be/m8BX-viWnoc?si=sktxXaAt5dHX2EJ0"),
+      title: "Unbelievable energy",
+      platform: "youtube",
+      thumbnail: "/thumbnails/unbelievable-energy.jpg",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=uE5IU9oPwJQ",
+      id: extractVideoId("https://www.youtube.com/watch?v=uE5IU9oPwJQ"),
+      title: "Lumbini Allstars Anthem",
+      platform: "youtube",
+      thumbnail: "/thumbnails/lumbini-anthem.jpg",
+    },
+  ];
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [thumbnailStartIndex, setThumbnailStartIndex] = useState(0);
+  const [hasNextBeenPressed, setHasNextBeenPressed] = useState(false);
+  const [thumbnailsPerPage, setThumbnailsPerPage] = useState(
+    getThumbnailsPerPage(window.innerWidth),
+  );
+
+  function getThumbnailsPerPage(width) {
+    return width < 768 ? 4 : 8;
+  }
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setThumbnailsPerPage(getThumbnailsPerPage(width));
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleNext = () => {
+    setHasNextBeenPressed(true);
+    setThumbnailStartIndex((prev) => {
+      const nextIndex = prev + thumbnailsPerPage;
+      return nextIndex >= afterMovies.length ? 0 : nextIndex;
+    });
+  };
+
+  const handlePrevious = () => {
+    setThumbnailStartIndex((prev) => {
+      const prevIndex = prev - thumbnailsPerPage;
+      return prevIndex < 0
+        ? Math.max(0, afterMovies.length - thumbnailsPerPage)
+        : prevIndex;
+    });
+  };
+
+  const openModal = (video) => {
+    setSelectedVideo(video);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedVideo(null);
+  };
+
+  const getEmbedUrl = (video) => {
+    if (video.platform === "youtube") {
+      return `https://www.youtube.com/embed/${video.id}?autoplay=1&mute=0&controls=1&modestbranding=1&rel=0`;
+    } else if (video.platform === "facebook") {
+      return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.url)}&show_text=false&width=560&height=315&autoplay=true`;
+    }
+    return "";
+  };
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") closeModal();
+    };
+    if (isModalOpen) {
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
+    };
+  }, [isModalOpen]);
+
+  return (
+    <>
+      <section id="works" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-8">
+          <motion.h2
+            className="text-4xl lg:text-6xl mb-10 text-center"
+            style={{
+              fontFamily: "Staatliches",
+              fontSize: "clamp(58px, 12vw, 76px)",
+            }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            AFTER MOVIES
+          </motion.h2>
+
+          {/* Responsive Grid */}
+          <motion.div
+            className={`mb-8 gap-4 
+            scrollbar-hide
+    flex overflow-x-auto md:overflow-visible 
+    md:grid md:grid-cols-2 lg:grid-cols-4 
+    ${afterMovies.length >= 4 ? "md:grid-rows-2" : ""}
+    snap-x snap-mandatory
+  `}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {afterMovies
+              .slice(
+                thumbnailStartIndex,
+                thumbnailStartIndex + thumbnailsPerPage,
+              )
+              .map((video, index) => (
+                <motion.div
+                  key={index}
+                  className="relative h-48 lg:h-56 w-[100vw] md:w-auto flex-shrink-0 bg-gray-200 overflow-hidden cursor-pointer group rounded-lg shadow-lg snap-start"
+                  onClick={() => openModal(video)}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src={video.thumbnail}
+                    alt={video.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                    }}
+                  />
+
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex flex-col items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-2 border-white rounded-sm backdrop-blur-sm">
+                      <h3
+                        className="text-whitefont-semibold text-center whitespace-nowrap tracking-wide"
+                        style={{
+                          fontFamily: "Staatliches",
+                          fontSize: "22px",
+                          color: "white",
+                        }}
+                      >
+                        {video.title}
+                      </h3>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+          </motion.div>
+
+          {/* Navigation */}
+          {afterMovies.length > thumbnailsPerPage && (
+            <motion.div
+              className="hidden md:flex justify-between items-center mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              {hasNextBeenPressed ? (
+                <button
+                  className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300 flex items-center gap-2"
+                  style={{ fontFamily: "Staatliches" }}
+                  onClick={handlePrevious}
+                >
+                  ← Previous
+                </button>
+              ) : (
+                <div />
+              )}
+              <button
+                className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300 flex items-center gap-2"
+                style={{ fontFamily: "Staatliches" }}
+                onClick={handleNext}
+              >
+                Next →
+              </button>
+            </motion.div>
+          )}
+        </div>
+      </section>
+
+      {/* Modal */}
+      {isModalOpen && selectedVideo && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
+          onClick={closeModal}
+        >
+          <motion.div
+            className="relative w-full max-w-4xl aspect-video bg-black rounded-lg overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <button
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black bg-opacity-50 hover:bg-opacity-75 rounded-full flex items-center justify-center text-white transition-all duration-200"
+              onClick={closeModal}
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <iframe
+              src={getEmbedUrl(selectedVideo)}
+              title={selectedVideo.title}
+              className="w-full h-full"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
           </motion.div>
         </div>
       )}

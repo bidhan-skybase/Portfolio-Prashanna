@@ -1,0 +1,110 @@
+  const allCommercialVideos = [
+    {
+      url: "https://www.facebook.com/singaporebeverages/videos/732463532422643/",
+      id: extractVideoId(
+        "https://www.facebook.com/singaporebeverages/videos/732463532422643/",
+      ),
+      title: "Singapore Beverages",
+      platform: "facebook",
+    },
+    // {
+    //   url: "https://www.instagram.com/reel/Cqk3XUcPvp8/",
+    //   id: extractVideoId("https://www.instagram.com/reel/Cqk3XUcPvp8/"),
+    //   title: "Kantipur TV",
+    //   platform: "instagram"
+    // },
+    {
+      url: "https://youtu.be/tI--w9k7P0g",
+      id: extractVideoId("https://youtu.be/tI--w9k7P0g"),
+      title: "Samsung Testimonial",
+      platform: "youtube",
+    },
+    {
+      url: "https://youtu.be/AlRhi6xPrHc",
+      id: extractVideoId("https://youtu.be/AlRhi6xPrHc"),
+      title: "Yatri Review",
+      platform: "youtube",
+    },
+    {
+      url: "https://youtu.be/uzTDHZ4qpeY",
+      id: extractVideoId("https://youtu.be/uzTDHZ4qpeY"),
+      title: "Pokhara World School",
+      platform: "youtube",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=S7DRJNuYrhs",
+      id: extractVideoId("https://www.youtube.com/watch?v=S7DRJNuYrhs"),
+      title: "Lumbini Allstars Anthem",
+      platform: "youtube",
+    },
+    {
+      url: "https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z",
+      id: extractVideoId("https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z"),
+      title: "Janakpur Bolts Anthem",
+      platform: "youtube",
+    },
+
+    {
+      url: "https://youtu.be/pjCOsZZPB3c",
+      id: extractVideoId("https://youtu.be/pjCOsZZPB3c"),
+      title: "Naami Launch Video",
+      platform: "youtube",
+    },
+    {
+      url: "https://youtu.be/ZmxUV8x5Bt4",
+      id: extractVideoId("https://youtu.be/ZmxUV8x5Bt4"),
+      title: "Skoda Testimonial",
+      platform: "youtube",
+    },
+
+    // {
+    //   url: "https://www.youtube.com/watch?v=0xxofHCllXU",
+    //   id: extractVideoId("https://www.youtube.com/watch?v=0xxofHCllXU"),
+    //   title: "Pepsi UCL",
+    //   platform: "youtube"
+    // },
+    {
+      url: "https://www.youtube.com/watch?v=81D9H2Z3Vcw",
+      id: extractVideoId("https://www.youtube.com/watch?v=81D9H2Z3Vcw"),
+      title: "Foton",
+      platform: "youtube",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=y7BtAkW5LKA",
+      id: extractVideoId("https://www.youtube.com/watch?v=y7BtAkW5LKA"),
+      title: "Commercial 11",
+      platform: "youtube",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=kexCWZSRx7Q",
+      id: extractVideoId("https://www.youtube.com/watch?v=kexCWZSRx7Q"),
+      title: "Commercial 12",
+      platform: "youtube",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=Nylgt4CtsKo",
+      id: extractVideoId("https://www.youtube.com/watch?v=Nylgt4CtsKo"),
+      title: "Commercial 13",
+      platform: "youtube",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=IUigcSW0lfo&list=PLN88_j1xLvkU6PyWd_CD7TZEFeIzJsS8T",
+      id: extractVideoId(
+        "https://www.youtube.com/watch?v=IUigcSW0lfo&list=PLN88_j1xLvkU6PyWd_CD7TZEFeIzJsS8T",
+      ),
+      title: "Commercial 14",
+      platform: "youtube",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=D5PdEPD6O14",
+      id: extractVideoId("https://www.youtube.com/watch?v=D5PdEPD6O14"),
+      title: "Commercial 15",
+      platform: "youtube",
+    },
+    {
+      url: "https://youtu.be/NOqkE2YJtkY?si=DAz3MhArAbVKFZDb",
+      id: extractVideoId("https://youtu.be/NOqkE2YJtkY?si=DAz3MhArAbVKFZDb"),
+      title: "Kantipur TV",
+      platform: "youtube",
+    },
+  ];
