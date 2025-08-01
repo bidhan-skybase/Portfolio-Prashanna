@@ -148,7 +148,7 @@ const Navigation = () => {
             <motion.a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="text-white text-6xl hover:text-portfolio-accent-gold transition-colors duration-300"
+              className="text-white text-6xl hover:text-gray-500 transition-colors duration-300"
               style={{ fontFamily: "Staatliches" }}
               onClick={closeMenu}
               initial={{ opacity: 0, y: 20 }}
@@ -828,7 +828,7 @@ const CommercialSection = () => {
           {/* Navigation */}
           {allCommercialVideos.length > thumbnailsPerPage && (
             <motion.div
-              className="hidden md:flex justify-between items-center mb-4"
+              className="hidden md:flex justify-between items-center mb-0"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -910,7 +910,7 @@ const PhotoGallery = ({
   openModal: (src: string, alt: string) => void;
 }) => {
   return (
-    <section className="pt-5 bg-white overflow-hidden">
+    <section className="pt-0 bg-white overflow-hidden">
       {/* Keep max-width only for the title */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
@@ -1707,8 +1707,8 @@ const ContactFormSection = () => {
 
             <div>
               <h3
-                className="text-white font-bold text-lg mt-24 mb-2"
-                style={{ fontFamily: "Staatliches", fontSize: "20px" }}
+                className="text-white text-xs mb-2"
+                style={{ fontFamily: "Helvetica", fontSize: "12px" }}
               >
                 CONNECT WITH ME:
               </h3>
@@ -1730,8 +1730,8 @@ const ContactFormSection = () => {
 
             <div>
               <h3
-                className="text-white text-xs mb-4"
-                style={{ fontFamily: "Staatliches", fontSize: "20px" }}
+                className="text-white text-xs mb-2"
+                style={{ fontFamily: "Helvetica", fontSize: "12px" }}
               >
                 FOR BUSINESS ENQUIRY:
               </h3>
@@ -1766,7 +1766,7 @@ const ContactFormSection = () => {
                 </div>
               )}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 ">
                 <div>
                   <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2" style={{fontFamily:"Staatliches"}}>
                     Name
@@ -1782,21 +1782,7 @@ const ContactFormSection = () => {
                     disabled={isSubmitting}
                   />
                 </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2" style={{fontFamily:"Staatliches"}}>
-                    Last name
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-portfolio-dark-green focus:border-transparent outline-none transition-all duration-200"
-                    required
-                    disabled={isSubmitting}
-                  />
-                </div>
+
               </div>
 
               <div>
