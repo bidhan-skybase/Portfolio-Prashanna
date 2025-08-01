@@ -21,6 +21,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "emailjs-com": "^3.2.0",
     "express": "^4.18.2",
     "react-countup": "^6.5.3",
     "react-intersection-observer": "^9.16.0",
