@@ -5,6 +5,7 @@ import CountUp from "react-countup";
 import { ImageModal, useImageModal } from "../components/ImageModal";
 import { VideoGallery } from "../components/VideoGallery";
 import { COMMERCIAL_VIDEOS, AFTER_MOVIE_VIDEOS } from "../constants/videoData";
+import { SPACING, TYPOGRAPHY } from "../constants/spacing";
 
 const heroImages = [
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752210606/WhatsApp_Image_2025-06-23_at_15.43.27_9fd048e1_1_1_fom8pe.png",
@@ -1583,6 +1584,228 @@ const ArtistNamesSection = () => {
   );
 };
 
+const ContactFormSection = () => {
+  const socialIcons = [
+    {
+      src: "/Linkedin.svg",
+      alt: "Linkedin",
+      href: "https://www.linkedin.com/in/prashannabajracharya/",
+    },
+    {
+      src: "/Instagram.svg",
+      alt: "Instagram",
+      href: "https://www.instagram.com/prashannabajracharya/",
+    },
+    {
+      src: "/Behance.svg",
+      alt: "Behance",
+      href: "https://www.behance.net/prashanbajrach",
+    },
+
+    {
+      src: "/Facebook.svg",
+      alt: "Facebook",
+      href: "https://www.facebook.com/prashanna07/",
+    },
+
+    {
+      src: "/Youtube.svg",
+      alt: "YouTube",
+      href: "https://www.youtube.com/@untitledNepal",
+    },
+  ];
+
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+  };
+
+  return (
+    <section className={`${SPACING.SECTION_PADDING_Y} bg-black`}>
+      <div className={`${SPACING.CONTAINER_MAX_WIDTH} mx-auto ${SPACING.CONTAINER_PADDING_X_RESPONSIVE}`}>
+        <div className={`grid lg:grid-cols-2 ${SPACING.GRID_GAP_RESPONSIVE_LARGE} items-start`}>
+          {/* Left side - Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <h2
+              className="text-white font-medium text-4xl lg:text-5xl mb-8"
+              style={{
+                fontFamily: "Staatliches",
+                fontSize: "clamp(32px, 6vw, 48px)",
+                lineHeight: 1.1,
+              }}
+            >
+              Let's Build Something That
+              <br />
+              looks Like No One Else
+            </h2>
+            {/*<p className="text-white text-lg flex items-center gap-2">*/}
+            {/*  Connect with me*/}
+            {/*  <span className="text-xl">→</span>*/}
+            {/*</p>*/}
+
+            {/* Images */}
+            <div className="flex gap-4 mt-10">
+              <img
+                src="https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/IMG_1646_Medium_x0mwhj.jpg"
+                alt="Studio setup 1"
+                className="w-52 h-36 object-cover rounded-lg shadow-md"
+              />
+              <img
+                src="https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/Master_01_Medium_d02vg3.jpg"
+                alt="Studio setup 2"
+                className="w-52 h-36 object-cover rounded-lg shadow-md"
+              />
+            </div>
+            <div>
+              <h3
+                className="text-white font-bold text-lg mt-24 mb-2"
+                style={{ fontFamily: "Helvetica" }}
+              >
+                CONNECT WITH ME:
+              </h3>
+              <div className="flex space-x-4">
+                {socialIcons.map((icon, index) => (
+                  <motion.a
+                    key={icon.alt}
+                    href={icon.href}
+                    className="block"
+                    target="_blank"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <img src={icon.src} alt={icon.alt} className="w-10 h-10" />
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3
+                className="text-white  text-xs mb-4"
+                style={{ fontFamily: "Helvetica" }}
+              >
+                FOR BUSINESS ENQUIRY:
+              </h3>
+              <a
+                href="mailto:Prashanna2022@gmail.com"
+                className="text-portfolio-accent-gold text-2xl lg:text-3xl hover:underline"
+                style={{ fontFamily: "Helvetica" }}
+              >
+                Prashanna2022@gmail.com
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right side - Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="bg-white p-8 rounded-lg shadow-lg"
+          >
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2" style={{fontFamily:"Staatliches"}}>
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    // placeholder="Your name"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-portfolio-dark-green focus:border-transparent outline-none transition-all duration-200"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2" style={{fontFamily:"Staatliches"}}>
+                    Last name
+                  </label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    // placeholder="Your last name"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-portfolio-dark-green focus:border-transparent outline-none transition-all duration-200"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2" style={{fontFamily:"Staatliches"}}>
+                  Your email*
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  // placeholder="Your email address"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-portfolio-dark-green focus:border-transparent outline-none transition-all duration-200"
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2" style={{fontFamily:"Staatliches"}}>
+                  Message*
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  // placeholder="Enter your message"
+                  rows={6}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-portfolio-dark-green focus:border-transparent outline-none transition-all duration-200 resize-vertical"
+                  required
+                ></textarea>
+              </div>
+
+              <motion.button
+                type="submit"
+                className="w-full bg-portfolio-dark-green text-white py-3 px-6 rounded-lg font-medium hover:bg-opacity-90 transition-all duration-200"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                style={{fontFamily:"Staatliches"}}
+              >
+                Submit
+              </motion.button>
+            </form>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Footer = () => {
   const socialIcons = [
     {
@@ -1616,8 +1839,8 @@ const Footer = () => {
 
   return (
     <footer id="contact" className="bg-portfolio-dark-green">
-      <div className="max-w-7xl mx-auto px-8 py-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className={`${SPACING.CONTAINER_MAX_WIDTH} mx-auto ${SPACING.CONTAINER_PADDING_X_RESPONSIVE} ${SPACING.SECTION_PADDING_Y}`}>
+        <div className={`grid lg:grid-cols-2 ${SPACING.GRID_GAP_RESPONSIVE_LARGE} items-center`}>
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -1683,7 +1906,6 @@ const Footer = () => {
     </footer>
   );
 };
-
 export default function Index() {
   const { isOpen, currentImage, openModal, closeModal } = useImageModal();
 
@@ -1697,7 +1919,8 @@ export default function Index() {
       <VideoGallery title="AFTER MOVIES" videos={AFTER_MOVIE_VIDEOS} sectionId="after-movies" />
       <BrandsAndArtistsSection />
       <ArtistNamesSection />
-      <Footer />
+      <ContactFormSection />
+      {/*<Footer />*/}
 
       <ImageModal
         isOpen={isOpen}
