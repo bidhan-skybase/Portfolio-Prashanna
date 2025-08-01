@@ -2,8 +2,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useCallback, useEffect, useState } from "react";
 import CountUp from "react-countup";
-import useEmblaCarousel from "embla-carousel-react";
 import { ImageModal, useImageModal } from "../components/ImageModal";
+import { VideoGallery } from "../components/VideoGallery";
+import { COMMERCIAL_VIDEOS, AFTER_MOVIE_VIDEOS } from "../constants/videoData";
 
 const heroImages = [
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752210606/WhatsApp_Image_2025-06-23_at_15.43.27_9fd048e1_1_1_fom8pe.png",
@@ -907,7 +908,7 @@ const PhotoGallery = ({
   openModal: (src: string, alt: string) => void;
 }) => {
   return (
-    <section className="py-20 bg-white overflow-hidden">
+    <section className="pt-5 bg-white overflow-hidden">
       {/* Keep max-width only for the title */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
@@ -1691,9 +1692,9 @@ export default function Index() {
       <HeroSection />
       <AboutSection />
       <TrustedBySection />
-      <CommercialSection />
+      <VideoGallery title="Commercials" videos={COMMERCIAL_VIDEOS} sectionId="commercials" />
       <PhotoGallery openModal={openModal} />
-      <AfterMoviesSection />
+      <VideoGallery title="AFTER MOVIES" videos={AFTER_MOVIE_VIDEOS} sectionId="after-movies" />
       <BrandsAndArtistsSection />
       <ArtistNamesSection />
       <Footer />
