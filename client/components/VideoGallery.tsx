@@ -20,6 +20,7 @@ export const VideoGallery = ({ title, videos, sectionId = "works" }: VideoGaller
     openModal,
     closeModal,
     getDisplayTitle,
+    getThumbnail
   } = useVideoGallery(videos);
 
   const displayedVideos = videos.slice(
@@ -61,15 +62,15 @@ export const VideoGallery = ({ title, videos, sectionId = "works" }: VideoGaller
             {displayedVideos.map((video, index) => (
               <motion.div
                 key={`${video.id}-${index}`}
-                className="relative h-48 lg:h-56 w-[100vw] md:w-auto flex-shrink-0 bg-gray-200 overflow-hidden cursor-pointer group rounded-lg shadow-lg snap-start"
+                className="relative md:w-auto flex-shrink-0 bg-gray-200 overflow-hidden cursor-pointer group rounded-lg shadow-lg snap-start"
                 onClick={() => openModal(video)}
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.3 }}
               >
                 <img
-                  src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+                  src={getThumbnail(video)}
                   alt={getDisplayTitle(video)}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.src = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
@@ -77,7 +78,7 @@ export const VideoGallery = ({ title, videos, sectionId = "works" }: VideoGaller
                 />
 
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex flex-col items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-2 border-white rounded-sm backdrop-blur-sm">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-2 border-white rounded-sm ">
                     <h3
                       className="text-white font-bold text-center tracking-wide whitespace-normal break-words px-2"
                       style={{

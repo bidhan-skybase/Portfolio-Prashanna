@@ -6,6 +6,7 @@ export interface VideoData {
   id: string;
   platform: string;
   title?: string;
+  thumbnail?:string;
 }
 
 export const useVideoGallery = (videos: VideoData[]) => {
@@ -98,6 +99,11 @@ export const useVideoGallery = (videos: VideoData[]) => {
     return videoTitles[video.id] || video.title || "Untitled";
   };
 
+  const getThumbnail = (video: VideoData) => {
+    return video.thumbnail || `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
+  }
+
+
   return {
     isModalOpen,
     selectedVideo,
@@ -109,5 +115,6 @@ export const useVideoGallery = (videos: VideoData[]) => {
     openModal,
     closeModal,
     getDisplayTitle,
+    getThumbnail
   };
 };
