@@ -8,14 +8,163 @@ const AllWorks = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [videoTitles, setVideoTitles] = useState({});
 
+  // Add unique IDs to projects for consistent tracking
+  const projects = [
+    {
+      id: "doc_1",
+      category: "Documentaries",
+      url: "https://www.youtube.com/watch?v=y7BtAkW5LKA",
+    },
+    {
+      id: "doc_2",
+      category: "Documentaries",
+      url: "https://www.youtube.com/watch?v=kexCWZSRx7Q",
+    },
+    {
+      id: "doc_3",
+      category: "Documentaries",
+      url: "https://www.youtube.com/watch?v=Nylgt4CtsKo",
+    },
+    {
+      id: "doc_4",
+      category: "Documentaries",
+      url: "https://youtu.be/IUigcSW0lfo?si=fNmP7fUCsIFwYH4M",
+    },
+    {
+      id: "doc_5",
+      category: "Documentaries",
+      url: "https://youtu.be/D5PdEPD6O14?si=7qT9yJw4dPJtdr61",
+    },
+    {
+      id: "doc_6",
+      category: "Documentaries",
+      url: "https://youtu.be/NOqkE2YJtkY?si=z3ZbqE7y_sQ-l5e8",
+    },
+    {
+      id: "comm_1",
+      category: "Commercials",
+      url: "https://www.youtube.com/watch?v=1zX82HUC3MQ",
+    },
+    {
+      id: "comm_2",
+      category: "Commercials",
+      url: "https://www.youtube.com/watch?v=S7DRJNuYrhs",
+    },
+    {
+      id: "comm_3",
+      category: "Commercials",
+      url: "https://youtu.be/pjCOsZZPB3c",
+    },
+    {
+      id: "comm_4",
+      category: "Commercials",
+      url: "https://youtu.be/ZmxUV8x5Bt4",
+    },
+    {
+      id: "comm_5",
+      category: "Commercials",
+      url: "https://youtu.be/tI--w9k7P0g",
+    },
+    {
+      id: "comm_6",
+      category: "Commercials",
+      url: "https://youtu.be/AlRhi6xPrHc",
+    },
+    {
+      id: "comm_7",
+      category: "Commercials",
+      url: "https://youtu.be/uzTDHZ4qpeY",
+    },
+    {
+      id: "comm_8",
+      category: "Commercials",
+      url: "https://www.youtube.com/watch?v=0xxofHCllXU",
+    },
+    {
+      id: "comm_9",
+      category: "Commercials",
+      url: "https://www.youtube.com/watch?v=81D9H2Z3Vcw",
+    },
+    {
+      id: "music_1",
+      category: "Music Videos",
+      url: "https://youtu.be/81DnLf00zqQ?si=Tb4iJ5mfa3m_nQoq",
+    },
+    {
+      id: "music_2",
+      category: "Music Videos",
+      url: "https://youtu.be/hoH7zG0oLLE?si=9paoNyplyZWdY-4O",
+    },
+    {
+      id: "music_3",
+      category: "Music Videos",
+      url: "https://youtu.be/t-3QiJuBshA?si=yJ8Yy4tJ7H-NJhzo",
+    },
+    {
+      id: "music_4",
+      category: "Music Videos",
+      url: "https://youtu.be/wnXwSoNfs6k?si=hKiG9EraJmqGN7Ga",
+    },
+    {
+      id: "music_5",
+      category: "Music Videos",
+      url: "https://youtu.be/0-he4Uc9zE8?si=uLr2RgwZoht_SjCq",
+    },
+    {
+      id: "music_6",
+      category: "Music Videos",
+      url: "https://youtu.be/lvWnomkTiVY?si=QwnVf5NrZiXNhIJb",
+    },
+    {
+      id: "music_7",
+      category: "Music Videos",
+      url: "https://youtu.be/ttpO7wNqFv8?si=RkUXV2hwH7hj8zil",
+    },
+    {
+      id: "music_8",
+      category: "Music Videos",
+      url: "https://youtu.be/E2lK1VsaMFQ?si=Khiy_a-b8InySJj6",
+    },
+    {
+      id: "music_9",
+      category: "Music Videos",
+      url: "https://youtu.be/0TgIVnPb7_g?si=7aijuxQOvPaUtrJ4",
+    },
+    {
+      id: "music_10",
+      category: "Music Videos",
+      url: "https://youtu.be/Z4noW1s4Ekk?si=R-bmQim-HmjUs8Ny",
+    },
+    {
+      id: "music_11",
+      category: "Music Videos",
+      url: 'https://youtu.be/RtIuL9Y4BR0?si=RnJdEAfPLaCrjPKF',
+    },
+    {
+      id: "music_12",
+      category: "Music Videos",
+      url: "https://youtu.be/ybYVD_IkVdE?si=sc5NEE24egWeZtct",
+    },
+    {
+      id: "after_1",
+      category: "After Movies",
+      url: 'https://youtu.be/LXQGcVf3lr8',
+    },
+    {
+      id: "after_2",
+      category: "After Movies",
+      url: "https://youtu.be/mWnv5-lHahE",
+    },
+  ];
+
   useEffect(() => {
     const fetchTitles = async () => {
       const titles = {};
-      for (let i = 0; i < projects.length; i++) {
-        const videoId = extractVideoId(projects[i].url);
+      for (const project of projects) {
+        const videoId = extractVideoId(project.url);
         if (videoId) {
           const title = await fetchYouTubeTitle(videoId);
-          titles[i] = title;
+          titles[project.id] = title; // Use project ID instead of index
         }
       }
       setVideoTitles(titles);
@@ -57,7 +206,7 @@ const AllWorks = () => {
       return data.title;
     } catch (error) {
       console.error("Error fetching video title:", error);
-      return null;
+      return "Video Title";
     }
   };
 
@@ -69,133 +218,17 @@ const AllWorks = () => {
     return video.thumbnail || "";
   };
 
-  // Updated project data with YouTube videos
-  const projects = [
-    {
-      category: "Documentaries",
-      url: "https://www.youtube.com/watch?v=y7BtAkW5LKA",
-    },
-    {
-      category: "Documentaries",
-      url: "https://www.youtube.com/watch?v=kexCWZSRx7Q",
-    },
-    {
-      category: "Documentaries",
-      url: "https://www.youtube.com/watch?v=Nylgt4CtsKo",
-    },
-    {
-      category: "Documentaries",
-      url: "https://youtu.be/IUigcSW0lfo?si=fNmP7fUCsIFwYH4M",
-    },
-    {
-      category: "Documentaries",
-      url: "https://youtu.be/D5PdEPD6O14?si=7qT9yJw4dPJtdr61",
-    },
-    {
-      category: "Documentaries",
-      url: "https://youtu.be/NOqkE2YJtkY?si=z3ZbqE7y_sQ-l5e8",
-    },
-    {
-      category: "Commercials",
-      url: "https://www.youtube.com/watch?v=1zX82HUC3MQ",
-    },
-    {
-      category: "Commercials",
-      url: "https://www.youtube.com/watch?v=S7DRJNuYrhs",
-    },
-    {
-      category: "Commercials",
-      url: "https://youtu.be/pjCOsZZPB3c",
-    },
-    {
-      category: "Commercials",
-      url: "https://youtu.be/ZmxUV8x5Bt4",
-    },
-    {
-      category: "Commercials",
-      url: "https://youtu.be/tI--w9k7P0g",
-    },
-    {
-      category: "Commercials",
-      url: "https://youtu.be/AlRhi6xPrHc",
-    },
-    {
-      category: "Commercials",
-      url: "https://youtu.be/uzTDHZ4qpeY",
-    },
-    {
-      category: "Commercials",
-      url: "https://www.youtube.com/watch?v=0xxofHCllXU",
-    },
-    {
-      category: "Commercials",
-      url: "https://www.youtube.com/watch?v=81D9H2Z3Vcw",
-    },{
-      category: "Music Videos",
-      url: "https://youtu.be/81DnLf00zqQ?si=Tb4iJ5mfa3m_nQoq",
-    },
-    {
-      category: "Music Videos",
-      url: "https://youtu.be/hoH7zG0oLLE?si=9paoNyplyZWdY-4O",
-    },
-    {
-      category: "Music Videos",
-      url: "https://youtu.be/t-3QiJuBshA?si=yJ8Yy4tJ7H-NJhzo",
-    },
-    {
-      category: "Music Videos",
-      url: "https://youtu.be/wnXwSoNfs6k?si=hKiG9EraJmqGN7Ga",
-    },
-    {
-      category: "Music Videos",
-      url: "https://youtu.be/0-he4Uc9zE8?si=uLr2RgwZoht_SjCq",
-    },{
-      category: "Music Videos",
-      url: "https://youtu.be/lvWnomkTiVY?si=QwnVf5NrZiXNhIJb",
-    },
-
-    {
-      category: "Music Videos",
-      url: "https://youtu.be/ttpO7wNqFv8?si=RkUXV2hwH7hj8zil",
-    },
-    {
-      category: "Music Videos",
-      url: "https://youtu.be/E2lK1VsaMFQ?si=Khiy_a-b8InySJj6",
-    }, {
-      category: "Music Videos",
-      url: "https://youtu.be/0TgIVnPb7_g?si=7aijuxQOvPaUtrJ4",
-    },{
-      category: "Music Videos",
-      url: "https://youtu.be/Z4noW1s4Ekk?si=R-bmQim-HmjUs8Ny",
-    },
-
-    {
-      category: "Music Videos",
-      url: 'https://youtu.be/RtIuL9Y4BR0?si=RnJdEAfPLaCrjPKF',
-    },
-    {
-      category: "Music Videos",
-      url: "https://youtu.be/ybYVD_IkVdE?si=sc5NEE24egWeZtct",
-    },{
-      category: "After Movies",
-      url: 'https://youtu.be/LXQGcVf3lr8',
-    },
-    {
-      category: "After Movies",
-      url: "https://youtu.be/mWnv5-lHahE",
-    },
-  ];
-
   const filteredProjects =
     activeFilter === "Show all"
       ? projects
       : projects.filter((project) => project.category === activeFilter);
 
   const openModal = (project) => {
+    const videoId = extractVideoId(project.url);
     setSelectedVideo({
-      id: project.videoId,
-      title: project.title,
-      platform: project.platform,
+      id: videoId,
+      title: videoTitles[project.id] || "Video Title",
+      platform: "youtube",
       url: project.url,
     });
     setIsModalOpen(true);
@@ -291,7 +324,7 @@ const AllWorks = () => {
           >
             {filteredProjects.map((project, index) => (
               <motion.div
-                key={index}
+                key={project.id} // Use project.id as key instead of index
                 className="group cursor-pointer relative"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -302,10 +335,18 @@ const AllWorks = () => {
                 <div className="relative overflow-hidden rounded-lg shadow-lg bg-gray-200">
                   <img
                     src={getThumbnail(project)}
-                    alt={videoTitles[index]}
+                    alt={videoTitles[project.id] || "Video Thumbnail"}
                     className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
                     onError={(e) => {
-                      e.target.src = `https://img.youtube.com/vi/${extractVideoId(project.url)}/mqdefault.jpg`;
+                      const videoId = extractVideoId(project.url);
+                      if (e.target.src.includes("maxresdefault.jpg")) {
+                        e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                      } else if (e.target.src.includes("hqdefault.jpg")) {
+                        e.target.src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+                      } else {
+                        // Final fallback (optional static placeholder)
+                        e.target.src = "/placeholder.jpg"; // Use your own placeholder image
+                      }
                     }}
                   />
 
@@ -316,7 +357,7 @@ const AllWorks = () => {
                         className="text-white text-lg font-semibold mb-2"
                         style={{ fontFamily: "Staatliches" }}
                       >
-                        {videoTitles[index]}
+                        {videoTitles[project.id] || "Loading..."}
                       </h3>
                     </div>
                   </div>
