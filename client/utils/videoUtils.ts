@@ -42,3 +42,10 @@ export const getEmbedUrl = (video: { id: string; platform: string; url: string }
 export const getThumbnailsPerPage = (width: number): number => {
   return width < 768 ? 4 : 8;
 };
+
+export const getThumbnail = (video) => {
+  if (video.platform === "youtube") {
+    return `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`;
+  }
+  return video.thumbnail || "";
+};

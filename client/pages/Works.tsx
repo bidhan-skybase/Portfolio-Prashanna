@@ -1,103 +1,210 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { VideoModal } from "@/components/VideoModal.tsx";
 
 const AllWorks = () => {
   const [activeFilter, setActiveFilter] = useState("Show all");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [videoTitles, setVideoTitles] = useState({});
+
+  useEffect(() => {
+    const fetchTitles = async () => {
+      const titles = {};
+      for (let i = 0; i < projects.length; i++) {
+        const videoId = extractVideoId(projects[i].url);
+        if (videoId) {
+          const title = await fetchYouTubeTitle(videoId);
+          titles[i] = title;
+        }
+      }
+      setVideoTitles(titles);
+    };
+
+    fetchTitles();
+  }, []);
 
   const filters = [
     "Show all",
-    "Purpose",
-    "Branding",
-    "Webflow",
-    "strategy",
-    "Digital",
-    "Graphic Design",
-    "Content",
-    "Packaging",
-    "Editorial",
-    "Illustration",
-    "Conception",
-    "tourism",
-    "Gastronomy",
-    "Education",
-    "Health",
-    "Comedy",
-    "cinema",
-    "Interior",
+    "Documentaries",
+    "Music Videos",
+    "Commercials",
+    "After Movies",
   ];
 
-  // Sample project data
+  const extractVideoId = (url) => {
+    const patterns = [
+      /(?:youtube\.com\/watch\?v=)([^&\n?#]+)/,
+      /(?:youtu\.be\/)([^&\n?#]+)/,
+      /(?:youtube\.com\/embed\/)([^&\n?#]+)/,
+    ];
+
+    for (const pattern of patterns) {
+      const match = url.match(pattern);
+      if (match) {
+        return match[1].split("?")[0];
+      }
+    }
+    return null;
+  };
+
+  const fetchYouTubeTitle = async (videoId) => {
+    try {
+      const response = await fetch(
+        `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`,
+      );
+      const data = await response.json();
+      return data.title;
+    } catch (error) {
+      console.error("Error fetching video title:", error);
+      return null;
+    }
+  };
+
+  const getThumbnail = (video) => {
+    const videoId = extractVideoId(video.url);
+    if (videoId) {
+      return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    }
+    return video.thumbnail || "";
+  };
+
+  // Updated project data with YouTube videos
   const projects = [
     {
-      id: 1,
-      title: "Luxury Hotel Campaign",
-      category: "tourism",
-      image:
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop",
-      tags: ["Branding", "Content", "tourism"],
+      category: "Documentaries",
+      url: "https://www.youtube.com/watch?v=y7BtAkW5LKA",
     },
     {
-      id: 2,
-      title: "Modern Brand Identity",
-      category: "Branding",
-      image:
-        "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
-      tags: ["Branding", "Graphic Design", "Digital"],
+      category: "Documentaries",
+      url: "https://www.youtube.com/watch?v=kexCWZSRx7Q",
     },
     {
-      id: 3,
-      title: "Restaurant Experience",
-      category: "Gastronomy",
-      image:
-        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop",
-      tags: ["Gastronomy", "Content", "Editorial"],
+      category: "Documentaries",
+      url: "https://www.youtube.com/watch?v=Nylgt4CtsKo",
     },
     {
-      id: 4,
-      title: "Educational Platform",
-      category: "Education",
-      image:
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
-      tags: ["Education", "Digital", "Webflow"],
+      category: "Documentaries",
+      url: "https://youtu.be/IUigcSW0lfo?si=fNmP7fUCsIFwYH4M",
     },
     {
-      id: 5,
-      title: "Health & Wellness Brand",
-      category: "Health",
-      image:
-        "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop",
-      tags: ["Health", "Branding", "Packaging"],
+      category: "Documentaries",
+      url: "https://youtu.be/D5PdEPD6O14?si=7qT9yJw4dPJtdr61",
     },
     {
-      id: 6,
-      title: "Cinema Documentary",
-      category: "cinema",
-      image:
-        "https://images.unsplash.com/photo-1489599732833-8f702b8a5b9e?w=600&h=400&fit=crop",
-      tags: ["cinema", "Content", "Editorial"],
+      category: "Documentaries",
+      url: "https://youtu.be/NOqkE2YJtkY?si=z3ZbqE7y_sQ-l5e8",
     },
     {
-      id: 7,
-      title: "Interior Design Showcase",
-      category: "Interior",
-      image:
-        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop",
-      tags: ["Interior", "Illustration", "Content"],
+      category: "Commercials",
+      url: "https://www.youtube.com/watch?v=1zX82HUC3MQ",
     },
     {
-      id: 8,
-      title: "Comedy Show Branding",
-      category: "Comedy",
-      image:
-        "https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?w=600&h=400&fit=crop",
-      tags: ["Comedy", "Graphic Design", "Digital"],
+      category: "Commercials",
+      url: "https://www.youtube.com/watch?v=S7DRJNuYrhs",
+    },
+    {
+      category: "Commercials",
+      url: "https://youtu.be/pjCOsZZPB3c",
+    },
+    {
+      category: "Commercials",
+      url: "https://youtu.be/ZmxUV8x5Bt4",
+    },
+    {
+      category: "Commercials",
+      url: "https://youtu.be/tI--w9k7P0g",
+    },
+    {
+      category: "Commercials",
+      url: "https://youtu.be/AlRhi6xPrHc",
+    },
+    {
+      category: "Commercials",
+      url: "https://youtu.be/uzTDHZ4qpeY",
+    },
+    {
+      category: "Commercials",
+      url: "https://www.youtube.com/watch?v=0xxofHCllXU",
+    },
+    {
+      category: "Commercials",
+      url: "https://www.youtube.com/watch?v=81D9H2Z3Vcw",
+    },{
+      category: "Music Videos",
+      url: "https://youtu.be/81DnLf00zqQ?si=Tb4iJ5mfa3m_nQoq",
+    },
+    {
+      category: "Music Videos",
+      url: "https://youtu.be/hoH7zG0oLLE?si=9paoNyplyZWdY-4O",
+    },
+    {
+      category: "Music Videos",
+      url: "https://youtu.be/t-3QiJuBshA?si=yJ8Yy4tJ7H-NJhzo",
+    },
+    {
+      category: "Music Videos",
+      url: "https://youtu.be/wnXwSoNfs6k?si=hKiG9EraJmqGN7Ga",
+    },
+    {
+      category: "Music Videos",
+      url: "https://youtu.be/0-he4Uc9zE8?si=uLr2RgwZoht_SjCq",
+    },{
+      category: "Music Videos",
+      url: "https://youtu.be/lvWnomkTiVY?si=QwnVf5NrZiXNhIJb",
+    },
+
+    {
+      category: "Music Videos",
+      url: "https://youtu.be/ttpO7wNqFv8?si=RkUXV2hwH7hj8zil",
+    },
+    {
+      category: "Music Videos",
+      url: "https://youtu.be/E2lK1VsaMFQ?si=Khiy_a-b8InySJj6",
+    }, {
+      category: "Music Videos",
+      url: "https://youtu.be/0TgIVnPb7_g?si=7aijuxQOvPaUtrJ4",
+    },{
+      category: "Music Videos",
+      url: "https://youtu.be/Z4noW1s4Ekk?si=R-bmQim-HmjUs8Ny",
+    },
+
+    {
+      category: "Music Videos",
+      url: 'https://youtu.be/RtIuL9Y4BR0?si=RnJdEAfPLaCrjPKF',
+    },
+    {
+      category: "Music Videos",
+      url: "https://youtu.be/ybYVD_IkVdE?si=sc5NEE24egWeZtct",
+    },{
+      category: "After Movies",
+      url: 'https://youtu.be/LXQGcVf3lr8',
+    },
+    {
+      category: "After Movies",
+      url: "https://youtu.be/mWnv5-lHahE",
     },
   ];
 
   const filteredProjects =
     activeFilter === "Show all"
       ? projects
-      : projects.filter((project) => project.tags.includes(activeFilter));
+      : projects.filter((project) => project.category === activeFilter);
+
+  const openModal = (project) => {
+    setSelectedVideo({
+      id: project.videoId,
+      title: project.title,
+      platform: project.platform,
+      url: project.url,
+    });
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedVideo(null);
+  };
 
   return (
     <div className="min-h-screen bg-white pt-20">
@@ -128,9 +235,9 @@ const AllWorks = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                For me, creativity isn’t a skill — it’s a way of feeling. Every
+                For me, creativity isn't a skill — it's a way of feeling. Every
                 shot, every cut, every frame is a chance to connect with
-                something real. I don’t just film projects; I help people tell
+                something real. I don't just film projects; I help people tell
                 stories that deserve to be remembered.
               </p>
             </motion.div>
@@ -173,11 +280,10 @@ const AllWorks = () => {
       </div>
 
       {/* Projects Grid */}
-
       <div className="px-6 md:px-12 lg:px-20 pb-20">
         <div className="max-w-7xl mx-auto">
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             key={activeFilter}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -185,36 +291,33 @@ const AllWorks = () => {
           >
             {filteredProjects.map((project, index) => (
               <motion.div
-                key={project.id}
+                key={index}
                 className="group cursor-pointer relative"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ scale: 1.02 }}
+                onClick={() => openModal(project)}
               >
-                <div className="relative overflow-hidden rounded-sm">
+                <div className="relative overflow-hidden rounded-lg shadow-lg bg-gray-200">
                   <img
-                    src={project.image}
-                    alt={project.title}
+                    src={getThumbnail(project)}
+                    alt={videoTitles[index]}
                     className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                      e.target.src = `https://img.youtube.com/vi/${extractVideoId(project.url)}/mqdefault.jpg`;
+                    }}
                   />
 
                   {/* Hover Overlay with Title and Tags */}
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-75 transition-all duration-300 flex flex-col justify-end p-4">
                     <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                      <h3 className="text-white text-lg font-semibold mb-2" style={{ fontFamily: "Staatliches" }}>
-                        {project.title}
+                      <h3
+                        className="text-white text-lg font-semibold mb-2"
+                        style={{ fontFamily: "Staatliches" }}
+                      >
+                        {videoTitles[index]}
                       </h3>
-                      <div className="flex flex-wrap gap-1">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-xs text-white bg-white bg-opacity-20 px-2 py-1 rounded-sm backdrop-blur-sm"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -237,6 +340,13 @@ const AllWorks = () => {
           )}
         </div>
       </div>
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={isModalOpen}
+        video={selectedVideo}
+        onClose={closeModal}
+      />
     </div>
   );
 };
