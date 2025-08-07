@@ -5,10 +5,12 @@ const MainLayout = () => {
   const location = useLocation();
 
   const enableScrollEffect = location.pathname === '/';
+  const isWorksPage = location.pathname === '/works';
+  console.log(`this is the work page ${isWorksPage}`);
 
   return (
     <div>
-      <Navigation  />
+      <Navigation BgColor={isWorksPage ? 'black' : undefined} />
       <Outlet />
     </div>
   );

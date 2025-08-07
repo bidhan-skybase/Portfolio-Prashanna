@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-const Navigation = () => {
+interface NavigationProps {
+  BgColor?: string;
+}
+
+const Navigation = ({ BgColor }: NavigationProps) => {
   const navItems = [
     { name: 'HOME', path: '/' },
     { name: 'ABOUT', path: '/#about' },
@@ -39,10 +43,15 @@ const Navigation = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-portfolio-dark-green shadow-lg backdrop-blur-sm'
-            : 'bg-transparent'
+          BgColor
+            ? ''
+            : scrolled
+              ? 'bg-portfolio-dark-green shadow-lg backdrop-blur-sm'
+              : 'bg-transparent'
         }`}
+        style={{
+          backgroundColor: BgColor || undefined
+        }}
       >
         <div className="flex justify-between items-center px-6 py-4 md:px-8 md:py-6">
           {/* Logo / Title */}
