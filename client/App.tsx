@@ -9,6 +9,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import SmoothScrollProvider from "./components/SmoothScroll";
+import AllWorks from "@/pages/Works.tsx";
+import MainLayout from "./components/MainLayout.tsx";
 
 const queryClient = new QueryClient();
 
@@ -20,8 +22,11 @@ const App = () => (
       <BrowserRouter>
         <SmoothScrollProvider>
           <Routes>
-            <Route path="/" element={<Index />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/" element={<MainLayout />}>
+              <Route index element={<Index />} />
+              <Route path="works" element={<AllWorks />} />
+            </Route>
+            {/* Catch-all route should be LAST */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </SmoothScrollProvider>

@@ -7,6 +7,8 @@ import { VideoGallery } from "../components/VideoGallery";
 import { COMMERCIAL_VIDEOS, AFTER_MOVIE_VIDEOS } from "../constants/videoData";
 import { SPACING, TYPOGRAPHY } from "../constants/spacing";
 import emailjs from "emailjs-com";
+import { useNavigate } from "react-router-dom";
+import { Navigation } from "lucide-react";
 
 const heroImages = [
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752210606/WhatsApp_Image_2025-06-23_at_15.43.27_9fd048e1_1_1_fom8pe.png",
@@ -62,133 +64,17 @@ const ScrollingBackground = () => {
     </div>
   );
 };
-const Navigation = () => {
-  const navItems = ["HOME", "ABOUT", "WORKS", "CONTACT"];
-  const [scrolled, setScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroHeight = window.innerHeight * 0.8;
-      setScrolled(window.scrollY > heroHeight);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
-  return (
-    <>
-      {/* NAVBAR */}
-      <motion.nav
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-portfolio-dark-green shadow-lg backdrop-blur-sm"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="flex justify-between items-center px-6 py-4 md:px-8 md:py-6">
-          {/* Logo / Title */}
-          <div className="text-white font-oswald text-xl lg:text-2xl">
-            {/*BIDHAN*/}
-          </div>
-
-          {/* Hamburger Menu Button - visible on all screen sizes */}
-          <motion.button
-            className="text-white z-60 relative"
-            onClick={toggleMenu}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <div className="w-6 h-6 flex flex-col justify-center items-center">
-              <motion.span
-                className={`block w-6 h-0.5 bg-white mb-1 transition-all duration-300 ${
-                  isMenuOpen ? "rotate-45 translate-y-1.5" : ""
-                }`}
-              />
-              <motion.span
-                className={`block w-6 h-0.5 bg-white mb-1 transition-all duration-300 ${
-                  isMenuOpen ? "opacity-0" : ""
-                }`}
-              />
-              <motion.span
-                className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
-                  isMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
-                }`}
-              />
-            </div>
-          </motion.button>
-        </div>
-      </motion.nav>
-
-      {/* FULLSCREEN OVERLAY MENU */}
-      <motion.div
-        className={`fixed inset-0 bg-portfolio-dark-green z-40 ${
-          isMenuOpen ? "pointer-events-auto" : "pointer-events-none"
-        }`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isMenuOpen ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="flex flex-col items-center justify-center h-full space-y-10">
-          {navItems.map((item, index) => (
-            <motion.a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-white text-6xl hover:text-gray-500 transition-colors duration-300"
-              style={{ fontFamily: "Staatliches" }}
-              onClick={closeMenu}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: isMenuOpen ? 1 : 0,
-                y: isMenuOpen ? 0 : 20,
-              }}
-              transition={{
-                duration: 0.3,
-                delay: isMenuOpen ? index * 0.1 : 0,
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {item}
-            </motion.a>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* BACKDROP */}
-      {isMenuOpen && (
-        <motion.div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30"
-          onClick={closeMenu}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        />
-      )}
-    </>
-  );
-};
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
+  const handleMoreWorksClick = () => {
+    navigate('/works'); // Navigate to the Works page
+  };
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden "
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
@@ -209,42 +95,19 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
 
+      {/* Navigation */}
       <Navigation />
 
-      {/*<motion.div*/}
-      {/*  className="relative z-10 text-center max-w-6xl mx-auto px-8"*/}
-      {/*  initial={{ opacity: 0, y: 50 }}*/}
-      {/*  animate={{ opacity: 1, y: 0 }}*/}
-      {/*  transition={{ duration: 1, delay: 0.5 }}*/}
-      {/*>*/}
-      {/*  <motion.h1*/}
-      {/*    className="text-portfolio-accent-gold font-bold text-6xl lg:text-9xl mb-4 tracking-wide"*/}
-      {/*    style={{ fontFamily: "CustomRegular" }}*/}
-      {/*    initial={{ opacity: 0, scale: 0.8 }}*/}
-      {/*    animate={{ opacity: 1, scale: 1 }}*/}
-      {/*    transition={{ duration: 1, delay: 0.7 }}*/}
-      {/*  >*/}
-      {/*    PRODUCER / DIRECTOR / EDITOR*/}
-      {/*  </motion.h1>*/}
-
-      {/*  <motion.p*/}
-      {/*    className="text-white font-oswald text-lg lg:text-2xl max-w-4xl mx-auto"*/}
-      {/*    initial={{ opacity: 0, y: 30 }}*/}
-      {/*    animate={{ opacity: 1, y: 0 }}*/}
-      {/*    transition={{ duration: 0.8, delay: 1 }}*/}
-      {/*  >*/}
-      {/*    SCRIPT WRITER / PRODUCER / DIRECTOR / EDITOR / CAMERA OPERATOR / DRONE*/}
-      {/*    OPERATOR*/}
-      {/*  </motion.p>*/}
-      {/*</motion.div>*/}
-
-      {/*<div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">*/}
-      {/*  <div className="w-3 h-1 bg-portfolio-accent-gold rounded-full"></div>*/}
-      {/*  <div className="w-1 h-1 bg-white rounded-full"></div>*/}
-      {/*  <div className="w-1 h-1 bg-white rounded-full"></div>*/}
-      {/*  <div className="w-1 h-1 bg-white rounded-full"></div>*/}
-      {/*  <div className="w-1 h-1 bg-white rounded-full"></div>*/}
-      {/*</div>*/}
+      {/* More Works Button */}
+      <div className="relative z-10 mt-[34rem]">
+        <button
+          onClick={handleMoreWorksClick}
+          className="px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-opacity-90 transition duration-300"
+          style={{ fontFamily: 'Oswald' }}
+        >
+          MORE MORKS
+        </button>
+      </div>
     </section>
   );
 };
