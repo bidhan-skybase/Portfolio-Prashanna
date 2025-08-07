@@ -8,12 +8,7 @@ import { COMMERCIAL_VIDEOS, AFTER_MOVIE_VIDEOS } from "../constants/videoData";
 import { SPACING, TYPOGRAPHY } from "../constants/spacing";
 import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
-import { Navigation } from "lucide-react";
 
-const heroImages = [
-  "https://res.cloudinary.com/dzign6pg0/image/upload/v1752210606/WhatsApp_Image_2025-06-23_at_15.43.27_9fd048e1_1_1_fom8pe.png",
-  "https://cdn.builder.io/api/v1/image/assets/TEMP/d02c7c3fd5ef2e3678c8c7529d948623e15c8550?width=3943",
-];
 
 const galleryImages = [
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/IMG_1646_Medium_x0mwhj.jpg",
@@ -34,36 +29,6 @@ const galleryImages = [
   "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218512/_MG_1932_Medium_rgqyp6.jpg",
 ];
 
-const ScrollingBackground = () => {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return (
-    <div className="absolute inset-0 overflow-hidden">
-      {heroImages.map((image, index) => (
-        <motion.img
-          key={index}
-          src={image}
-          alt=""
-          className="absolute w-full h-full object-cover"
-          style={{
-            transform: `translateY(${scrollY * 0.5}px)`,
-            zIndex: index,
-          }}
-        />
-      ))}
-      <div
-        className="absolute inset-0"
-        style={{ backgroundColor: "rgba(12, 38, 25, 0.9)" }}
-      />
-    </div>
-  );
-};
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -95,8 +60,6 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
 
-      {/* Navigation */}
-      <Navigation />
 
       {/* More Works Button */}
       <div className="relative z-10 mt-[34rem]">
@@ -105,7 +68,7 @@ const HeroSection = () => {
           className="px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-opacity-90 transition duration-300"
           style={{ fontFamily: 'Oswald' }}
         >
-          MORE MORKS
+          MORE WORKS
         </button>
       </div>
     </section>

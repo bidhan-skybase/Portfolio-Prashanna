@@ -12,6 +12,7 @@ const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+
   useEffect(() => {
     const handleScroll = () => {
       const heroHeight = window.innerHeight * 0.8;
