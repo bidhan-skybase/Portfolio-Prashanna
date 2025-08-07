@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import Navigation from '../pages/Navigation';
+import ContactFormSection from "@/pages/Contact.tsx";
 
 const MainLayout = () => {
   const location = useLocation();
@@ -12,6 +13,8 @@ const MainLayout = () => {
     <div>
       <Navigation BgColor={isWorksPage ? 'black' : undefined} />
       <Outlet />
+      <ContactFormSection/>
+
     </div>
   );
 };

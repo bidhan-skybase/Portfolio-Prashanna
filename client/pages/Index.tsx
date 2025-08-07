@@ -1659,106 +1659,8 @@ const ContactFormSection = () => {
       </div>
     </section>
   );
-};const Footer = () => {
-  const socialIcons = [
-    {
-      src: "/Linkedin.svg",
-      alt: "Linkedin",
-      href: "https://www.linkedin.com/in/prashannabajracharya/",
-    },
-    {
-      src: "/Instagram.svg",
-      alt: "Instagram",
-      href: "https://www.instagram.com/prashannabajracharya/",
-    },
-    {
-      src: "/Behance.svg",
-      alt: "Behance",
-      href: "https://www.behance.net/prashanbajrach",
-    },
-
-    {
-      src: "/Facebook.svg",
-      alt: "Facebook",
-      href: "https://www.facebook.com/prashanna07/",
-    },
-
-    {
-      src: "/Youtube.svg",
-      alt: "YouTube",
-      href: "https://www.youtube.com/@untitledNepal",
-    },
-  ];
-
-  return (
-    <footer id="contact" className="bg-portfolio-dark-green">
-      <div className={`${SPACING.CONTAINER_MAX_WIDTH} mx-auto ${SPACING.CONTAINER_PADDING_X_RESPONSIVE} ${SPACING.SECTION_PADDING_Y}`}>
-        <div className={`grid lg:grid-cols-2 ${SPACING.GRID_GAP_RESPONSIVE_LARGE} items-center`}>
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div
-              className="text-portfolio-accent-gold font-bold text-8xl lg:text-9xl mb-8"
-              style={{ fontFamily: "serif" }}
-            >
-              PB
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <div>
-              <h3
-                className="text-white font-bold text-lg mb-4"
-                style={{ fontFamily: "Helvetica" }}
-              >
-                CONNECT WITH ME:
-              </h3>
-              <div className="flex space-x-4">
-                {socialIcons.map((icon, index) => (
-                  <motion.a
-                    key={icon.alt}
-                    href={icon.href}
-                    className="block"
-                    target="_blank"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <img src={icon.src} alt={icon.alt} className="w-12 h-12" />
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h3
-                className="text-white  text-xs mb-4"
-                style={{ fontFamily: "Helvetica" }}
-              >
-                FOR BUSINESS ENQUIRY:
-              </h3>
-              <a
-                href="mailto:Prashanna2022@gmail.com"
-                className="text-portfolio-accent-gold text-2xl lg:text-3xl hover:underline"
-                style={{ fontFamily: "Helvetica" }}
-              >
-                Prashanna2022@gmail.com
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </footer>
-  );
 };
+
 export default function Index() {
   const { isOpen, currentImage, openModal, closeModal } = useImageModal();
 
@@ -1772,7 +1674,6 @@ export default function Index() {
       <VideoGallery title="AFTER MOVIES" videos={AFTER_MOVIE_VIDEOS} sectionId="after-movies" />
       <BrandsAndArtistsSection />
       <ArtistNamesSection />
-      <ContactFormSection />
       {/*<Footer />*/}
 
       <ImageModal
