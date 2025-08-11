@@ -105,7 +105,6 @@
     body {
         @apply bg-background text-foreground;
         cursor: url("/public/cursor.png") 50 50, auto;
-
     }
 }
 

@@ -267,12 +267,12 @@ const AllWorks = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                For me, creativity isn't a skill — it's a way of feeling. Every
-                shot, every cut, every frame is a chance to connect with
-                something real. I don't just film projects; I help people tell
-                stories that deserve to be remembered.
-              </p>
+              {/*<p className="text-lg md:text-xl text-gray-700 leading-relaxed">*/}
+              {/*  For me, creativity isn't a skill — it's a way of feeling. Every*/}
+              {/*  shot, every cut, every frame is a chance to connect with*/}
+              {/*  something real. I don't just film projects; I help people tell*/}
+              {/*  stories that deserve to be remembered.*/}
+              {/*</p>*/}
             </motion.div>
           </div>
         </div>
@@ -316,7 +316,7 @@ const AllWorks = () => {
       <div className="px-6 md:px-12 lg:px-20 pb-20">
         <div className="max-w-7xl mx-auto">
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
             key={activeFilter}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -334,18 +334,22 @@ const AllWorks = () => {
               >
                 <div className="relative overflow-hidden rounded-lg shadow-lg bg-gray-200">
                   <img
-                    src={getThumbnail(project)}
-                    alt={videoTitles[project.id] || "Video Thumbnail"}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                    src={`https://img.youtube.com/vi/${extractVideoId(project.url)}/maxresdefault.jpg`}
+                    alt={videoTitles[index]||"Video thumbnails"}
+
+                    className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
                     onError={(e) => {
                       const videoId = extractVideoId(project.url);
-                      if (e.target.src.includes("maxresdefault.jpg")) {
+                      const src = e.target.src;
+
+                      if (src.includes("maxresdefault.jpg")) {
+                        e.target.src = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
+                      } else if (src.includes("sddefault.jpg")) {
                         e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-                      } else if (e.target.src.includes("hqdefault.jpg")) {
+                      } else if (src.includes("hqdefault.jpg")) {
                         e.target.src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
                       } else {
-                        // Final fallback (optional static placeholder)
-                        e.target.src = "/placeholder.jpg"; // Use your own placeholder image
+                        e.target.src = "/placeholder.jpg"; // Fallback local image
                       }
                     }}
                   />
