@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { VideoModal } from "@/components/VideoModal.tsx";
+import { ImageModal } from "@/components/ImageModal.tsx";
 
 const AllWorks = () => {
   const [activeFilter, setActiveFilter] = useState("Show all");
@@ -9,6 +10,26 @@ const AllWorks = () => {
   const [videoTitles, setVideoTitles] = useState({});
 
   // Add unique IDs to projects for consistent tracking
+  const galleryImages = [
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/IMG_1646_Medium_x0mwhj.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/Master_01_Medium_d02vg3.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218516/Ig-anuv_02_Medium_obb6v4.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218516/DSC08662_Medium_buv5pj.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218516/fireworks01_Medium_biu3f5.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218515/DSC05271_Medium_oggrss.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218515/DSC01665_Medium_drasv5.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218515/DSC01656_Medium_p0ed4g.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218514/DSC00498_Medium_hhiyuo.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218514/DSC01231_Medium_o7shlj.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218514/DSC01046_Medium_swoz5j.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218513/atif_aslam_main_Medium_hhqzvs.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218513/Atif-slide_08_Medium_l16odb.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218513/Atif-slide_02_Medium_xjlix0.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218512/_MG_2039_Medium_kbkxva.jpg",
+    "https://res.cloudinary.com/dzign6pg0/image/upload/v1752218512/_MG_1932_Medium_rgqyp6.jpg",
+  ];
+
+
   const projects = [
     {
       id: "doc_1",
@@ -194,6 +215,7 @@ const AllWorks = () => {
     "Music Videos",
     "Commercials",
     "After Movies",
+    "Photography",
   ];
 
   const extractVideoId = (url) => {
@@ -225,13 +247,6 @@ const AllWorks = () => {
     }
   };
 
-  const getThumbnail = (video) => {
-    const videoId = extractVideoId(video.url);
-    if (videoId) {
-      return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-    }
-    return video.thumbnail || "";
-  };
 
   const filteredProjects =
     activeFilter === "Show all"
@@ -253,6 +268,19 @@ const AllWorks = () => {
     setIsModalOpen(false);
     setSelectedVideo(null);
   };
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState({ src: "", alt: "" });
+
+  const openImageModel = (imageData) => {
+    setCurrentImage({ src: imageData.src, alt: imageData.alt });
+    setIsOpen(true);
+  };
+
+  const closeImageModel = () => {
+    setIsOpen(false);
+    setCurrentImage({ src: "", alt: "" });
+  };
+
 
   return (
     <div className="min-h-screen bg-white pt-20">
@@ -337,55 +365,100 @@ const AllWorks = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.id} // Use project.id as key instead of index
-                className="group cursor-pointer relative"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                onClick={() => openModal(project)}
-              >
-                <div className="relative overflow-hidden rounded-lg shadow-lg bg-gray-200 aspect-[16/9]">
-                  <img
-                    src={`https://img.youtube.com/vi/${extractVideoId(project.url)}/maxresdefault.jpg`}
-                    alt={videoTitles[index] || "Video thumbnail"}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    onError={(e) => {
-                      const videoId = extractVideoId(project.url);
-                      const src = e.target.src;
-
-                      if (src.includes("maxresdefault.jpg")) {
-                        e.target.src = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
-                      } else if (src.includes("sddefault.jpg")) {
-                        e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-                      } else if (src.includes("hqdefault.jpg")) {
-                        e.target.src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
-                      } else {
+            {activeFilter === "Photography"
+              ? galleryImages.map((image, index) => (
+                <motion.div
+                  key={`image_${index}`}
+                  className="group cursor-pointer relative"
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02 }}
+                  onClick={() =>
+                    openImageModel({
+                      src: image,
+                      alt: `Gallery image ${index + 1}`,
+                      isImage: true,
+                    })
+                  }
+                >
+                  <div className="relative overflow-hidden rounded-lg shadow-lg bg-gray-200 aspect-[16/9]">
+                    <img
+                      src={image}
+                      alt={`Gallery image ${index + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => {
                         e.target.src = "/placeholder.jpg"; // Fallback local image
-                      }
-                    }}
-                  />
+                      }}
+                    />
+                    {/* Hover Overlay */}
+                    {/*<div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-75 transition-all duration-300 flex flex-col justify-end p-4">*/}
+                    {/*  <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">*/}
+                    {/*    <h3*/}
+                    {/*      className="text-white text-lg font-semibold mb-2"*/}
+                    {/*      style={{ fontFamily: "Staatliches" }}*/}
+                    {/*    >*/}
+                    {/*      Photography {index + 1}*/}
+                    {/*    </h3>*/}
+                    {/*  </div>*/}
+                    {/*</div>*/}
+                  </div>
+                </motion.div>
+              ))
+              : filteredProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  className="group cursor-pointer relative"
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02 }}
+                  onClick={() =>
+                    openModal({
+                      src: `https://img.youtube.com/vi/${extractVideoId(project.url)}/maxresdefault.jpg`,
+                      alt: videoTitles[project.id] || "Video thumbnail",
+                      isImage: true,
+                    })
+                  }
+                >
+                  <div className="relative overflow-hidden rounded-lg shadow-lg bg-gray-200 aspect-[16/9]">
+                    <img
+                      src={`https://img.youtube.com/vi/${extractVideoId(project.url)}/maxresdefault.jpg`}
+                      alt={videoTitles[project.id] || "Video thumbnail"}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => {
+                        const videoId = extractVideoId(project.url);
+                        const src = e.target.src;
 
-                  {/* Hover Overlay with Title and Tags */}
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-75 transition-all duration-300 flex flex-col justify-end p-4">
-                    <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                      <h3
-                        className="text-white text-lg font-semibold mb-2"
-                        style={{ fontFamily: "Staatliches" }}
-                      >
-                        {videoTitles[project.id] || "Loading..."}
-                      </h3>
+                        if (src.includes("maxresdefault.jpg")) {
+                          e.target.src = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
+                        } else if (src.includes("sddefault.jpg")) {
+                          e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                        } else if (src.includes("hqdefault.jpg")) {
+                          e.target.src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+                        } else {
+                          e.target.src = "/placeholder.jpg"; // Fallback local image
+                        }
+                      }}
+                    />
+                    {/* Hover Overlay with Title and Tags */}
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-75 transition-all duration-300 flex flex-col justify-end p-4">
+                      <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+                        <h3
+                          className="text-white text-lg font-semibold mb-2"
+                          style={{ fontFamily: "Staatliches" }}
+                        >
+                          {videoTitles[project.id] || "Loading..."}
+                        </h3>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
           </motion.div>
 
           {/* Empty state */}
-          {filteredProjects.length === 0 && (
+          {activeFilter !== "Photography" && filteredProjects.length === 0 && (
             <motion.div
               className="text-center py-20"
               initial={{ opacity: 0 }}
@@ -398,6 +471,14 @@ const AllWorks = () => {
             </motion.div>
           )}
         </div>
+
+        {/* Image Modal */}
+        <ImageModal
+          isOpen={isOpen}
+          onClose={closeImageModel}
+          src={currentImage.src}
+          alt={currentImage.alt}
+        />
       </div>
 
       {/* Video Modal */}
