@@ -138,7 +138,7 @@ const AllWorks = () => {
     {
       id: "music_11",
       category: "Music Videos",
-      url: 'https://youtu.be/RtIuL9Y4BR0?si=RnJdEAfPLaCrjPKF',
+      url: "https://youtu.be/RtIuL9Y4BR0?si=RnJdEAfPLaCrjPKF",
     },
     {
       id: "music_12",
@@ -148,12 +148,27 @@ const AllWorks = () => {
     {
       id: "after_1",
       category: "After Movies",
-      url: 'https://youtu.be/LXQGcVf3lr8',
+      url: "https://youtu.be/LXQGcVf3lr8",
     },
     {
       id: "after_2",
       category: "After Movies",
       url: "https://youtu.be/mWnv5-lHahE",
+    },
+    {
+      id: "after_3",
+      category: "After Movies",
+      url: "https://www.youtube.com/watch?v=ufDpfhmHYOU",
+    },
+    {
+      id: "after_4",
+      category: "After Movies",
+      url: "https://youtu.be/lGPeTb37_LQ?si=0JQYkxk6kcT69kL2",
+    },
+    {
+      id: "after_5",
+      category: "After Movies",
+      url: "https://www.youtube.com/watch?v=3ds0YWrpWg4",
     },
   ];
 
@@ -262,7 +277,7 @@ const AllWorks = () => {
 
             {/* Right side - Description */}
             <motion.div
-              className="lg:w-1/2 lg:pt-80"
+              className="lg:w-1/2 lg:pt-00"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -332,12 +347,11 @@ const AllWorks = () => {
                 whileHover={{ scale: 1.02 }}
                 onClick={() => openModal(project)}
               >
-                <div className="relative overflow-hidden rounded-lg shadow-lg bg-gray-200">
+                <div className="relative overflow-hidden rounded-lg shadow-lg bg-gray-200 aspect-[16/9]">
                   <img
                     src={`https://img.youtube.com/vi/${extractVideoId(project.url)}/maxresdefault.jpg`}
-                    alt={videoTitles[index]||"Video thumbnails"}
-
-                    className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
+                    alt={videoTitles[index] || "Video thumbnail"}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     onError={(e) => {
                       const videoId = extractVideoId(project.url);
                       const src = e.target.src;

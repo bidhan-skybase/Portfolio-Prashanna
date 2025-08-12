@@ -65,8 +65,8 @@ const HeroSection = () => {
       <div className="relative z-10 mt-[34rem]">
         <button
           onClick={handleMoreWorksClick}
-          className="px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-opacity-90 transition duration-300"
-          style={{ fontFamily: 'Oswald' }}
+          className="px-6 py-3 border-2 border-white text-white font-semibold rounded-full hover:border-white-200 hover:text-gray-200 transition duration-300"
+          style={{ fontFamily: 'Helvetica Neue' }}
         >
           MORE WORKS
         </button>

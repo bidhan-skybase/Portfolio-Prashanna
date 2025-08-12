@@ -34,6 +34,9 @@ const commercialUrls = [
 const afterMovieUrls = [
   "https://youtu.be/LXQGcVf3lr8",
   "https://youtu.be/m8BX-viWnoc?si=sktxXaAt5dHX2EJ0",
+  "https://www.youtube.com/watch?v=ufDpfhmHYOU",
+  "https://youtu.be/lGPeTb37_LQ?si=0JQYkxk6kcT69kL2",
+  "https://www.youtube.com/watch?v=3ds0YWrpWg4"
   // "https://www.youtube.com/watch?v=uE5IU9oPwJQ",
 ];
 
