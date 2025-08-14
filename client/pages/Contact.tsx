@@ -54,7 +54,7 @@ const ContactFormSection = () => {
     try {
       // Replace these with your actual EmailJS credentials
       const result = await emailjs.send(
-        'service_40mgr19',     // Replace with your EmailJS service ID
+        'service_du95l24',     // Replace with your EmailJS service ID
         'template_ojama59',    // Replace with your EmailJS template ID
         {
           from_name: `${formData.firstName} ${formData.lastName}`,
