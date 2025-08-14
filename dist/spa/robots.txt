@@ -1,0 +1,23 @@
+# Allow major bots to crawl everything
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# Block access to specific sensitive or unimportant folders (if any exist)
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /drafts/
+Allow: /
+
+# Point bots to your XML sitemap
+Sitemap: https://yourdomain.com/sitemap.xml
