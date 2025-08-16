@@ -10,20 +10,23 @@ const AllWorks = () => {
   const [videoTitles, setVideoTitles] = useState({});
 
   const galleryImages = [
-    "https://prashannabajracharya.com/gallery_images/1.jpg",
-    "https://prashannabajracharya.com/gallery_images/2.jpg",
-    "https://prashannabajracharya.com/gallery_images/3.jpg",
-    "https://prashannabajracharya.com/gallery_images/4.jpg",
-    "https://prashannabajracharya.com/gallery_images/5.jpg",
-    "https://prashannabajracharya.com/gallery_images/6.jpg",
-    "https://prashannabajracharya.com/gallery_images/7.jpg",
-    "https://prashannabajracharya.com/gallery_images/8.jpg",
-    "https://prashannabajracharya.com/gallery_images/9.jpg",
-    "https://prashannabajracharya.com/gallery_images/10.jpg",
-    "https://prashannabajracharya.com/gallery_images/11.jpg",
-    "https://prashannabajracharya.com/gallery_images/12.jpg",
-    "https://prashannabajracharya.com/gallery_images/13.jpg",
-    "https://prashannabajracharya.com/gallery_images/14.jpg",]
+    "/gallery/1.webp",
+    "/gallery/2.webp",
+    "/gallery/3.webp",
+    "/gallery/4.webp",
+    "/gallery/5.webp",
+    "/gallery/6.webp",
+    "/gallery/7.webp",
+    "/gallery/8.webp",
+    "/gallery/9.webp",
+    "/gallery/10.webp",
+    "/gallery/11.webp",
+    "/gallery/12.webp",
+    "/gallery/13.webp",
+    "/gallery/14.webp",
+    "/gallery/15.webp",
+    "/gallery/16.webp",
+  ]
 
 
   const projects = [
