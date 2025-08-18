@@ -256,35 +256,35 @@ const AboutSection = () => {
 const TrustedBySection = () => {
   const greenLogos = [
     {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335646/image_11_ltvxgb.png",
+      src: "https://prashannabajracharya.com/trusted/image_11_ltvxgb.webp",
       alt: "Pepsi Green",
     },
     {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335646/image_12_tqzwry.png",
+      src: "https://prashannabajracharya.com/trusted/image_12_tqzwry.webp",
       alt: "Skoda Green",
     },
     {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753677717/tedx_pibuc5.png",
+      src: "https://prashannabajracharya.com/trusted/image_13_ztcd9r.webp",
       alt: "TEDx Green",
     },
     {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335647/image_14_a6saxg.png",
+      src: "https://prashannabajracharya.com/trusted/image_14_a6saxg.webp",
       alt: "Tuborg Green",
     },
     {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335647/image_15_lcfn07.png",
+      src: "https://prashannabajracharya.com/trusted/image_15_lcfn07.webp",
       alt: "Adidas Green",
     },
     {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335648/image_16_g2eqd8.png",
+      src: "https://prashannabajracharya.com/trusted/image_16_g2eqd8.webp",
       alt: "Unilever Green",
     },
     {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335649/image_17_zcenzx.png",
+      src: "https://prashannabajracharya.com/trusted/image_17_zcenzx.webp",
       alt: "Champions League Green",
     },
     {
-      src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753335649/image_18_acxlef.png",
+      src: "https://prashannabajracharya.com/trusted/image_18_acxlef.webp",
       alt: "Coke Logo Green",
     },
   ];
@@ -803,10 +803,6 @@ const BrandsAndArtistsSection = () => {
         src: "https://prashannabajracharya.com/logos/Chanpions_League_q1mnrh.webp",
         alt: "Champions League",
       },
-      // {
-      //   src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Unilever_xzfmm9.png",
-      //   alt: "Unilever",
-      // },
       {
         src: "https://prashannabajracharya.com/logos/Tedx_ljvgef.webp",
         alt: "TEDx",
@@ -892,7 +888,7 @@ const BrandsAndArtistsSection = () => {
         customSize: "w-16 h-16", // Reduced size
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/MOuntain_i1uokl.webp",
+        src: "https://prashannabajracharya.com/logos/MOuntain_i1uokl.webp",
         alt: "Mountain Lodge of Nepal",
       },
       {
