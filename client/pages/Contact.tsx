@@ -5,6 +5,11 @@ import { motion } from "framer-motion";
 const ContactFormSection = () => {
   const socialIcons = [
     {
+      src: "/whatsapp.svg",
+      alt: "Whatsapp",
+      href: "https://wa.me/9779843892641",
+    },
+    {
       src: "/Linkedin.svg",
       alt: "Linkedin",
       href: "https://www.linkedin.com/in/prashannabajracharya/",
@@ -29,6 +34,7 @@ const ContactFormSection = () => {
       alt: "YouTube",
       href: "https://www.youtube.com/@untitledNepal",
     },
+
   ];
 
   const [formData, setFormData] = useState({
