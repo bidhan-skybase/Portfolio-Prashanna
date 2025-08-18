@@ -28,6 +28,12 @@ const commercialUrls = [
   "https://www.youtube.com/watch?v=IUigcSW0lfo&list=PLN88_j1xLvkU6PyWd_CD7TZEFeIzJsS8T",
   "https://www.youtube.com/watch?v=D5PdEPD6O14",
   "https://youtu.be/NOqkE2YJtkY?si=DAz3MhArAbVKFZDb",
+  "https://youtu.be/ierR4wtomT4",
+  "https://youtu.be/e512ZU98D_w",
+  "https://youtu.be/BSYZS1LjSnQ",
+  "https://youtu.be/aJ-Rriy9f6Y",
+  "https://youtu.be/b7bkdI_WXyw",
+  "https://youtu.be/q-KMYchnYa0"
 ];
 
 // After movies data
@@ -36,7 +42,13 @@ const afterMovieUrls = [
   "https://youtu.be/m8BX-viWnoc?si=sktxXaAt5dHX2EJ0",
   "https://www.youtube.com/watch?v=ufDpfhmHYOU",
   "https://youtu.be/lGPeTb37_LQ?si=0JQYkxk6kcT69kL2",
-  "https://www.youtube.com/watch?v=3ds0YWrpWg4"
+  "https://www.youtube.com/watch?v=3ds0YWrpWg4",
+  "https://youtu.be/qSi4w7M8fCU",
+  "https://youtu.be/Hv5vemaX38s",
+  "https://youtube.com/shorts/-pLE1BWjkts?feature=share",
+  "https://youtube.com/shorts/bA67RJLcqpo?feature=share",
+  "https://youtu.be/YFLiMUbvTNI",
+  "https://youtu.be/aOMeS_aGfn8"
   // "https://www.youtube.com/watch?v=uE5IU9oPwJQ",
 ];
 

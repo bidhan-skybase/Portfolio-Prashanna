@@ -104,6 +104,35 @@ const AllWorks = () => {
       url: "https://www.youtube.com/watch?v=81D9H2Z3Vcw",
     },
     {
+      id: "comm_10",
+      category: "Commercials",
+      url: "https://youtu.be/ierR4wtomT4",
+    },
+    {
+      id: "comm_11",
+      category: "Commercials",
+      url: "https://youtu.be/e512ZU98D_w",
+    },
+    {
+      id: "comm_12",
+      category: "Commercials",
+      url: "https://youtu.be/BSYZS1LjSnQ",
+    },
+    {
+      id: "comm_13",
+      category: "Commercials",
+      url: "https://youtu.be/aJ-Rriy9f6Y",
+    },
+    {
+      id: "comm_14",
+      category: "Commercials",
+      url: "https://youtu.be/b7bkdI_WXyw",
+    }, {
+      id: "comm_15",
+      category: "Commercials",
+      url: "https://youtu.be/q-KMYchnYa0",
+    },
+    {
       id: "music_1",
       category: "Music Videos",
       url: "https://youtu.be/81DnLf00zqQ?si=Tb4iJ5mfa3m_nQoq",
@@ -187,6 +216,30 @@ const AllWorks = () => {
       id: "after_5",
       category: "After Movies",
       url: "https://www.youtube.com/watch?v=3ds0YWrpWg4",
+    },{
+      id: "after_11",
+      category: "After Movies",
+      url: "https://youtu.be/qSi4w7M8fCU",
+    },{
+      id: "after_6",
+      category: "After Movies",
+      url: "https://youtu.be/Hv5vemaX38s",
+    },{
+      id: "after_7",
+      category: "After Movies",
+      url: "https://youtube.com/shorts/-pLE1BWjkts?feature=share",
+    },{
+      id: "after_8",
+      category: "After Movies",
+      url: "https://youtube.com/shorts/bA67RJLcqpo?feature=share",
+    },{
+      id: "after_9",
+      category: "After Movies",
+      url: "https://youtu.be/YFLiMUbvTNI",
+    },{
+      id: "after_10",
+      category: "After Movies",
+      url: "https://youtu.be/aOMeS_aGfn8",
     },
   ];
 
