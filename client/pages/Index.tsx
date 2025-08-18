@@ -47,7 +47,7 @@ const HeroSection = () => {
           playsInline
         >
           <source
-            src="https://ik.imagekit.io/ahxkv7awkb/Showreel%20final%20(2).mp4?updatedAt=1755358952285"
+            src="https://bidhan-skybase.github.io/my-video/Showreel%20final%20(2).mp4"
             type="video/mp4"
           />
           Your browser does not support the video tag.
