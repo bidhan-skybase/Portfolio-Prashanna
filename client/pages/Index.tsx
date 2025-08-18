@@ -9,23 +9,22 @@ import { useNavigate } from "react-router-dom";
 
 
 const galleryImages = [
-  "/gallery/1.webp",
-  "/gallery/2.webp",
-  "/gallery/3.webp",
-  "/gallery/4.webp",
-  "/gallery/5.webp",
-  "/gallery/6.webp",
-  "/gallery/7.webp",
-  "/gallery/8.webp",
-  "/gallery/9.webp",
-  "/gallery/10.webp",
-  "/gallery/11.webp",
-  "/gallery/12.webp",
-  "/gallery/13.webp",
-  "/gallery/14.webp",
-  "/gallery/15.webp",
-  "/gallery/16.webp",
-]
+  "https://prashannabajracharya.com/gallery_images/1.webp",
+  "https://prashannabajracharya.com/gallery_images/2.webp",
+  "https://prashannabajracharya.com/gallery_images/3.webp",
+  "https://prashannabajracharya.com/gallery_images/4.webp",
+  "https://prashannabajracharya.com/gallery_images/5.webp",
+  "https://prashannabajracharya.com/gallery_images/6.webp",
+  "https://prashannabajracharya.com/gallery_images/7.webp",
+  "https://prashannabajracharya.com/gallery_images/8.webp",
+  "https://prashannabajracharya.com/gallery_images/9.webp",
+  "https://prashannabajracharya.com/gallery_images/10.webp",
+  "https://prashannabajracharya.com/gallery_images/11.webp",
+  "https://prashannabajracharya.com/gallery_images/12.webp",
+  "https://prashannabajracharya.com/gallery_images/13.webp",
+  "https://prashannabajracharya.com/gallery_images/14.webp",
+];
+
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -48,7 +47,7 @@ const HeroSection = () => {
           playsInline
         >
           <source
-            src="https://res.cloudinary.com/dzign6pg0/video/upload/v1752333676/Showreel_final_1_ynmuzp.mp4"
+            src="https://ik.imagekit.io/ahxkv7awkb/Showreel%20final%20(2).mp4?updatedAt=1755358952285"
             type="video/mp4"
           />
           Your browser does not support the video tag.
@@ -792,16 +791,16 @@ const BrandsAndArtistsSection = () => {
     // Row 1
     [
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Pepsi_mjk1q3.png",
+        src: "https://prashannabajracharya.com/logos/Pepsi_mjk1q3.webp",
         alt: "Pepsi",
         customSize: "w-16 h-16", // Reduced size
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Adidas_ihp4iy.png",
+        src: "https://prashannabajracharya.com/logos/Adidas_ihp4iy.webp",
         alt: "Adidas",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Chanpions_League_q1mnrh.png",
+        src: "https://prashannabajracharya.com/logos/Chanpions_League_q1mnrh.webp",
         alt: "Champions League",
       },
       // {
@@ -809,130 +808,130 @@ const BrandsAndArtistsSection = () => {
       //   alt: "Unilever",
       // },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211344/Tedx_ljvgef.png",
+        src: "https://prashannabajracharya.com/logos/Tedx_ljvgef.webp",
         alt: "TEDx",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Coca_Cola_l4ce9a.png",
+        src: "https://prashannabajracharya.com/logos/Coca_Cola_l4ce9a.webp",
         alt: "Coca Cola",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211343/Expo_City_Dubai_qptndz.png",
+        src: "https://prashannabajracharya.com/logos/Expo_City_Dubai_qptndz.webp",
         alt: "Expo City Dubai",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211415/Yale_University_mgk88h.png",
+        src: "https://prashannabajracharya.com/logos/Yale_University_mgk88h.webp",
         alt: "Yale University",
         customSize: "w-30 h-32", // Increased size
       },
     ],
     [
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/Lolla_India_sc2oxo.png",
+        src: "https://prashannabajracharya.com/logos/Lolla_India_sc2oxo.webp",
         alt: "Lollapaloza",
         customSize: "w-28 h-32", // Increased size
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753679710/Titan_Logo_Vector_1_1_vmyw4m.png",
+        src: "https://prashannabajracharya.com/logos/titan.webp",
         alt: "Titan",
       },
 
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211237/Tuborg_iafgye.png",
+        src: "https://prashannabajracharya.com/logos/Tuborg_iafgye.webp",
         alt: "Tuborg",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Samsung_qc4q9b.png",
+        src: "https://prashannabajracharya.com/logos/Samsung_qc4q9b.webp",
         alt: "Samsung",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211413/SOS_uazsnq.png",
+        src: "https://prashannabajracharya.com/logos/SOS_uazsnq.webp",
         alt: "SOS",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211235/Skoda_lgpmzg.png",
+        src: "https://prashannabajracharya.com/logos/Skoda_lgpmzg.webp",
         alt: "Skoda",
       },
     ],
     // Row 2
     [
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211238/Yamaha_jovsop.png",
+        src: "https://prashannabajracharya.com/logos/Yamaha_jovsop.webp",
         alt: "Yamaha",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211232/Changan_wk0gzr.png",
+        src: "https://prashannabajracharya.com/logos/Changan_wk0gzr.webp",
         alt: "Changan",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211233/Foton_bbyiyb.png",
+        src: "https://prashannabajracharya.com/logos/Foton_bbyiyb.webp",
         alt: "Foton",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Seres_odqyyp.png",
+        src: "https://prashannabajracharya.com/logos/Seres_odqyyp.webp",
         alt: "Seres",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211234/Niu_ifpxku.png",
+        src: "https://prashannabajracharya.com/logos/Niu_ifpxku.webp",
         alt: "Niu",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753593921/Believe_logo_1_yr9zuu.png",
+        src: "https://prashannabajracharya.com/logos/believe.webp",
         alt: "Believe",
       },
     ],
     // Row 3
     [
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Nepal_Tourism_Board_sgefpx.png",
+        src: "https://prashannabajracharya.com/logos/Nepal_Tourism_Board_sgefpx.webp",
         alt: "Nepal Tourism Board",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/KMG_z5smgs.png",
+        src: "https://prashannabajracharya.com/logos/KMG_z5smgs.webp",
         alt: "KMG",
         customSize: "w-16 h-16", // Reduced size
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/MOuntain_i1uokl.png",
+        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/MOuntain_i1uokl.webp",
         alt: "Mountain Lodge of Nepal",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Gorkha_Brewery_a0xs61.png",
+        src: "https://prashannabajracharya.com/logos/Gorkha_Brewery_a0xs61.webp",
         alt: "Gorkha Brewery",
         customSize: "w-32 h-32", // Increased size
       },
 
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Ruslan_sa4aoz.png",
+        src: "https://prashannabajracharya.com/logos/Ruslan_sa4aoz.webp",
         alt: "Ruslan",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753592854/Metal_for_nepal_lxuugv.jpg",
+        src: "https://prashannabajracharya.com/logos/Metal_for_nepal_lxuugv.webp",
         alt: "Metal for Nepal",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/Khalti_tquumc.png",
+        src: "https://prashannabajracharya.com/logos/Khalti_tquumc.webp",
         alt: "Khalti",
       },
     ],
     [
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211412/DAV_fjxice.png",
+        src: "https://prashannabajracharya.com/logos/DAV_fjxice.webp",
         alt: "DAV",
         customSize: "w-16 h-16", // Reduced size
       },
 
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211384/Crossfire_ta6avf.png",
+        src: "https://prashannabajracharya.com/logos/Crossfire_ta6avf.webp",
         alt: "Crossfire",
         customSize: "w-32 h-32", // Increased size
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1752211385/Yatri_hfjq2j.png",
+        src: "https://prashannabajracharya.com/logos/Yatri_hfjq2j.webp",
         alt: "Yatri",
       },
       {
-        src: "https://res.cloudinary.com/dzign6pg0/image/upload/v1753593728/Janakpur_Logo_1_nuqx0f.png",
+        src: "https://prashannabajracharya.com/logos/janakput.webp",
         alt: "Janakpur Bolts",
       },
     ],
@@ -1183,6 +1182,7 @@ const InfiniteScrollRow = ({
             <img
               key={i}
               src={img}
+              loading={"lazy"}
               alt={`Photo ${i % images.length}`}
               className={`${getImageSize(i)} ${orientations[i % images.length] === "portrait" ? "object-contain" : "object-cover"} mr-2 cursor-pointer flex-shrink-0 rounded-sm bg-black`}
               onClick={() => openModal(img, `Photo ${i % images.length}`)}
