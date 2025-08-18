@@ -26,7 +26,6 @@ const AllWorks = () => {
     "https://prashannabajracharya.com/gallery_images/14.webp",
   ];
 
-
   const projects = [
     {
       id: "doc_1",
@@ -127,7 +126,8 @@ const AllWorks = () => {
       id: "comm_14",
       category: "Commercials",
       url: "https://youtu.be/b7bkdI_WXyw",
-    }, {
+    },
+    {
       id: "comm_15",
       category: "Commercials",
       url: "https://youtu.be/q-KMYchnYa0",
@@ -198,6 +198,11 @@ const AllWorks = () => {
       url: "https://youtu.be/LXQGcVf3lr8",
     },
     {
+      id: "after_20",
+      category: "After Movies",
+      url: "https://youtu.be/m8BX-viWnoc?si=sktxXaAt5dHX2EJ0",
+    },
+    {
       id: "after_2",
       category: "After Movies",
       url: "https://youtu.be/mWnv5-lHahE",
@@ -216,27 +221,33 @@ const AllWorks = () => {
       id: "after_5",
       category: "After Movies",
       url: "https://www.youtube.com/watch?v=3ds0YWrpWg4",
-    },{
+    },
+    {
       id: "after_11",
       category: "After Movies",
       url: "https://youtu.be/qSi4w7M8fCU",
-    },{
+    },
+    {
       id: "after_6",
       category: "After Movies",
       url: "https://youtu.be/Hv5vemaX38s",
-    },{
+    },
+    {
       id: "after_7",
       category: "After Movies",
       url: "https://youtube.com/shorts/-pLE1BWjkts?feature=share",
-    },{
+    },
+    {
       id: "after_8",
       category: "After Movies",
       url: "https://youtube.com/shorts/bA67RJLcqpo?feature=share",
-    },{
+    },
+    {
       id: "after_9",
       category: "After Movies",
       url: "https://youtu.be/YFLiMUbvTNI",
-    },{
+    },
+    {
       id: "after_10",
       category: "After Movies",
       url: "https://youtu.be/aOMeS_aGfn8",
@@ -250,7 +261,7 @@ const AllWorks = () => {
         const videoId = extractVideoId(project.url);
         if (videoId) {
           const title = await fetchYouTubeTitle(videoId);
-          titles[project.id] = title; // Use project ID instead of index
+          titles[project.id] = title;
         }
       }
       setVideoTitles(titles);
@@ -268,11 +279,17 @@ const AllWorks = () => {
     "Photography",
   ];
 
+  // Helper function to detect YouTube Shorts
+  const isYouTubeShort = (url) => {
+    return url.includes('/shorts/') || url.includes('youtube.com/shorts');
+  };
+
   const extractVideoId = (url) => {
     const patterns = [
       /(?:youtube\.com\/watch\?v=)([^&\n?#]+)/,
       /(?:youtu\.be\/)([^&\n?#]+)/,
       /(?:youtube\.com\/embed\/)([^&\n?#]+)/,
+      /(?:youtube\.com\/shorts\/)([^&\n?#]+)/, // Added pattern for shorts
     ];
 
     for (const pattern of patterns) {
@@ -282,6 +299,26 @@ const AllWorks = () => {
       }
     }
     return null;
+  };
+
+  // Get the best thumbnail URL based on video type
+  const getThumbnailUrl = (videoId, isShort) => {
+    if (isShort) {
+      return [
+        `https://i.ytimg.com/vi_webp/${videoId}/maxresdefault.webp`,
+        `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
+        `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+        `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`,
+        `https://i.ytimg.com/vi/${videoId}/default.jpg`
+      ];
+    } else {
+      return [
+        // `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+        // `https://img.youtube.com/vi/${videoId}/sddefault.jpg`,
+        // `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+        `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
+      ];
+    }
   };
 
   const fetchYouTubeTitle = async (videoId) => {
@@ -296,7 +333,6 @@ const AllWorks = () => {
       return "Video Title";
     }
   };
-
 
   const filteredProjects =
     activeFilter === "Show all"
@@ -318,6 +354,7 @@ const AllWorks = () => {
     setIsModalOpen(false);
     setSelectedVideo(null);
   };
+
   const [isOpen, setIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState({ src: "", alt: "" });
 
@@ -331,6 +368,81 @@ const AllWorks = () => {
     setCurrentImage({ src: "", alt: "" });
   };
 
+  // Custom VideoThumbnail component to handle thumbnail loading
+  const VideoThumbnail = ({ project, onModalOpen }) => {
+    const [thumbnailError, setThumbnailError] = useState(false);
+    const [currentThumbnailIndex, setCurrentThumbnailIndex] = useState(0);
+
+    const videoId = extractVideoId(project.url);
+    const isShort = isYouTubeShort(project.url);
+    const thumbnailOptions = getThumbnailUrl(videoId, isShort);
+
+    const handleThumbnailError = () => {
+      if (currentThumbnailIndex < thumbnailOptions.length - 1) {
+        setCurrentThumbnailIndex(prev => prev + 1);
+      } else {
+        setThumbnailError(true);
+      }
+    };
+
+    if (thumbnailError) {
+      // Custom fallback when all thumbnails fail
+      return (
+        <div className={`relative overflow-hidden rounded-lg shadow-lg bg-gradient-to-br from-red-500 to-red-700 ${
+          isShort ? 'aspect-[9/16]' : 'aspect-[16/9]'
+        }`}>
+          <div className="w-full h-full flex flex-col items-center justify-center text-white p-4">
+            <div className="bg-white bg-opacity-20 rounded-full p-4 mb-4">
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <h4 className="text-sm font-semibold text-center mb-2">
+              {videoTitles[project.id] || "YouTube Video"}
+            </h4>
+            {isShort && (
+              <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">
+                SHORTS
+              </span>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className={`relative overflow-hidden rounded-lg shadow-lg bg-gray-200 ${
+        isShort ? 'aspect-[16/9]' : 'aspect-[16/9]'
+      }`}>
+        <img
+          src={thumbnailOptions[currentThumbnailIndex]}
+          alt={videoTitles[project.id] || "Video thumbnail"}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          onError={handleThumbnailError}
+        />
+
+        {/* Shorts indicator */}
+        {isShort && (
+          <div className="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded">
+            SHORTS
+          </div>
+        )}
+
+        {/* Hover Overlay with Title */}
+        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-75 transition-all duration-300 flex flex-col justify-end p-4">
+          <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+            <h3
+              className="text-white text-lg font-semibold mb-2"
+              style={{ fontFamily: "Staatliches" }}
+            >
+              {videoTitles[project.id] || "Loading..."}
+            </h3>
+
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-white pt-20">
@@ -360,12 +472,6 @@ const AllWorks = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              {/*<p className="text-lg md:text-xl text-gray-700 leading-relaxed">*/}
-              {/*  For me, creativity isn't a skill — it's a way of feeling. Every*/}
-              {/*  shot, every cut, every frame is a chance to connect with*/}
-              {/*  something real. I don't just film projects; I help people tell*/}
-              {/*  stories that deserve to be remembered.*/}
-              {/*</p>*/}
             </motion.div>
           </div>
         </div>
@@ -436,23 +542,12 @@ const AllWorks = () => {
                     <img
                       src={image}
                       alt={`Gallery image ${index + 1}`}
-                      loading='lazy'
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       onError={(e) => {
-                        e.target.src = "/placeholder.jpg"; // Fallback local image
+                        e.target.src = "/placeholder.jpg";
                       }}
                     />
-                    {/* Hover Overlay */}
-                    {/*<div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-75 transition-all duration-300 flex flex-col justify-end p-4">*/}
-                    {/*  <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">*/}
-                    {/*    <h3*/}
-                    {/*      className="text-white text-lg font-semibold mb-2"*/}
-                    {/*      style={{ fontFamily: "Staatliches" }}*/}
-                    {/*    >*/}
-                    {/*      Photography {index + 1}*/}
-                    {/*    </h3>*/}
-                    {/*  </div>*/}
-                    {/*</div>*/}
                   </div>
                 </motion.div>
               ))
@@ -464,46 +559,12 @@ const AllWorks = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ scale: 1.02 }}
-                  onClick={() =>
-                    openModal({
-                      src: `https://img.youtube.com/vi/${extractVideoId(project.url)}/maxresdefault.jpg`,
-                      alt: videoTitles[project.id] || "Video thumbnail",
-                      isImage: true,
-                    })
-                  }
+                  onClick={() => openModal(project)}
                 >
-                  <div className="relative overflow-hidden rounded-lg shadow-lg bg-gray-200 aspect-[16/9]">
-                    <img
-                      src={`https://img.youtube.com/vi/${extractVideoId(project.url)}/maxresdefault.jpg`}
-                      alt={videoTitles[project.id] || "Video thumbnail"}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      onError={(e) => {
-                        const videoId = extractVideoId(project.url);
-                        const src = e.target.src;
-
-                        if (src.includes("maxresdefault.jpg")) {
-                          e.target.src = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
-                        } else if (src.includes("sddefault.jpg")) {
-                          e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-                        } else if (src.includes("hqdefault.jpg")) {
-                          e.target.src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
-                        } else {
-                          e.target.src = "/placeholder.jpg"; // Fallback local image
-                        }
-                      }}
-                    />
-                    {/* Hover Overlay with Title and Tags */}
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-75 transition-all duration-300 flex flex-col justify-end p-4">
-                      <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                        <h3
-                          className="text-white text-lg font-semibold mb-2"
-                          style={{ fontFamily: "Staatliches" }}
-                        >
-                          {videoTitles[project.id] || "Loading..."}
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
+                  <VideoThumbnail
+                    project={project}
+                    onModalOpen={openModal}
+                  />
                 </motion.div>
               ))}
           </motion.div>
