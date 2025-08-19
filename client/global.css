@@ -104,7 +104,7 @@
 
     body {
         @apply bg-background text-foreground;
-        /*cursor: url("/public/cursor.png") 50 50, auto;*/
+        cursor: url("/public/cursor.png") 50 50, auto;
     }
 }
 
@@ -151,6 +151,25 @@
 
 .pause-on-hover:hover {
     animation-play-state: paused;
+}
+
+@keyframes scrollLtr {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+@keyframes scrollRtl {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+}
+
+.animate-scrollLtr {
+    animation: scrollLtr 40s linear infinite;
+    will-change: transform;
+}
+
+.animate-scrollRtl {
+    animation: scrollRtl 40s linear infinite;
+    will-change: transform;
 }
 
 @font-face {

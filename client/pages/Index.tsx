@@ -56,13 +56,12 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
 
-
       {/* More Works Button */}
       <div className="relative z-10 mt-[34rem]">
         <button
           onClick={handleMoreWorksClick}
           className="px-6 py-3 border-2 border-white text-white font-semibold rounded-full hover:border-white-200 hover:text-gray-200 transition duration-300"
-          style={{ fontFamily: 'Helvetica Neue' }}
+          style={{ fontFamily: "Helvetica Neue" }}
         >
           MORE WORKS
         </button>
@@ -1173,12 +1172,14 @@ const InfiniteScrollRow = ({
         className={`flex ${animationClass} pause-on-hover`}
         style={{ width: "max-content" }}
       >
-        {[...images, ...images, ...images, ...images, ...images].map(
+        {[...images, ...images, ...images ].map(
           (img, i) => (
             <img
               key={i}
-              src={img}
-              loading={"lazy"}
+              src={`${img}?q=55`} // Lower quality for the default image
+              srcSet={`${img}?w=320&q=75 320w, ${img}?w=640&q=75 640w, ${img}?w=1280&q=75 1280w`}
+              sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1280px"
+              loading="lazy"
               alt={`Photo ${i % images.length}`}
               className={`${getImageSize(i)} ${orientations[i % images.length] === "portrait" ? "object-contain" : "object-cover"} mr-2 cursor-pointer flex-shrink-0 rounded-sm bg-black`}
               onClick={() => openModal(img, `Photo ${i % images.length}`)}

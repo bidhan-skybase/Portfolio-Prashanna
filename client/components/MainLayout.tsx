@@ -12,7 +12,7 @@ const MainLayout = () => {
 
   return (
     <div>
-      <CustomCursor/>
+      {/*<CustomCursor/>*/}
       <Navigation BgColor={isWorksPage ? 'black' : undefined} />
       <Outlet />
       <ContactFormSection/>
