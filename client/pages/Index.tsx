@@ -7,7 +7,6 @@ import { VideoGallery } from "../components/VideoGallery";
 import { COMMERCIAL_VIDEOS, AFTER_MOVIE_VIDEOS } from "../constants/videoData";
 import { useNavigate } from "react-router-dom";
 
-
 const galleryImages = [
   "https://prashannabajracharya.com/gallery_images/1.webp",
   "https://prashannabajracharya.com/gallery_images/2.webp",
@@ -25,12 +24,11 @@ const galleryImages = [
   "https://prashannabajracharya.com/gallery_images/14.webp",
 ];
 
-
 const HeroSection = () => {
   const navigate = useNavigate();
 
   const handleMoreWorksClick = () => {
-    navigate('/works'); // Navigate to the Works page
+    navigate("/works"); // Navigate to the Works page
   };
   return (
     <section
@@ -116,18 +114,18 @@ const AboutSection = () => {
               className="py-12 pl-4 sm:pl-8 md:pl-20 lg:pl-30"
             >
               <h3
-                className="text-portfolio-dark-green font-medium text-3xl sm:text-4xl lg:text-6xl mb-8"
+                className="text-portfolio-dark-green font-medium text-3xl sm:text-4xl lg:text-6xl mb-4"
                 style={{
                   fontFamily: "Staatliches",
                   fontSize: "clamp(58px, 8vw, 96px)",
                   wordSpacing: "0.3em",
-                  lineHeight: 1.1, // 👈 tighter line height
+                  lineHeight: 1, // 👈 tighter line height
                 }}
               >
                 PRASHANNA BAJRACHARYA
               </h3>
               <h1
-                className="text-portfolio-brown-red font-medium mb-8 mt-2"
+                className="text-portfolio-brown-red font-medium mb-4 mt-0"
                 style={{
                   fontSize: "1.3rem",
                   fontFamily: '"Helvetica Neue", Arial, sans-serif',
@@ -147,23 +145,14 @@ const AboutSection = () => {
                     letterSpacing: "0.05em",
                   }}
                 >
-                  Prashanna Bajracharya is a dynamic visual storyteller and
-                  creative entrepreneur based in Kathmandu, Nepal.
-                </p>
-
-                <p
-                  className="text-gray-800 leading-relaxed tracking-wide"
-                  style={{
-                    fontSize: "clamp(21px, 1.2vw, 30px)",
-                    fontFamily: '"Helvetica Neue", Arial, sans-serif',
-                  }}
-                >
-                  A self-taught photographer and filmmaker, he has collaborated
-                  with over 30 diverse brands, bringing narratives to life
-                  through brand campaigns, documentaries, editorial projects,
-                  and event coverage. With a keen eye for detail and a deep
-                  passion for storytelling, his work seamlessly blends artistry
-                  and impact.
+                  Prashanna Bajracharya is a self-taught photographer,
+                  filmmaker, and creative entrepreneur from Kathmandu. He has
+                  worked with 80+ brands on campaigns, documentaries,
+                  editorials, and events blending artistry with impact. Beyond
+                  commercial work, he is deeply immersed in music festival
+                  photography and videography, capturing the raw energy of live
+                  performances and turning moments into lasting visual
+                  experiences.
                 </p>
 
                 <p
@@ -182,44 +171,14 @@ const AboutSection = () => {
                   >
                     untitled.np
                   </a>
-                  , an emerging production and storytelling company dedicated to
-                  reshaping visual narratives in Nepal. Built on collaboration
-                  and innovation,{" "}
-                  <a
-                    href="https://www.instagram.com/untitled.np?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text hover:underline font-bold"
-                  >
-                    untitled.np
-                  </a>{" "}
-                  aims to push creative boundaries and transform the country's
-                  media landscape.
+                  , a collective of visual storytellers redefining Nepal’s media
+                  landscape. Built on collaboration and innovation, they craft
+                  visuals that inspire, resonate, and elevate brands beyond
+                  labels.
                 </p>
 
-                <p
-                  className="text-gray-800 leading-relaxed tracking-wide"
-                  style={{
-                    fontSize: "clamp(21px, 1.2vw, 30px)",
-                    fontFamily: '"Helvetica Neue", Arial, sans-serif',
-                  }}
-                >
-                  <a
-                    href="https://www.instagram.com/untitled.np?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text hover:underline font-bold"
-                  >
-                    untitled.np
-                  </a>{" "}
-                  is not just a company, they are a collective of filmaholic and
-                  visual craftsmen dedicated to shaping brand narratives through
-                  artistry and innovation. The name reflects their refusal to be
-                  confined by labels; instead, we focus on engineering visuals
-                  that resonate, inspire, and elevate. At their core lies a
-                  collaborative ethos; Unite diverse creative minds to deliver
-                  tailored solutions that align with a brand's heartbeat.
-                </p>
+
+
               </div>
 
               <div className="grid grid-cols-2 gap-16">
@@ -263,7 +222,7 @@ const TrustedBySection = () => {
       alt: "Skoda Green",
     },
     {
-      src: "https://prashannabajracharya.com/trusted/image_13_ztcd9r.webp",
+      src: "https://prashannabajracharya.com/logos/tedx.webp",
       alt: "TEDx Green",
     },
     {
@@ -639,7 +598,6 @@ const CommercialSection = () => {
                       >
                         {getDisplayTitle(video)}
                       </h3>
-
                     </div>
                   </div>
                 </motion.div>
@@ -782,7 +740,6 @@ const PhotoGallery = ({
     </section>
   );
 };
-
 
 const BrandsAndArtistsSection = () => {
   // Consolidated logo data with special sizing rules
@@ -1027,7 +984,6 @@ const ArtistNamesSection = () => {
       { name: "Clean\nBandit", color: "text-gray-500" },
     ],
     [
-      { name: "Diplo", color: "text-black" },
       { name: "Diljit\nDosanjh", color: "text-gray-500" },
       { name: "Divine", color: "text-black" },
       { name: "Green\nDay", color: "text-gray-500" },
@@ -1096,7 +1052,6 @@ const ArtistNamesSection = () => {
   );
 };
 
-
 export default function Index() {
   const { isOpen, currentImage, openModal, closeModal } = useImageModal();
 
@@ -1105,9 +1060,17 @@ export default function Index() {
       <HeroSection />
       <AboutSection />
       <TrustedBySection />
-      <VideoGallery title="Commercials" videos={COMMERCIAL_VIDEOS} sectionId="commercials" />
+      <VideoGallery
+        title="Commercials"
+        videos={COMMERCIAL_VIDEOS}
+        sectionId="commercials"
+      />
       <PhotoGallery openModal={openModal} />
-      <VideoGallery title="AFTER MOVIES" videos={AFTER_MOVIE_VIDEOS} sectionId="after-movies" />
+      <VideoGallery
+        title="AFTER MOVIES"
+        videos={AFTER_MOVIE_VIDEOS}
+        sectionId="after-movies"
+      />
       <BrandsAndArtistsSection />
       <ArtistNamesSection />
       {/*<Footer />*/}
@@ -1172,20 +1135,18 @@ const InfiniteScrollRow = ({
         className={`flex ${animationClass} pause-on-hover`}
         style={{ width: "max-content" }}
       >
-        {[...images, ...images, ...images ].map(
-          (img, i) => (
-            <img
-              key={i}
-              src={`${img}?q=55`} // Lower quality for the default image
-              srcSet={`${img}?w=320&q=75 320w, ${img}?w=640&q=75 640w, ${img}?w=1280&q=75 1280w`}
-              sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1280px"
-              loading="lazy"
-              alt={`Photo ${i % images.length}`}
-              className={`${getImageSize(i)} ${orientations[i % images.length] === "portrait" ? "object-contain" : "object-cover"} mr-2 cursor-pointer flex-shrink-0 rounded-sm bg-black`}
-              onClick={() => openModal(img, `Photo ${i % images.length}`)}
-            />
-          ),
-        )}
+        {[...images, ...images, ...images].map((img, i) => (
+          <img
+            key={i}
+            src={`${img}?q=55`} // Lower quality for the default image
+            srcSet={`${img}?w=320&q=75 320w, ${img}?w=640&q=75 640w, ${img}?w=1280&q=75 1280w`}
+            sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1280px"
+            loading="lazy"
+            alt={`Photo ${i % images.length}`}
+            className={`${getImageSize(i)} ${orientations[i % images.length] === "portrait" ? "object-contain" : "object-cover"} mr-2 cursor-pointer flex-shrink-0 rounded-sm bg-black`}
+            onClick={() => openModal(img, `Photo ${i % images.length}`)}
+          />
+        ))}
       </div>
     </div>
   );

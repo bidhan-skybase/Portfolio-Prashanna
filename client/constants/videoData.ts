@@ -9,7 +9,7 @@ const thumbnailMap: { [key: string]: string } = {
   "ZmxUV8x5Bt4": "/thumbnails/skoda.jpg",
   "i09C23fcWMWN-m_Z":"/thumbnails/janakpur.jpg",
   "81D9H2Z3Vcw":"/thumbnails/foton.jpg",
-  "m8BX-viWnoc":"/thumbnails/aftermovie.jpg"
+  "LXQGcVf3lr8":"/thumbnails/aftermovie.jpg"
 };
 
 // Commercial videos data
@@ -22,16 +22,8 @@ const commercialUrls = [
   "https://youtu.be/pjCOsZZPB3c",
   "https://youtu.be/ZmxUV8x5Bt4",
   "https://www.youtube.com/watch?v=81D9H2Z3Vcw",
-  "https://www.youtube.com/watch?v=y7BtAkW5LKA",
-  "https://www.youtube.com/watch?v=kexCWZSRx7Q",
-  "https://www.youtube.com/watch?v=Nylgt4CtsKo",
-  "https://www.youtube.com/watch?v=IUigcSW0lfo&list=PLN88_j1xLvkU6PyWd_CD7TZEFeIzJsS8T",
-  "https://www.youtube.com/watch?v=D5PdEPD6O14",
-  "https://youtu.be/NOqkE2YJtkY?si=DAz3MhArAbVKFZDb",
   "https://youtu.be/ierR4wtomT4",
-  "https://youtu.be/e512ZU98D_w",
   "https://youtu.be/BSYZS1LjSnQ",
-  "https://youtu.be/aJ-Rriy9f6Y",
   "https://youtu.be/b7bkdI_WXyw",
   "https://youtu.be/q-KMYchnYa0"
 ];
@@ -48,7 +40,8 @@ const afterMovieUrls = [
   "https://youtube.com/shorts/-pLE1BWjkts?feature=share",
   "https://youtube.com/shorts/bA67RJLcqpo?feature=share",
   "https://youtu.be/YFLiMUbvTNI",
-  "https://youtu.be/aOMeS_aGfn8"
+  "https://youtu.be/aOMeS_aGfn8",
+
   // "https://www.youtube.com/watch?v=uE5IU9oPwJQ",
 ];
 

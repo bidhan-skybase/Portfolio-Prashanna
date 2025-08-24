@@ -93,11 +93,6 @@ const AllWorks = () => {
       url: "https://youtu.be/uzTDHZ4qpeY",
     },
     {
-      id: "comm_8",
-      category: "Commercials",
-      url: "https://www.youtube.com/watch?v=0xxofHCllXU",
-    },
-    {
       id: "comm_9",
       category: "Commercials",
       url: "https://www.youtube.com/watch?v=81D9H2Z3Vcw",
@@ -108,20 +103,11 @@ const AllWorks = () => {
       url: "https://youtu.be/ierR4wtomT4",
     },
     {
-      id: "comm_11",
-      category: "Commercials",
-      url: "https://youtu.be/e512ZU98D_w",
-    },
-    {
       id: "comm_12",
       category: "Commercials",
       url: "https://youtu.be/BSYZS1LjSnQ",
     },
-    {
-      id: "comm_13",
-      category: "Commercials",
-      url: "https://youtu.be/aJ-Rriy9f6Y",
-    },
+
     {
       id: "comm_14",
       category: "Commercials",

@@ -117,12 +117,12 @@ const ContactFormSection = () => {
             {/* Images */}
             <div className="flex gap-4 mt-10">
               <img
-                src="https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/IMG_1646_Medium_x0mwhj.jpg"
+                src="https://prashannabajracharya.com/gallery_images/1.webp"
                 alt="Studio setup 1"
                 className="w-52 h-36 object-cover rounded-lg shadow-md"
               />
               <img
-                src="https://res.cloudinary.com/dzign6pg0/image/upload/v1752218517/Master_01_Medium_d02vg3.jpg"
+                src="https://prashannabajracharya.com/gallery_images/13.webp"
                 alt="Studio setup 2"
                 className="w-52 h-36 object-cover rounded-lg shadow-md"
               />
