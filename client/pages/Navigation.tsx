@@ -55,8 +55,8 @@ const Navigation = ({ BgColor }: NavigationProps) => {
       >
         <div className="flex justify-between items-center px-6 py-4 md:px-8 md:py-6">
           {/* Logo / Title */}
-          <div className="text-white font-oswald text-xl lg:text-2xl" >
-            <Link to="/">PRASHANNA</Link>
+          <div className="h-[12px] w-[128px] mb-8" >
+            <Link to="/"><img src="/untitled.png"></img></Link>
           </div>
 
           {/* Hamburger Menu Button - visible on all screen sizes */}

@@ -34,56 +34,58 @@ const ContactFormSection = () => {
       alt: "YouTube",
       href: "https://www.youtube.com/@untitledNepal",
     },
-
   ];
 
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus("idle");
 
     try {
       // Replace these with your actual EmailJS credentials
       const result = await emailjs.send(
-        'service_du95l24',     // Replace with your EmailJS service ID
-        'template_ojama59',    // Replace with your EmailJS template ID
+        "service_du95l24", // Replace with your EmailJS service ID
+        "template_ojama59", // Replace with your EmailJS template ID
         {
           from_name: `${formData.firstName} ${formData.lastName}`,
           from_email: formData.email,
           message: formData.message,
         },
-        'fQ9QyvQ2tOXqP0oi2'
+        "fQ9QyvQ2tOXqP0oi2",
       );
 
-      console.log('Email sent successfully:', result);
-      setSubmitStatus('success');
+      console.log("Email sent successfully:", result);
+      setSubmitStatus("success");
 
       // Reset form
       setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        message: ''
+        firstName: "",
+        lastName: "",
+        email: "",
+        message: "",
       });
-
     } catch (error) {
-      console.error('Email send failed:', error);
-      setSubmitStatus('error');
+      console.error("Email send failed:", error);
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -115,18 +117,12 @@ const ContactFormSection = () => {
             </h2>
 
             {/* Images */}
-            <div className="flex gap-4 mt-10">
-              <img
-                src="https://prashannabajracharya.com/gallery_images/1.webp"
-                alt="Studio setup 1"
-                className="w-52 h-36 object-cover rounded-lg shadow-md"
-              />
-              <img
-                src="https://prashannabajracharya.com/gallery_images/13.webp"
-                alt="Studio setup 2"
-                className="w-52 h-36 object-cover rounded-lg shadow-md"
-              />
-            </div>
+
+            <img
+              src="/earth.png"
+              alt="Studio setup 1"
+              className="w-52 h-36 object-cover rounded-lg shadow-md"
+            />
 
             <div>
               <h3
@@ -178,12 +174,12 @@ const ContactFormSection = () => {
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Success/Error Messages */}
-              {submitStatus === 'success' && (
+              {submitStatus === "success" && (
                 <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
                   Message sent successfully! I'll get back to you soon.
                 </div>
               )}
-              {submitStatus === 'error' && (
+              {submitStatus === "error" && (
                 <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
                   Failed to send message. Please try again or email directly.
                 </div>
@@ -191,7 +187,11 @@ const ContactFormSection = () => {
 
               <div className="grid grid-cols-1 ">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2" style={{fontFamily:"Staatliches"}}>
+                  <label
+                    htmlFor="firstName"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                    style={{ fontFamily: "Staatliches" }}
+                  >
                     Name
                   </label>
                   <input
@@ -205,11 +205,14 @@ const ContactFormSection = () => {
                     disabled={isSubmitting}
                   />
                 </div>
-
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2" style={{fontFamily:"Staatliches"}}>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                  style={{ fontFamily: "Staatliches" }}
+                >
                   Your email*
                 </label>
                 <input
@@ -225,7 +228,11 @@ const ContactFormSection = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2" style={{fontFamily:"Staatliches"}}>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                  style={{ fontFamily: "Staatliches" }}
+                >
                   Message*
                 </label>
                 <textarea
@@ -245,10 +252,10 @@ const ContactFormSection = () => {
                 className="w-full bg-portfolio-dark-green text-white py-3 px-6 rounded-lg font-medium hover:bg-opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 whileHover={!isSubmitting ? { scale: 1.02 } : {}}
                 whileTap={!isSubmitting ? { scale: 0.98 } : {}}
-                style={{fontFamily:"Staatliches"}}
+                style={{ fontFamily: "Staatliches" }}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Sending...' : 'Submit'}
+                {isSubmitting ? "Sending..." : "Submit"}
               </motion.button>
             </form>
           </motion.div>

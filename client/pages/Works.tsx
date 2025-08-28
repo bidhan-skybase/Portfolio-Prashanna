@@ -258,9 +258,9 @@ const AllWorks = () => {
 
   const filters = [
     "Show all",
-    "Documentaries",
-    "Music Videos",
     "Commercials",
+    "Music Videos",
+    "Documentaries",
     "After Movies",
     "Photography",
   ];
@@ -431,9 +431,9 @@ const AllWorks = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-white pt-12">
       {/* Header Section */}
-      <div className="px-6 md:px-12 lg:px-20 py-16">
+      <div className="px-6 md:px-12 lg:px-20 py-0 pt-12">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12">
             {/* Left side - Title */}
@@ -464,7 +464,7 @@ const AllWorks = () => {
       </div>
 
       {/* Filter Section */}
-      <div className="px-6 md:px-12 lg:px-20 pb-8">
+      <div className="px-6 md:px-12 lg:px-20 pb-0">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="mb-8"
@@ -472,7 +472,7 @@ const AllWorks = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h3 className="text-lg font-medium mb-4 text-black">filter</h3>
+            {/*<h3 className="text-lg font-medium mb-4 text-black">filter</h3>*/}
             <div className="flex flex-wrap gap-3">
               {filters.map((filter, index) => (
                 <motion.button

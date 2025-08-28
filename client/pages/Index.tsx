@@ -271,7 +271,7 @@ const TrustedBySection = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          TRUSTED BY
+          TRUSTED BY GLOBAL BRANDS
         </motion.h2>
 
         <div className="relative">
