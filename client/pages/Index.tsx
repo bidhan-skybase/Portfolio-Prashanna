@@ -176,9 +176,6 @@ const AboutSection = () => {
                   visuals that inspire, resonate, and elevate brands beyond
                   labels.
                 </p>
-
-
-
               </div>
 
               <div className="grid grid-cols-2 gap-16">
@@ -684,10 +681,17 @@ const CommercialSection = () => {
 };
 
 const PhotoGallery = ({
-  openModal,
-}: {
-  openModal: (src: string, alt: string) => void;
+                        openModal,
+                      }: {
+  openModal: (imageArray: string[], index: number) => void;
 }) => {
+
+  // Helper function to handle modal opening
+  const handleOpenModal = (src: string, alt: string) => {
+    const imageIndex = galleryImages.findIndex(img => img === src);
+    openModal(galleryImages, imageIndex);
+  };
+
   return (
     <section className="pt-0 bg-white overflow-hidden">
       {/* Keep max-width only for the title */}
@@ -716,7 +720,7 @@ const PhotoGallery = ({
           <InfiniteScrollRow
             images={galleryImages}
             direction="ltr"
-            openModal={openModal}
+            openModal={handleOpenModal}
             isMobile={true}
           />
         </div>
@@ -726,13 +730,13 @@ const PhotoGallery = ({
           <InfiniteScrollRow
             images={galleryImages.slice(0, Math.ceil(galleryImages.length / 2))}
             direction="ltr"
-            openModal={openModal}
+            openModal={handleOpenModal}
             isMobile={false}
           />
           <InfiniteScrollRow
             images={galleryImages.slice(Math.ceil(galleryImages.length / 2))}
             direction="rtl"
-            openModal={openModal}
+            openModal={handleOpenModal}
             isMobile={false}
           />
         </div>
@@ -1053,12 +1057,19 @@ const ArtistNamesSection = () => {
 };
 
 export default function Index() {
-  const { isOpen, currentImage, openModal, closeModal } = useImageModal();
+  const {
+    isOpen,
+    images,
+    currentIndex,
+    openModal,
+    closeModal,
+    navigateToImage,
+  } = useImageModal();
 
   return (
     <div className="bg-white">
       <HeroSection />
-      <AboutSection />
+
       <TrustedBySection />
       <VideoGallery
         title="Commercials"
@@ -1073,13 +1084,15 @@ export default function Index() {
       />
       <BrandsAndArtistsSection />
       <ArtistNamesSection />
+      <AboutSection />
       {/*<Footer />*/}
 
       <ImageModal
         isOpen={isOpen}
         onClose={closeModal}
-        src={currentImage.src}
-        alt={currentImage.alt}
+        images={images}
+        currentIndex={currentIndex}
+        onNavigate={navigateToImage}
       />
     </div>
   );

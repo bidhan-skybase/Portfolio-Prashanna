@@ -80,7 +80,7 @@ export const VideoGallery = ({ title, videos, sectionId = "works" }: VideoGaller
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-75 transition-all duration-300 flex flex-col justify-end p-4">
                   <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
                     <h3
-                      className="text-white text-lg font-semibold mb-2"
+                      className="text-white text-lg font-normal mb-2"
                       style={{ fontFamily: "Staatliches" }}
                     >
                       {getDisplayTitle(video).toUpperCase()}
