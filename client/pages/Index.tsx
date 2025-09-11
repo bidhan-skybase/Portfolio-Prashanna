@@ -790,7 +790,7 @@ const BrandsAndArtistsSection = () => {
       },
       {
         src: "https://prashannabajracharya.com/logos/coke bnw.webp",
-        hoverSrc: "https://prashannabajracharya.com/logos/coke color.webp",
+        hoverSrc: "https://prashannabajracharya.com/logos/coko color.webp",
         alt: "Coca Cola",
       },
       {
