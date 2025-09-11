@@ -758,10 +758,14 @@ const BrandsAndArtistsSection = () => {
       {
         src: "https://prashannabajracharya.com/logos/Adidas_ihp4iy.webp",
         alt: "Adidas",
+        customSize: "w-16 h-16", // Reduced size
+
       },
       {
         src: "https://prashannabajracharya.com/logos/Chanpions_League_q1mnrh.webp",
         alt: "Champions League",
+        customSize: "w-20 h-20", // Reduced size
+
       },
       {
         src: "https://prashannabajracharya.com/logo/ted.webp",
@@ -827,6 +831,8 @@ const BrandsAndArtistsSection = () => {
       {
         src: "https://prashannabajracharya.com/logos/Seres_odqyyp.webp",
         alt: "Seres",
+        customSize: "w-16 h-16", // Reduced size
+
       },
       {
         src: "https://prashannabajracharya.com/logo/niu.webp",
@@ -904,7 +910,7 @@ const BrandsAndArtistsSection = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  const LogoGrid = ({ logos, rowIndex, isLastRow }) => (
+  const LogoGridWithColorEffect = ({ logos, rowIndex, isLastRow }) => (
     <motion.div
       className={`flex justify-center items-center gap-10 lg:gap-20 flex-wrap ${
         isLastRow ? "" : "mb-12"
@@ -926,7 +932,11 @@ const BrandsAndArtistsSection = () => {
           <img
             src={logo.src}
             alt={logo.alt}
-            className={`${logo.customSize || "w-24 h-24"} object-contain`}
+            className={`${logo.customSize || "w-24 h-24"} object-contain transition-all duration-300 ${
+              logo.skipColorChange
+                ? ""
+                : "grayscale hover:grayscale-0 brightness-75 hover:brightness-100"
+            }`}
             loading="lazy"
           />
         </motion.div>
@@ -962,7 +972,7 @@ const BrandsAndArtistsSection = () => {
         <div className="bg-black px-8 lg:px-20 py-20">
           <div className="max-w-6xl mx-auto">
             {logoData.map((row, rowIndex) => (
-              <LogoGrid
+              <LogoGridWithColorEffect
                 key={rowIndex}
                 logos={row}
                 rowIndex={rowIndex}
