@@ -751,7 +751,7 @@ const BrandsAndArtistsSection = () => {
     // Row 1
     [
       {
-        src: "https://prashannabajracharya.com/logos/Pepsi_mjk1q3.webp",
+        src: "https://prashannabajracharya.com/logo/pepsi.webp",
         alt: "Pepsi",
         customSize: "w-16 h-16", // Reduced size
       },
@@ -764,15 +764,15 @@ const BrandsAndArtistsSection = () => {
         alt: "Champions League",
       },
       {
-        src: "https://prashannabajracharya.com/logos/Tedx_ljvgef.webp",
+        src: "https://prashannabajracharya.com/logo/ted.webp",
         alt: "TEDx",
       },
       {
-        src: "https://prashannabajracharya.com/logos/Coca_Cola_l4ce9a.webp",
+        src: "https://prashannabajracharya.com/logo/coke.webp",
         alt: "Coca Cola",
       },
       {
-        src: "https://prashannabajracharya.com/logos/Expo_City_Dubai_qptndz.webp",
+        src: "https://prashannabajracharya.com/logo/expo.webp",
         alt: "Expo City Dubai",
       },
       {
@@ -783,7 +783,7 @@ const BrandsAndArtistsSection = () => {
     ],
     [
       {
-        src: "https://prashannabajracharya.com/logos/Lolla_India_sc2oxo.webp",
+        src: "https://prashannabajracharya.com/logo/lolla.webp",
         alt: "Lollapaloza",
         customSize: "w-28 h-32", // Increased size
       },
@@ -793,34 +793,35 @@ const BrandsAndArtistsSection = () => {
       },
 
       {
-        src: "https://prashannabajracharya.com/logos/Tuborg_iafgye.webp",
+        src: "https://prashannabajracharya.com/logo/tuborg.webp",
         alt: "Tuborg",
       },
       {
-        src: "https://prashannabajracharya.com/logos/Samsung_qc4q9b.webp",
+        src: "https://prashannabajracharya.com/logo/samsung.webp",
         alt: "Samsung",
       },
       {
-        src: "https://prashannabajracharya.com/logos/SOS_uazsnq.webp",
+        src: "https://prashannabajracharya.com/logo/sos.webp",
         alt: "SOS",
       },
       {
-        src: "https://prashannabajracharya.com/logos/Skoda_lgpmzg.webp",
+        src: "https://prashannabajracharya.com/logo/skoda.webp",
         alt: "Skoda",
       },
     ],
     // Row 2
     [
       {
-        src: "https://prashannabajracharya.com/logos/Yamaha_jovsop.webp",
+        src: "https://prashannabajracharya.com/logo/yamaha.webp",
         alt: "Yamaha",
       },
       {
-        src: "https://prashannabajracharya.com/logos/Changan_wk0gzr.webp",
+        src: "https://prashannabajracharya.com/logo/changan.webp",
+        customSize: "w-32 h-32",
         alt: "Changan",
       },
       {
-        src: "https://prashannabajracharya.com/logos/Foton_bbyiyb.webp",
+        src: "https://prashannabajracharya.com/logo/foton.webp",
         alt: "Foton",
       },
       {
@@ -828,22 +829,22 @@ const BrandsAndArtistsSection = () => {
         alt: "Seres",
       },
       {
-        src: "https://prashannabajracharya.com/logos/Niu_ifpxku.webp",
+        src: "https://prashannabajracharya.com/logo/niu.webp",
         alt: "Niu",
       },
       {
-        src: "https://prashannabajracharya.com/logos/believe.webp",
+        src: "https://prashannabajracharya.com/logo/believe.webp",
         alt: "Believe",
       },
     ],
     // Row 3
     [
       {
-        src: "https://prashannabajracharya.com/logos/Nepal_Tourism_Board_sgefpx.webp",
+        src: "https://prashannabajracharya.com/logo/ntb.webp",
         alt: "Nepal Tourism Board",
       },
       {
-        src: "https://prashannabajracharya.com/logos/KMG_z5smgs.webp",
+        src: "https://prashannabajracharya.com/logo/kmg.webp",
         alt: "KMG",
         customSize: "w-16 h-16", // Reduced size
       },
@@ -852,13 +853,13 @@ const BrandsAndArtistsSection = () => {
         alt: "Mountain Lodge of Nepal",
       },
       {
-        src: "https://prashannabajracharya.com/logos/Gorkha_Brewery_a0xs61.webp",
+        src: "https://prashannabajracharya.com/logo/gorkha.webp",
         alt: "Gorkha Brewery",
         customSize: "w-32 h-32", // Increased size
       },
 
       {
-        src: "https://prashannabajracharya.com/logos/Ruslan_sa4aoz.webp",
+        src: "https://prashannabajracharya.com/logo/ruslan.webp",
         alt: "Ruslan",
       },
       {
@@ -866,28 +867,28 @@ const BrandsAndArtistsSection = () => {
         alt: "Metal for Nepal",
       },
       {
-        src: "https://prashannabajracharya.com/logos/Khalti_tquumc.webp",
+        src: "https://prashannabajracharya.com/logo/khalti.webp",
         alt: "Khalti",
       },
     ],
     [
       {
-        src: "https://prashannabajracharya.com/logos/DAV_fjxice.webp",
+        src: "https://prashannabajracharya.com/logo/dav.webp",
         alt: "DAV",
         customSize: "w-16 h-16", // Reduced size
       },
 
       {
-        src: "https://prashannabajracharya.com/logos/Crossfire_ta6avf.webp",
+        src: "https://prashannabajracharya.com/logo/cf.webp",
         alt: "Crossfire",
         customSize: "w-32 h-32", // Increased size
       },
       {
-        src: "https://prashannabajracharya.com/logos/Yatri_hfjq2j.webp",
+        src: "https://prashannabajracharya.com/logo/yatri.webp",
         alt: "Yatri",
       },
       {
-        src: "https://prashannabajracharya.com/logos/janakput.webp",
+        src: "https://prashannabajracharya.com/logo/janakpur.webp",
         alt: "Janakpur Bolts",
       },
     ],
