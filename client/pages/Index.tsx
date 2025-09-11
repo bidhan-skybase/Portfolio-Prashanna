@@ -22,6 +22,22 @@ const galleryImages = [
   "https://prashannabajracharya.com/gallery_images/12.webp",
   "https://prashannabajracharya.com/gallery_images/13.webp",
   "https://prashannabajracharya.com/gallery_images/14.webp",
+  "https://prashannabajracharya.com/gallery_images/15.webp",
+  "https://prashannabajracharya.com/gallery_images/16.webp",
+  "https://prashannabajracharya.com/gallery_images/17.webp",
+  "https://prashannabajracharya.com/gallery_images/18.webp",
+  "https://prashannabajracharya.com/gallery_images/19.webp",
+  "https://prashannabajracharya.com/gallery_images/20.webp",
+  "https://prashannabajracharya.com/gallery_images/21.webp",
+  "https://prashannabajracharya.com/gallery_images/22.webp",
+  "https://prashannabajracharya.com/gallery_images/23.webp",
+  "https://prashannabajracharya.com/gallery_images/24.webp",
+  "https://prashannabajracharya.com/gallery_images/25.webp",
+  "https://prashannabajracharya.com/gallery_images/26.webp",
+  "https://prashannabajracharya.com/gallery_images/27.webp",
+  "https://prashannabajracharya.com/gallery_images/28.webp",
+  "https://prashannabajracharya.com/gallery_images/29.webp",
+  "https://prashannabajracharya.com/gallery_images/30.webp",
 ];
 
 const HeroSection = () => {
@@ -681,14 +697,13 @@ const CommercialSection = () => {
 };
 
 const PhotoGallery = ({
-                        openModal,
-                      }: {
+  openModal,
+}: {
   openModal: (imageArray: string[], index: number) => void;
 }) => {
-
   // Helper function to handle modal opening
   const handleOpenModal = (src: string, alt: string) => {
-    const imageIndex = galleryImages.findIndex(img => img === src);
+    const imageIndex = galleryImages.findIndex((img) => img === src);
     openModal(galleryImages, imageIndex);
   };
 
@@ -751,7 +766,8 @@ const BrandsAndArtistsSection = () => {
     // Row 1
     [
       {
-        src: "https://prashannabajracharya.com/logo/pepsi.webp",
+        src: "https://prashannabajracharya.com/logo/pepsi-bnw.png",
+        hoverSrc: "https://prashannabajracharya.com/logo/pepsi-color.png",
         alt: "Pepsi",
         customSize: "w-16 h-16", // Reduced size
       },
@@ -759,20 +775,18 @@ const BrandsAndArtistsSection = () => {
         src: "https://prashannabajracharya.com/logos/Adidas_ihp4iy.webp",
         alt: "Adidas",
         customSize: "w-16 h-16", // Reduced size
-
       },
       {
         src: "https://prashannabajracharya.com/logos/Chanpions_League_q1mnrh.webp",
         alt: "Champions League",
         customSize: "w-20 h-20", // Reduced size
-
       },
       {
         src: "https://prashannabajracharya.com/logo/ted.webp",
         alt: "TEDx",
       },
       {
-        src: "https://prashannabajracharya.com/logo/coke.webp",
+        src: "https://prashannabajracharya.com/logo/coke-color.jpeg",
         alt: "Coca Cola",
       },
       {
@@ -832,14 +846,14 @@ const BrandsAndArtistsSection = () => {
         src: "https://prashannabajracharya.com/logos/Seres_odqyyp.webp",
         alt: "Seres",
         customSize: "w-16 h-16", // Reduced size
-
       },
       {
         src: "https://prashannabajracharya.com/logo/niu.webp",
         alt: "Niu",
       },
       {
-        src: "https://prashannabajracharya.com/logo/believe.webp",
+        src: "/icons/believe-bnw.png",
+        hoverSrc: "/icons/believe-color.png",
         alt: "Believe",
       },
     ],
@@ -879,9 +893,9 @@ const BrandsAndArtistsSection = () => {
     ],
     [
       {
-        src: "https://prashannabajracharya.com/logo/dav.webp",
+        src: "/icons/dav-b.png",
+        hoverSrc: "/icons/dav-c.png",
         alt: "DAV",
-        customSize: "w-16 h-16", // Reduced size
       },
 
       {
@@ -910,7 +924,7 @@ const BrandsAndArtistsSection = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  const LogoGridWithColorEffect = ({ logos, rowIndex, isLastRow }) => (
+  const LogoGridWithImageSwap = ({ logos, rowIndex, isLastRow }) => (
     <motion.div
       className={`flex justify-center items-center gap-10 lg:gap-20 flex-wrap ${
         isLastRow ? "" : "mb-12"
@@ -924,26 +938,35 @@ const BrandsAndArtistsSection = () => {
       {logos.map((logo, index) => (
         <motion.div
           key={`${logo.alt}-${index}`}
-          className="flex items-center justify-center"
+          className="flex items-center justify-center relative overflow-hidden"
           variants={logoVariants}
           transition={{ duration: 0.3, delay: 0.1 + index * 0.1 }}
           whileHover={{ scale: 1.2 }}
         >
+          {/* Main image */}
           <img
             src={logo.src}
             alt={logo.alt}
             className={`${logo.customSize || "w-24 h-24"} object-contain transition-all duration-300 ${
-              logo.skipColorChange
-                ? ""
-                : "grayscale hover:grayscale-0 brightness-75 hover:brightness-100"
-            }`}
+              logo.hoverSrc ? "group-hover:opacity-0" : ""
+            } filter grayscale hover:grayscale-0`}
             loading="lazy"
           />
+
+
+          {/* Hover image (if provided) */}
+          {logo.hoverSrc && (
+            <img
+              src={logo.hoverSrc}
+              alt={`${logo.alt} hover`}
+              className={`${logo.customSize || "w-24 h-24"} object-contain absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300`}
+              loading="lazy"
+            />
+          )}
         </motion.div>
       ))}
     </motion.div>
   );
-
   return (
     <section
       className=""
@@ -969,10 +992,10 @@ const BrandsAndArtistsSection = () => {
         </motion.h2>
 
         {/* Black background section */}
-        <div className="bg-black px-8 lg:px-20 py-20">
+        <div className="bg-white px-8 lg:px-20 py-20">
           <div className="max-w-6xl mx-auto">
             {logoData.map((row, rowIndex) => (
-              <LogoGridWithColorEffect
+              <LogoGridWithImageSwap
                 key={rowIndex}
                 logos={row}
                 rowIndex={rowIndex}
