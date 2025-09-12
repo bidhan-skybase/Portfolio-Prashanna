@@ -240,6 +240,7 @@ const AllWorks = () => {
       id: "after_1",
       category: "After Movies",
       url: "https://youtu.be/LXQGcVf3lr8",
+      thumbnail:'/thumbnails/aftermovie.jpg'
     },
     {
       id: "after_20",
@@ -256,11 +257,7 @@ const AllWorks = () => {
       category: "After Movies",
       url: "https://www.youtube.com/watch?v=ufDpfhmHYOU",
     },
-    {
-      id: "after_4",
-      category: "After Movies",
-      url: "https://youtu.be/lGPeTb37_LQ?si=0JQYkxk6kcT69kL2",
-    },
+
     {
       id: "after_5",
       category: "After Movies",
@@ -408,16 +405,27 @@ const AllWorks = () => {
     navigateToImage,
   } = useImageModal();
   // Custom VideoThumbnail component to handle thumbnail loading
+// Custom VideoThumbnail component to handle thumbnail loading
   const VideoThumbnail = ({ project, onModalOpen }) => {
     const [thumbnailError, setThumbnailError] = useState(false);
     const [currentThumbnailIndex, setCurrentThumbnailIndex] = useState(0);
 
     const videoId = extractVideoId(project.url);
     const isShort = isYouTubeShort(project.url);
-    const thumbnailOptions = getThumbnailUrl(videoId, isShort);
+
+    // Use custom thumbnail if available, otherwise use YouTube thumbnails
+    const thumbnailOptions = project.thumbnail
+      ? [project.thumbnail] // Use custom thumbnail first
+      : getThumbnailUrl(videoId, isShort); // Fallback to YouTube thumbnails
 
     const handleThumbnailError = () => {
-      if (currentThumbnailIndex < thumbnailOptions.length - 1) {
+      if (project.thumbnail && currentThumbnailIndex === 0) {
+        // If custom thumbnail fails, fallback to YouTube thumbnails
+        const youtubeThumbnails = getThumbnailUrl(videoId, isShort);
+        setCurrentThumbnailIndex(1); // Skip to first YouTube thumbnail
+        // Update thumbnail options to include YouTube fallbacks
+        thumbnailOptions.push(...youtubeThumbnails);
+      } else if (currentThumbnailIndex < thumbnailOptions.length - 1) {
         setCurrentThumbnailIndex((prev) => prev + 1);
       } else {
         setThumbnailError(true);
@@ -447,8 +455,8 @@ const AllWorks = () => {
             </h4>
             {isShort && (
               <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">
-                SHORTS
-              </span>
+              SHORTS
+            </span>
             )}
           </div>
         </div>
@@ -467,6 +475,8 @@ const AllWorks = () => {
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           onError={handleThumbnailError}
         />
+
+
 
         {/* Shorts indicator */}
         {isShort && (
@@ -489,7 +499,6 @@ const AllWorks = () => {
       </div>
     );
   };
-
   return (
     <div className="min-h-screen bg-white pt-12">
       {/* Header Section */}
