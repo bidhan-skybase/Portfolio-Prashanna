@@ -16,14 +16,17 @@ const thumbnailMap: { [key: string]: string } = {
 const commercialUrls = [
   "https://youtu.be/tI--w9k7P0g",
   "https://youtu.be/AlRhi6xPrHc",
-  "https://youtu.be/uzTDHZ4qpeY",
+  "https://youtu.be/BSYZS1LjSnQ",
   "https://www.youtube.com/watch?v=S7DRJNuYrhs",
   "https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z",
-  "https://youtu.be/pjCOsZZPB3c",
+  "https://youtu.be/ierR4wtomT4",
   "https://youtu.be/ZmxUV8x5Bt4",
   "https://www.youtube.com/watch?v=81D9H2Z3Vcw",
-  "https://youtu.be/ierR4wtomT4",
-  "https://youtu.be/BSYZS1LjSnQ",
+
+  "https://youtu.be/pjCOsZZPB3c",
+
+  "https://youtu.be/uzTDHZ4qpeY",
+
   "https://youtu.be/b7bkdI_WXyw",
   "https://youtu.be/q-KMYchnYa0"
 ];
