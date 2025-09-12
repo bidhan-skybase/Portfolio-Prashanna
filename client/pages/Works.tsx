@@ -8,6 +8,38 @@ const AllWorks = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [videoTitles, setVideoTitles] = useState({});
+  // Custom hook for image modal functionality
+  const useImageModal = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [images, setImages] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const openModal = (src, alt, allImages = []) => {
+      setImages(allImages);
+      const index = allImages.findIndex((img) => img === src);
+      setCurrentIndex(index >= 0 ? index : 0);
+      setIsOpen(true);
+    };
+
+    const closeModal = () => {
+      setIsOpen(false);
+      setImages([]);
+      setCurrentIndex(0);
+    };
+
+    const navigateToImage = (index) => {
+      setCurrentIndex(index);
+    };
+
+    return {
+      isOpen,
+      images,
+      currentIndex,
+      openModal,
+      closeModal,
+      navigateToImage,
+    };
+  };
 
   const galleryImages = [
     "https://prashannabajracharya.com/gallery_images/1.webp",
@@ -72,7 +104,8 @@ const AllWorks = () => {
       id: "doc_6",
       category: "Documentaries",
       url: "https://youtu.be/NOqkE2YJtkY?si=z3ZbqE7y_sQ-l5e8",
-    },{
+    },
+    {
       id: "doc_7",
       category: "Documentaries",
       url: "https://youtu.be/lGPeTb37_LQ?si=0JQYkxk6kcT69kL2",
@@ -287,7 +320,7 @@ const AllWorks = () => {
 
   // Helper function to detect YouTube Shorts
   const isYouTubeShort = (url) => {
-    return url.includes('/shorts/') || url.includes('youtube.com/shorts');
+    return url.includes("/shorts/") || url.includes("youtube.com/shorts");
   };
 
   const extractVideoId = (url) => {
@@ -315,14 +348,14 @@ const AllWorks = () => {
         `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
         `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
         `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`,
-        `https://i.ytimg.com/vi/${videoId}/default.jpg`
+        `https://i.ytimg.com/vi/${videoId}/default.jpg`,
       ];
     } else {
       return [
         // `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
         // `https://img.youtube.com/vi/${videoId}/sddefault.jpg`,
         // `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
-        `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
+        `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
       ];
     }
   };
@@ -361,19 +394,14 @@ const AllWorks = () => {
     setSelectedVideo(null);
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState({ src: "", alt: "" });
-
-  const openImageModel = (imageData) => {
-    setCurrentImage({ src: imageData.src, alt: imageData.alt });
-    setIsOpen(true);
-  };
-
-  const closeImageModel = () => {
-    setIsOpen(false);
-    setCurrentImage({ src: "", alt: "" });
-  };
-
+  const {
+    isOpen: isImageModalOpen,
+    images: modalImages,
+    currentIndex,
+    openModal: openImageModal,
+    closeModal: closeImageModal,
+    navigateToImage,
+  } = useImageModal();
   // Custom VideoThumbnail component to handle thumbnail loading
   const VideoThumbnail = ({ project, onModalOpen }) => {
     const [thumbnailError, setThumbnailError] = useState(false);
@@ -385,7 +413,7 @@ const AllWorks = () => {
 
     const handleThumbnailError = () => {
       if (currentThumbnailIndex < thumbnailOptions.length - 1) {
-        setCurrentThumbnailIndex(prev => prev + 1);
+        setCurrentThumbnailIndex((prev) => prev + 1);
       } else {
         setThumbnailError(true);
       }
@@ -394,13 +422,19 @@ const AllWorks = () => {
     if (thumbnailError) {
       // Custom fallback when all thumbnails fail
       return (
-        <div className={`relative overflow-hidden rounded-lg shadow-lg bg-gradient-to-br from-red-500 to-red-700 ${
-          isShort ? 'aspect-[9/16]' : 'aspect-[16/9]'
-        }`}>
+        <div
+          className={`relative overflow-hidden rounded-lg shadow-lg bg-gradient-to-br from-red-500 to-red-700 ${
+            isShort ? "aspect-[9/16]" : "aspect-[16/9]"
+          }`}
+        >
           <div className="w-full h-full flex flex-col items-center justify-center text-white p-4">
             <div className="bg-white bg-opacity-20 rounded-full p-4 mb-4">
               <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                  clipRule="evenodd"
+                />
               </svg>
             </div>
             <h4 className="text-sm font-semibold text-center mb-2">
@@ -417,9 +451,11 @@ const AllWorks = () => {
     }
 
     return (
-      <div className={`relative overflow-hidden rounded-lg shadow-lg bg-gray-200 ${
-        isShort ? 'aspect-[16/9]' : 'aspect-[16/9]'
-      }`}>
+      <div
+        className={`relative overflow-hidden rounded-lg shadow-lg bg-gray-200 ${
+          isShort ? "aspect-[16/9]" : "aspect-[16/9]"
+        }`}
+      >
         <img
           src={thumbnailOptions[currentThumbnailIndex]}
           alt={videoTitles[project.id] || "Video thumbnail"}
@@ -443,7 +479,6 @@ const AllWorks = () => {
             >
               {videoTitles[project.id] || "Loading..."}
             </h3>
-
           </div>
         </div>
       </div>
@@ -477,8 +512,7 @@ const AllWorks = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-            >
-            </motion.div>
+            ></motion.div>
           </div>
         </div>
       </div>
@@ -529,50 +563,47 @@ const AllWorks = () => {
           >
             {activeFilter === "Photography"
               ? galleryImages.map((image, index) => (
-                <motion.div
-                  key={`image_${index}`}
-                  className="group cursor-pointer relative"
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
-                  onClick={() =>
-                    openImageModel({
-                      src: image,
-                      alt: `Gallery image ${index + 1}`,
-                      isImage: true,
-                    })
-                  }
-                >
-                  <div className="relative overflow-hidden rounded-lg shadow-lg bg-gray-200 aspect-[16/9]">
-                    <img
-                      src={image}
-                      alt={`Gallery image ${index + 1}`}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      onError={(e) => {
-                        e.target.src = "/placeholder.jpg";
-                      }}
-                    />
-                  </div>
-                </motion.div>
-              ))
+                  <motion.div
+                    key={`image_${index}`}
+                    className="group cursor-pointer relative"
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.02 }}
+                    onClick={() =>
+                      openImageModal(
+                        image,
+                        `Gallery image ${index + 1}`,
+                        galleryImages,
+                      )
+                    }
+                  >
+                    <div className="relative overflow-hidden rounded-lg shadow-lg bg-gray-200 aspect-[16/9]">
+                      <img
+                        src={image}
+                        alt={`Gallery image ${index + 1}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onError={(e) => {
+                          e.target.src = "/placeholder.jpg";
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+                ))
               : filteredProjects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  className="group cursor-pointer relative"
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
-                  onClick={() => openModal(project)}
-                >
-                  <VideoThumbnail
-                    project={project}
-                    onModalOpen={openModal}
-                  />
-                </motion.div>
-              ))}
+                  <motion.div
+                    key={project.id}
+                    className="group cursor-pointer relative"
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.02 }}
+                    onClick={() => openModal(project)}
+                  >
+                    <VideoThumbnail project={project} onModalOpen={openModal} />
+                  </motion.div>
+                ))}
           </motion.div>
 
           {/* Empty state */}
@@ -592,10 +623,11 @@ const AllWorks = () => {
 
         {/* Image Modal */}
         <ImageModal
-          isOpen={isOpen}
-          onClose={closeImageModel}
-          src={currentImage.src}
-          alt={currentImage.alt}
+          isOpen={isImageModalOpen}
+          onClose={closeImageModal}
+          images={modalImages}
+          currentIndex={currentIndex}
+          onNavigate={navigateToImage}
         />
       </div>
 
