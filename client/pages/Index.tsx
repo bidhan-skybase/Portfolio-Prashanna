@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { ImageModal, useImageModal } from "../components/ImageModal";
 import { VideoGallery } from "../components/VideoGallery";
@@ -274,11 +274,11 @@ const TrustedBySection = () => {
     >
       <div className="max-w-7xl mx-auto px-8 text-center">
         <motion.h2
+          className="text-3xl sm:text-4xl lg:text-6xl mb-6 sm:mb-8 lg:mb-10 text-center"
           style={{
             fontFamily: "Staatliches",
-            fontSize: "clamp(58px, 8vw, 76px)",
+            fontSize: "clamp(28px, 8vw, 76px)",
           }}
-          className="text-4xl lg:text-6xl mb-12 leading-[1.2] sm:leading-[1.2]"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -347,22 +347,19 @@ const PhotoGallery = ({
     <section className="pt-0 bg-white overflow-hidden">
       {/* Keep max-width only for the title */}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        <motion.h2
-          className="text-portfolio-dark-green font-medium text-3xl sm:text-4xl lg:text-6xl mb-8 sm:mb-16 text-center"
-          style={{
-            fontFamily: "Staatliches",
-            fontSize: "clamp(58px, 8vw, 76px)",
-            lineHeight: 1.1, // 👈 tighter line height
-          }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          Photos / Brand Key Visuals
-        </motion.h2>
-      </div>
+      <motion.h2
+        className="text-3xl sm:text-4xl lg:text-6xl mb-6 sm:mb-8 lg:mb-10 text-center"
+        style={{
+          fontFamily: "Staatliches",
+          fontSize: "clamp(28px, 8vw, 76px)",
+        }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        PHOTOS / BRANDS VISUALS
+      </motion.h2>
 
       {/* Full-width scroll containers */}
       <div className="w-full px-4 sm:px-8 lg:px-[5rem]">
