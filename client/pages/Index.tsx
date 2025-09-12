@@ -235,7 +235,7 @@ const TrustedBySection = () => {
       alt: "Skoda Green",
     },
     {
-      src: "https://prashannabajracharya.com/logos/tedx.webp",
+      src: "https://prashannabajracharya.com/logos/tedx-green.png",
       alt: "TEDx Green",
     },
     {
