@@ -507,18 +507,23 @@ const AllWorks = () => {
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12">
             {/* Left side - Title */}
             <motion.div
-              className="lg:w-1/2"
+              className="w-full lg:w-1/2"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
               <h1
-                className="text-[120px] md:text-[180px] lg:text-[220px] font-bold leading-none text-black"
-                style={{ fontFamily: "Staatliches" }}
+                className="font-bold text-black leading-none"
+                style={{
+                  fontFamily: "Staatliches",
+                  fontSize: "clamp(60px, 12vw, 220px)", // scales from 60px up to 220px
+                  lineHeight: 1, // ensures no extra gap
+                }}
               >
                 Projects
               </h1>
             </motion.div>
+
 
             {/* Right side - Description */}
             <motion.div
