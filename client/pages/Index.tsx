@@ -772,6 +772,11 @@ const BrandsAndArtistsSection = () => {
         customSize: "w-16 h-16", // Reduced size
       },
       {
+        src: "https://prashannabajracharya.com/logos/coke bnw.webp",
+        hoverSrc: "https://prashannabajracharya.com/logos/coko color.webp",
+        alt: "Coca Cola",
+      },
+      {
         src: "https://prashannabajracharya.com/logos/adidas bw.webp",
         hoverSrc: "https://prashannabajracharya.com/logos/adidas c.webp",
         alt: "Adidas",
@@ -788,11 +793,7 @@ const BrandsAndArtistsSection = () => {
         hoverSrc: "https://prashannabajracharya.com/logos/tedx c.webp",
         alt: "TEDx",
       },
-      {
-        src: "https://prashannabajracharya.com/logos/coke bnw.webp",
-        hoverSrc: "https://prashannabajracharya.com/logos/coko color.webp",
-        alt: "Coca Cola",
-      },
+
       {
         src: "https://prashannabajracharya.com/logos/expo bw.webp",
         hoverSrc: "https://prashannabajracharya.com/logos/expo c.webp",
@@ -807,6 +808,22 @@ const BrandsAndArtistsSection = () => {
     ],
     [
       {
+        src: "https://prashannabajracharya.com/logos/Unilever bw.webp",
+        hoverSrc: "https://prashannabajracharya.com/logos/Unilever c.webp",
+        alt: "Unilever",
+      },
+      {
+        src: "https://prashannabajracharya.com/logos/samsung bw.webp",
+        hoverSrc: "https://prashannabajracharya.com/logos/samsung c.webp",
+        alt: "Samsung",
+      },
+
+      {
+        src: "https://prashannabajracharya.com/logos/tuborg bnw.webp",
+        hoverSrc: "https://prashannabajracharya.com/logos/tuborg c.webp",
+        alt: "Tuborg",
+      },
+      {
         src: "https://prashannabajracharya.com/logos/Lolla bw.webp",
         hoverSrc: "https://prashannabajracharya.com/logos/lolla c.webp",
         alt: "Lollapaloza",
@@ -819,28 +836,18 @@ const BrandsAndArtistsSection = () => {
       },
 
       {
-        src: "https://prashannabajracharya.com/logos/tuborg bnw.webp",
-        hoverSrc: "https://prashannabajracharya.com/logos/tuborg c.webp",
-        alt: "Tuborg",
-      },
-      {
-        src: "https://prashannabajracharya.com/logos/samsung bw.webp",
-        hoverSrc: "https://prashannabajracharya.com/logos/samsung c.webp",
-        alt: "Samsung",
-      },
-      {
         src: "https://prashannabajracharya.com/logos/sios bw.webp",
         hoverSrc: "https://prashannabajracharya.com/logos/sios c.webp",
         alt: "SOS",
       },
+    ],
+    // Row 2
+    [
       {
         src: "https://prashannabajracharya.com/logos/skoda bnw.webp",
         hoverSrc: "https://prashannabajracharya.com/logos/skoda color.webp",
         alt: "Skoda",
       },
-    ],
-    // Row 2
-    [
       {
         src: "https://prashannabajracharya.com/logos/yamaha bw.webp",
         hoverSrc: "https://prashannabajracharya.com/logos/yamaha c.webp",
@@ -889,7 +896,7 @@ const BrandsAndArtistsSection = () => {
       },
       {
         src: "https://prashannabajracharya.com/logos/MLN bw.webp",
-        hoverSrc: "https://prashannabajracharya.com/logos/MLN c.webp",
+        hoverSrc: "https://prashannabajracharya.com/logos/mln.webp",
         alt: "Mountain Lodge of Nepal",
       },
       {
@@ -920,11 +927,6 @@ const BrandsAndArtistsSection = () => {
         src: "https://prashannabajracharya.com/logos/dav bnw.webp",
         hoverSrc: "https://prashannabajracharya.com/logos/dav c.webp",
         alt: "DAV",
-      },
-      {
-        src: "https://prashannabajracharya.com/logos/Unilever bw.webp",
-        hoverSrc: "https://prashannabajracharya.com/logos/Unilever c.webp",
-        alt: "Unilever",
       },
 
       {

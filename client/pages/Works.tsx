@@ -56,6 +56,10 @@ const AllWorks = () => {
       id: "doc_6",
       category: "Documentaries",
       url: "https://youtu.be/NOqkE2YJtkY?si=z3ZbqE7y_sQ-l5e8",
+    },{
+      id: "doc_7",
+      category: "Documentaries",
+      url: "https://youtu.be/lGPeTb37_LQ?si=0JQYkxk6kcT69kL2",
     },
     {
       id: "comm_1",
