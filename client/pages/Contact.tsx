@@ -61,10 +61,9 @@ const ContactFormSection = () => {
     setSubmitStatus("idle");
 
     try {
-      // Replace these with your actual EmailJS credentials
       const result = await emailjs.send(
-        "service_du95l24", // Replace with your EmailJS service ID
-        "template_ojama59", // Replace with your EmailJS template ID
+        "service_du95l24",
+        "template_ojama59",
         {
           from_name: `${formData.firstName} ${formData.lastName}`,
           from_email: formData.email,
@@ -111,9 +110,9 @@ const ContactFormSection = () => {
                 lineHeight: 1.1,
               }}
             >
-              Let's Build Something That
+              MOVE DIFFERENT
               <br />
-              looks Like No One Else
+              IF YOU WANT DIFFERENT{" "}
             </h2>
 
             {/* Images */}
