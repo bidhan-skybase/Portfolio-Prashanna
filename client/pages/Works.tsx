@@ -24,6 +24,22 @@ const AllWorks = () => {
     "https://prashannabajracharya.com/gallery_images/12.webp",
     "https://prashannabajracharya.com/gallery_images/13.webp",
     "https://prashannabajracharya.com/gallery_images/14.webp",
+    "https://prashannabajracharya.com/gallery_images/15.webp",
+    "https://prashannabajracharya.com/gallery_images/16.webp",
+    "https://prashannabajracharya.com/gallery_images/17.webp",
+    "https://prashannabajracharya.com/gallery_images/18.webp",
+    "https://prashannabajracharya.com/gallery_images/19.webp",
+    "https://prashannabajracharya.com/gallery_images/20.webp",
+    "https://prashannabajracharya.com/gallery_images/21.webp",
+    "https://prashannabajracharya.com/gallery_images/22.webp",
+    "https://prashannabajracharya.com/gallery_images/23.webp",
+    "https://prashannabajracharya.com/gallery_images/24.webp",
+    "https://prashannabajracharya.com/gallery_images/25.webp",
+    "https://prashannabajracharya.com/gallery_images/26.webp",
+    "https://prashannabajracharya.com/gallery_images/27.webp",
+    "https://prashannabajracharya.com/gallery_images/28.webp",
+    "https://prashannabajracharya.com/gallery_images/29.webp",
+    "https://prashannabajracharya.com/gallery_images/30.webp",
   ];
 
   const projects = [

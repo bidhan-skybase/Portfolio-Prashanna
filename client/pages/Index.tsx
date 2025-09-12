@@ -196,7 +196,7 @@ const AboutSection = () => {
 
               <div className="grid grid-cols-2 gap-16">
                 <CounterAnimation end={6} label="Years Experience" />
-                <CounterAnimation end={69} label="Happy Clients" />
+                <CounterAnimation end={80} label="Happy Clients" />
               </div>
             </motion.div>
 
