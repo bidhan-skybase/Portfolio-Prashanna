@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 interface NavigationProps {
@@ -7,15 +7,24 @@ interface NavigationProps {
 }
 
 const Navigation = ({ BgColor }: NavigationProps) => {
+  const location = useLocation();
+
   const navItems = [
     { name: 'HOME', path: '/' },
     { name: 'ABOUT', path: '/#about' },
     { name: 'WORKS', path: '/works' },
     { name: 'CONTACT', path: '/#contact' },
   ];
+
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Scroll to top when route changes (but not for hash changes)
+  useEffect(() => {
+    if (!location.hash) {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +42,19 @@ const Navigation = ({ BgColor }: NavigationProps) => {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  // Handle navigation clicks
+  const handleNavClick = (path: string) => {
+    closeMenu();
+
+    // If navigating to a different page (not hash link), scroll to top
+    if (!path.startsWith('/#') && path !== location.pathname) {
+      // Use setTimeout to ensure navigation happens first
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }, 50);
+    }
   };
 
   return (
@@ -55,8 +77,10 @@ const Navigation = ({ BgColor }: NavigationProps) => {
       >
         <div className="flex justify-between items-center px-6 py-4 md:px-8 md:py-6">
           {/* Logo / Title */}
-          <div className="h-[12px] w-[128px] mb-8" >
-            <Link to="/"><img src="/untitled.png"></img></Link>
+          <div className="h-[12px] w-[128px] mb-8">
+            <Link to="/" onClick={() => handleNavClick('/')}>
+              <img src="/untitled.png" alt="Logo" />
+            </Link>
           </div>
 
           {/* Hamburger Menu Button - visible on all screen sizes */}
@@ -116,7 +140,7 @@ const Navigation = ({ BgColor }: NavigationProps) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link to={item.path} onClick={closeMenu}>
+              <Link to={item.path} onClick={() => handleNavClick(item.path)}>
                 {item.name}
               </Link>
             </motion.div>

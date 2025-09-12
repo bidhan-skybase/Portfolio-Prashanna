@@ -278,7 +278,7 @@ const TrustedBySection = () => {
             fontFamily: "Staatliches",
             fontSize: "clamp(58px, 8vw, 76px)",
           }}
-          className="text-4xl lg:text-6xl mb-12"
+          className="text-4xl lg:text-6xl mb-12 leading-[1.2] sm:leading-[1.2]"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -329,370 +329,6 @@ const TrustedBySection = () => {
         </div>
       </div>
     </section>
-  );
-};
-const CommercialSection = () => {
-  const extractVideoId = (url) => {
-    const patterns = [
-      /(?:youtube\.com\/watch\?v=)([^&\n?#]+)/,
-      /(?:youtu\.be\/)([^&\n?#]+)/,
-      /(?:youtube\.com\/embed\/)([^&\n?#]+)/,
-      /facebook\.com\/.*\/videos\/(\d+)/,
-    ];
-
-    for (const pattern of patterns) {
-      const match = url.match(pattern);
-      if (match) {
-        return match[1].split("?")[0];
-      }
-    }
-    return null;
-  };
-
-  const allCommercialVideos = [
-    {
-      url: "https://youtu.be/tI--w9k7P0g",
-      id: extractVideoId("https://youtu.be/tI--w9k7P0g"),
-      platform: "youtube",
-    },
-    {
-      url: "https://youtu.be/AlRhi6xPrHc",
-      id: extractVideoId("https://youtu.be/AlRhi6xPrHc"),
-      platform: "youtube",
-    },
-    {
-      url: "https://youtu.be/uzTDHZ4qpeY",
-      id: extractVideoId("https://youtu.be/uzTDHZ4qpeY"),
-      platform: "youtube",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=S7DRJNuYrhs",
-      id: extractVideoId("https://www.youtube.com/watch?v=S7DRJNuYrhs"),
-      platform: "youtube",
-    },
-    {
-      url: "https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z",
-      id: extractVideoId("https://youtu.be/1zX82HUC3MQ?si=i09C23fcWMWN-m_Z"),
-      platform: "youtube",
-    },
-
-    {
-      url: "https://youtu.be/pjCOsZZPB3c",
-      id: extractVideoId("https://youtu.be/pjCOsZZPB3c"),
-      platform: "youtube",
-    },
-    {
-      url: "https://youtu.be/ZmxUV8x5Bt4",
-      id: extractVideoId("https://youtu.be/ZmxUV8x5Bt4"),
-      platform: "youtube",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=81D9H2Z3Vcw",
-      id: extractVideoId("https://www.youtube.com/watch?v=81D9H2Z3Vcw"),
-      platform: "youtube",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=y7BtAkW5LKA",
-      id: extractVideoId("https://www.youtube.com/watch?v=y7BtAkW5LKA"),
-      platform: "youtube",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=kexCWZSRx7Q",
-      id: extractVideoId("https://www.youtube.com/watch?v=kexCWZSRx7Q"),
-      platform: "youtube",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=Nylgt4CtsKo",
-      id: extractVideoId("https://www.youtube.com/watch?v=Nylgt4CtsKo"),
-      title: "Commercial 13",
-      platform: "youtube",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=IUigcSW0lfo&list=PLN88_j1xLvkU6PyWd_CD7TZEFeIzJsS8T",
-      id: extractVideoId(
-        "https://www.youtube.com/watch?v=IUigcSW0lfo&list=PLN88_j1xLvkU6PyWd_CD7TZEFeIzJsS8T",
-      ),
-      platform: "youtube",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=D5PdEPD6O14",
-      id: extractVideoId("https://www.youtube.com/watch?v=D5PdEPD6O14"),
-      platform: "youtube",
-    },
-    {
-      url: "https://youtu.be/NOqkE2YJtkY?si=DAz3MhArAbVKFZDb",
-      id: extractVideoId("https://youtu.be/NOqkE2YJtkY?si=DAz3MhArAbVKFZDb"),
-      platform: "youtube",
-    },
-  ];
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState(null);
-  const [thumbnailStartIndex, setThumbnailStartIndex] = useState(0);
-  const [hasNextBeenPressed, setHasNextBeenPressed] = useState(false);
-  const [thumbnailsPerPage, setThumbnailsPerPage] = useState(
-    getThumbnailsPerPage(window.innerWidth),
-  );
-  const [videoTitles, setVideoTitles] = useState({});
-
-  // Function to fetch YouTube video title
-  const fetchYouTubeTitle = async (videoId) => {
-    try {
-      const response = await fetch(
-        `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`,
-      );
-      const data = await response.json();
-      return data.title;
-    } catch (error) {
-      console.error("Error fetching video title:", error);
-      return null;
-    }
-  };
-
-  // Fetch titles for all videos when component mounts
-  useEffect(() => {
-    const fetchAllTitles = async () => {
-      const titles = {};
-      for (const video of allCommercialVideos) {
-        const title = await fetchYouTubeTitle(video.id);
-        if (title) {
-          titles[video.id] = title;
-        }
-      }
-      setVideoTitles(titles);
-    };
-
-    fetchAllTitles();
-  }, []);
-
-  // In your JSX, use the fetched title or fallback to your custom title:
-  const getDisplayTitle = (video) => {
-    return videoTitles[video.id] || video.title;
-  };
-
-  function getThumbnailsPerPage(width) {
-    return width < 768 ? 4 : 8;
-  }
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setThumbnailsPerPage(getThumbnailsPerPage(width));
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const handleNext = () => {
-    setHasNextBeenPressed(true);
-    setThumbnailStartIndex((prev) => {
-      const nextIndex = prev + thumbnailsPerPage;
-      // If nextIndex would go beyond the array, reset to 0
-      // But only if there are actually more videos to show from the beginning
-      if (nextIndex >= allCommercialVideos.length) {
-        return 0;
-      }
-      return nextIndex;
-    });
-  };
-
-  const handlePrevious = () => {
-    setThumbnailStartIndex((prev) => {
-      const prevIndex = prev - thumbnailsPerPage;
-      if (prevIndex < 0) {
-        // Go to the last possible starting index that shows remaining videos
-        const lastPageStartIndex =
-          Math.floor((allCommercialVideos.length - 1) / thumbnailsPerPage) *
-          thumbnailsPerPage;
-        return lastPageStartIndex;
-      }
-      return prevIndex;
-    });
-  };
-
-  const openModal = (video) => {
-    setSelectedVideo(video);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedVideo(null);
-  };
-
-  const getEmbedUrl = (video) => {
-    if (video.platform === "youtube") {
-      return `https://www.youtube.com/embed/${video.id}?autoplay=1&mute=0&controls=1&modestbranding=1&rel=0`;
-    } else if (video.platform === "facebook") {
-      return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.url)}&show_text=false&width=560&height=315&autoplay=true`;
-    }
-    return "";
-  };
-
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") closeModal();
-    };
-    if (isModalOpen) {
-      document.addEventListener("keydown", handleEscape);
-      document.body.style.overflow = "hidden";
-    }
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "unset";
-    };
-  }, [isModalOpen]);
-
-  return (
-    <>
-      <section id="works" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-8">
-          <motion.h2
-            className="text-4xl lg:text-6xl mb-10 text-center"
-            style={{
-              fontFamily: "Staatliches",
-              fontSize: "clamp(58px, 12vw, 76px)",
-            }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Commercials
-          </motion.h2>
-
-          {/* Responsive Grid */}
-          <motion.div
-            className={`mb-8 gap-4 
-            scrollbar-hide
-    flex overflow-x-auto md:overflow-visible 
-    md:grid md:grid-cols-2 lg:grid-cols-4 
-    ${allCommercialVideos.length >= 4 ? "md:grid-rows-2" : ""}
-    snap-x snap-mandatory
-  `}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            {allCommercialVideos
-              .slice(
-                thumbnailStartIndex,
-                thumbnailStartIndex + thumbnailsPerPage,
-              )
-              .map((video, index) => (
-                <motion.div
-                  key={index}
-                  className="relative h-48 lg:h-56 w-[100vw] md:w-auto flex-shrink-0 bg-gray-200 overflow-hidden cursor-pointer group rounded-lg shadow-lg snap-start"
-                  onClick={() => openModal(video)}
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <img
-                    src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                    alt={getDisplayTitle(video)}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      // Fallback to medium quality if high quality fails
-                      e.target.src = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
-                    }}
-                  />
-
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex flex-col items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-2 border-white rounded-sm backdrop-blur-sm">
-                      <h3
-                        className="text-white font-semibold text-center tracking-wide whitespace-normal break-words px-2"
-                        style={{
-                          fontFamily: "Staatliches",
-                          fontSize: "22px",
-                          color: "white",
-                          maxWidth: "90%", // Optional: restrict width for wrapping
-                        }}
-                      >
-                        {getDisplayTitle(video)}
-                      </h3>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-          </motion.div>
-
-          {/* Navigation */}
-          {allCommercialVideos.length > thumbnailsPerPage && (
-            <motion.div
-              className="hidden md:flex justify-between items-center mb-0"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              {hasNextBeenPressed ? (
-                <button
-                  className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300 flex items-center gap-2"
-                  style={{ fontFamily: "Staatliches" }}
-                  onClick={handlePrevious}
-                >
-                  ← Previous
-                </button>
-              ) : (
-                <div />
-              )}
-              <button
-                className="text-2xl lg:text-3xl hover:text-portfolio-dark-green transition-colors duration-300 flex items-center gap-2"
-                style={{ fontFamily: "Staatliches" }}
-                onClick={handleNext}
-              >
-                Next →
-              </button>
-            </motion.div>
-          )}
-        </div>
-      </section>
-
-      {/* Modal */}
-      {isModalOpen && selectedVideo && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
-          onClick={closeModal}
-        >
-          <motion.div
-            className="relative w-full max-w-4xl aspect-video bg-black rounded-lg overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <button
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black bg-opacity-50 hover:bg-opacity-75 rounded-full flex items-center justify-center text-white transition-all duration-200"
-              onClick={closeModal}
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-            <iframe
-              src={getEmbedUrl(selectedVideo)}
-              title={selectedVideo.title}
-              className="w-full h-full"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </motion.div>
-        </div>
-      )}
-    </>
   );
 };
 
@@ -948,6 +584,20 @@ const BrandsAndArtistsSection = () => {
     ],
   ];
 
+  // Flatten all logos into a single array for mobile display
+  const allLogos = logoData.flat();
+
+  // Function to chunk logos into groups of 3 for mobile
+  const chunkLogosForMobile = (logos, chunkSize = 3) => {
+    const chunks = [];
+    for (let i = 0; i < logos.length; i += chunkSize) {
+      chunks.push(logos.slice(i, i + chunkSize));
+    }
+    return chunks;
+  };
+
+  const mobileLogoRows = chunkLogosForMobile(allLogos, 3);
+
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
@@ -958,10 +608,73 @@ const BrandsAndArtistsSection = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  const LogoGridWithImageSwap = ({ logos, rowIndex, isLastRow }) => (
+  const LogoComponent = ({ logo, index }) => (
     <motion.div
-      className={`flex justify-center items-center gap-10 lg:gap-20 flex-wrap ${
-        isLastRow ? "" : "mb-12"
+      key={`${logo.alt}-${index}`}
+      className="flex items-center justify-center relative overflow-hidden group cursor-pointer"
+      variants={logoVariants}
+      transition={{ duration: 0.3, delay: 0.1 + (index % 3) * 0.1 }}
+      whileHover={{ scale: 1.1 }}
+    >
+      {/* Main image */}
+      <img
+        src={logo.src}
+        alt={logo.alt}
+        className={`object-contain transition-all duration-300 
+          ${logo.hoverSrc ? "group-hover:opacity-0" : ""}
+          filter grayscale group-hover:grayscale-0
+          ${logo.customSize ?
+          // Custom sizes for desktop - scale them down for better fit
+          logo.customSize.includes('w-30') || logo.customSize.includes('w-32') ?
+            'w-16 h-16 sm:w-20 sm:h-20 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28' :
+            logo.customSize.includes('w-28') ?
+              'w-14 h-14 sm:w-18 sm:h-18 md:w-18 md:h-18 lg:w-22 lg:h-22 xl:w-24 xl:h-24' :
+              logo.customSize.includes('w-20') ?
+                'w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20' :
+                logo.customSize.includes('w-18') ?
+                  'w-12 h-12 sm:w-14 sm:h-14 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-18 xl:h-18' :
+                  logo.customSize.includes('w-16') ?
+                    'w-10 h-10 sm:w-12 sm:h-12 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16' :
+                    'w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20'
+          : 'w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20'
+        }
+        `}
+        loading="lazy"
+      />
+
+      {/* Hover image (if provided) */}
+      {logo.hoverSrc && (
+        <img
+          src={logo.hoverSrc}
+          alt={`${logo.alt} hover`}
+          className={`object-contain absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300
+            ${logo.customSize ?
+            // Custom sizes for desktop - scale them down for better fit
+            logo.customSize.includes('w-30') || logo.customSize.includes('w-32') ?
+              'w-16 h-16 sm:w-20 sm:h-20 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28' :
+              logo.customSize.includes('w-28') ?
+                'w-14 h-14 sm:w-18 sm:h-18 md:w-18 md:h-18 lg:w-22 lg:h-22 xl:w-24 xl:h-24' :
+                logo.customSize.includes('w-20') ?
+                  'w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20' :
+                  logo.customSize.includes('w-18') ?
+                    'w-12 h-12 sm:w-14 sm:h-14 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-18 xl:h-18' :
+                    logo.customSize.includes('w-16') ?
+                      'w-10 h-10 sm:w-12 sm:h-12 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16' :
+                      'w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20'
+            : 'w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20'
+          }
+          `}
+          loading="lazy"
+        />
+      )}
+    </motion.div>
+  );
+
+  // Desktop layout component
+  const DesktopLogoGrid = ({ logos, rowIndex, isLastRow }) => (
+    <motion.div
+      className={`hidden md:flex justify-center items-center gap-6 lg:gap-12 xl:gap-20 flex-wrap ${
+        isLastRow ? "" : "mb-8 lg:mb-12"
       }`}
       variants={containerVariants}
       initial="hidden"
@@ -970,36 +683,34 @@ const BrandsAndArtistsSection = () => {
       viewport={{ once: true }}
     >
       {logos.map((logo, index) => (
-        <motion.div
-          key={`${logo.alt}-${index}`}
-          className="flex items-center justify-center relative overflow-hidden"
-          variants={logoVariants}
-          transition={{ duration: 0.3, delay: 0.1 + index * 0.1 }}
-          whileHover={{ scale: 1.2 }}
-        >
-          {/* Main image */}
-          <img
-            src={logo.src}
-            alt={logo.alt}
-            className={`${logo.customSize || "w-24 h-24"} object-contain transition-all duration-300 ${
-              logo.hoverSrc ? "group-hover:opacity-0" : ""
-            } filter grayscale hover:grayscale-0`}
-            loading="lazy"
-          />
-
-          {/* Hover image (if provided) */}
-          {logo.hoverSrc && (
-            <img
-              src={logo.hoverSrc}
-              alt={`${logo.alt} hover`}
-              className={`${logo.customSize || "w-24 h-24"} object-contain absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300`}
-              loading="lazy"
-            />
-          )}
-        </motion.div>
+        <LogoComponent key={`desktop-${logo.alt}-${index}`} logo={logo} index={index} />
       ))}
     </motion.div>
   );
+
+  // Mobile layout component (3 items per row)
+  const MobileLogoGrid = ({ logoRows }) => (
+    <div className="md:hidden">
+      {logoRows.map((row, rowIndex) => (
+        <motion.div
+          key={`mobile-row-${rowIndex}`}
+          className={`grid grid-cols-3 gap-4 place-items-center ${
+            rowIndex < logoRows.length - 1 ? "mb-6" : ""
+          }`}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          transition={{ duration: 0.8, delay: 0.4 + rowIndex * 0.2 }}
+          viewport={{ once: true }}
+        >
+          {row.map((logo, index) => (
+            <LogoComponent key={`mobile-${logo.alt}-${index}`} logo={logo} index={index} />
+          ))}
+        </motion.div>
+      ))}
+    </div>
+  );
+
   return (
     <section
       className=""
@@ -1010,10 +721,10 @@ const BrandsAndArtistsSection = () => {
       <div className="max-w-full">
         {/* Title */}
         <motion.h2
-          className="text-4xl lg:text-6xl mb-16 text-center"
+          className="text-3xl sm:text-4xl lg:text-6xl mb-8 sm:mb-12 lg:mb-16 text-center px-4"
           style={{
             fontFamily: "Staatliches",
-            fontSize: "clamp(58px, 8vw, 76px)",
+            fontSize: "clamp(32px, 8vw, 76px)",
           }}
           variants={containerVariants}
           initial="hidden"
@@ -1025,22 +736,27 @@ const BrandsAndArtistsSection = () => {
         </motion.h2>
 
         {/* Black background section */}
-        <div className="bg-black px-8 lg:px-20 py-20">
+        <div className="bg-black px-4 sm:px-6 md:px-8 lg:px-20 py-12 sm:py-16 lg:py-20">
           <div className="max-w-6xl mx-auto">
+            {/* Desktop Layout */}
             {logoData.map((row, rowIndex) => (
-              <LogoGridWithImageSwap
-                key={rowIndex}
+              <DesktopLogoGrid
+                key={`desktop-${rowIndex}`}
                 logos={row}
                 rowIndex={rowIndex}
-                isLastRow={rowIndex == logoData.length - 1}
+                isLastRow={rowIndex === logoData.length - 1}
               />
             ))}
+
+            {/* Mobile Layout */}
+            <MobileLogoGrid logoRows={mobileLogoRows} />
           </div>
         </div>
       </div>
     </section>
   );
 };
+
 const ArtistNamesSection = () => {
   // Organized artist names by rows with alternating colors
   const artistRows = [
