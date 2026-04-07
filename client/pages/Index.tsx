@@ -467,6 +467,12 @@ const BrandsAndArtistsSection = () => {
         alt: "Tuborg",
       },
       {
+        src: "https://prashannabajracharya.com/logos/coke_bw.png",
+        hoverSrc: "https://prashannabajracharya.com/logos/coke.png",
+        alt: "Coke Studio",
+           customSize: "w-16 h-16", 
+      },
+      {
         src: "https://prashannabajracharya.com/logos/Lolla bw.webp",
         hoverSrc: "https://prashannabajracharya.com/logos/lolla c.webp",
         alt: "Lollapaloza",
@@ -486,6 +492,7 @@ const BrandsAndArtistsSection = () => {
     ],
     // Row 2
     [
+
       {
         src: "https://prashannabajracharya.com/logos/skoda bnw.webp",
         hoverSrc: "https://prashannabajracharya.com/logos/skoda color.webp",
@@ -523,6 +530,7 @@ const BrandsAndArtistsSection = () => {
         hoverSrc: "https://prashannabajracharya.com/logos/believe c.webp",
         alt: "Believe",
       },
+
     ],
     // Row 3
     [
@@ -567,6 +575,12 @@ const BrandsAndArtistsSection = () => {
     ],
     [
       {
+        src: "https://prashannabajracharya.com/logos/michelin_bw.png",
+        hoverSrc: "https://prashannabajracharya.com/logos/michelin.png",
+        alt: "Michelin",
+      },
+
+      {
         src: "https://prashannabajracharya.com/logos/dav bnw.webp",
         hoverSrc: "https://prashannabajracharya.com/logos/dav c.webp",
         alt: "DAV",
@@ -584,8 +598,8 @@ const BrandsAndArtistsSection = () => {
         alt: "Yatri",
       },
       {
-        src: "https://prashannabajracharya.com/logos/Jnp bw.webp",
-        hoverSrc: "https://prashannabajracharya.com/logos/Jnp c.webp",
+        src: "https://prashannabajracharya.com/logos/jb_bw.png",
+        hoverSrc: "https://prashannabajracharya.com/logos/jb.png",
         alt: "Janakpur Bolts",
       },
     ],
