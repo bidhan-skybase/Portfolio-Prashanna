@@ -40,41 +40,50 @@ const galleryImages = [
   "https://prashannabajracharya.com/gallery_images/30.webp",
 ];
 
+
+
 const HeroSection = () => {
   const navigate = useNavigate();
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   const handleMoreWorksClick = () => {
-    navigate("/works"); // Navigate to the Works page
+    navigate("/works");
   };
+
+  const videoId = "400OvNpY0FY";
+
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
     >
-      {/* Video Background */}
-      <div className="absolute inset-0 w-full h-full">
-        <video
-          className="w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source
-            src="https://bidhan-skybase.github.io/my-video/showreel.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-        {/* Optional overlay for better text readability */}
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+      {/* 1. Static Placeholder - Shows immediately */}
+      <div
+        className={`absolute inset-0 z-0 bg-cover bg-center transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-0' : 'opacity-100'
+          }`}
+        style={{
+          backgroundImage: `url('https://img.youtube.com/vi/${videoId}/maxresdefault.jpg')`
+        }}
+      />
+
+      {/* 2. YouTube Video Background */}
+      <div className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'
+        }`}>
+        <iframe
+          className="absolute top-1/2 left-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1`}
+          allow="autoplay; fullscreen"
+          onLoad={() => setIsVideoLoaded(true)}
+        />
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-black/40"></div>
       </div>
 
-      {/* More Works Button */}
+      {/* 3. Hero Content */}
       <div className="relative z-10 mt-[34rem]">
         <button
           onClick={handleMoreWorksClick}
-          className="px-6 py-3 border-2 border-white text-white font-semibold rounded-full hover:border-white-200 hover:text-gray-200 transition duration-300"
+          className="px-6 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-black transition duration-300"
           style={{ fontFamily: "Helvetica Neue" }}
         >
           MORE WORKS
@@ -83,6 +92,7 @@ const HeroSection = () => {
     </section>
   );
 };
+
 
 const CounterAnimation = ({ end, label }: { end: number; label: string }) => {
   const [ref, inView] = useInView({
@@ -621,31 +631,6 @@ const BrandsAndArtistsSection = () => {
           ${logo.hoverSrc ? "group-hover:opacity-0" : ""}
           filter grayscale group-hover:grayscale-0
           ${logo.customSize ?
-          // Custom sizes for desktop - scale them down for better fit
-          logo.customSize.includes('w-30') || logo.customSize.includes('w-32') ?
-            'w-16 h-16 sm:w-20 sm:h-20 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28' :
-            logo.customSize.includes('w-28') ?
-              'w-14 h-14 sm:w-18 sm:h-18 md:w-18 md:h-18 lg:w-22 lg:h-22 xl:w-24 xl:h-24' :
-              logo.customSize.includes('w-20') ?
-                'w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20' :
-                logo.customSize.includes('w-18') ?
-                  'w-12 h-12 sm:w-14 sm:h-14 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-18 xl:h-18' :
-                  logo.customSize.includes('w-16') ?
-                    'w-10 h-10 sm:w-12 sm:h-12 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16' :
-                    'w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20'
-          : 'w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20'
-        }
-        `}
-        loading="lazy"
-      />
-
-      {/* Hover image (if provided) */}
-      {logo.hoverSrc && (
-        <img
-          src={logo.hoverSrc}
-          alt={`${logo.alt} hover`}
-          className={`object-contain absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300
-            ${logo.customSize ?
             // Custom sizes for desktop - scale them down for better fit
             logo.customSize.includes('w-30') || logo.customSize.includes('w-32') ?
               'w-16 h-16 sm:w-20 sm:h-20 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28' :
@@ -660,6 +645,31 @@ const BrandsAndArtistsSection = () => {
                       'w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20'
             : 'w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20'
           }
+        `}
+        loading="lazy"
+      />
+
+      {/* Hover image (if provided) */}
+      {logo.hoverSrc && (
+        <img
+          src={logo.hoverSrc}
+          alt={`${logo.alt} hover`}
+          className={`object-contain absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300
+            ${logo.customSize ?
+              // Custom sizes for desktop - scale them down for better fit
+              logo.customSize.includes('w-30') || logo.customSize.includes('w-32') ?
+                'w-16 h-16 sm:w-20 sm:h-20 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28' :
+                logo.customSize.includes('w-28') ?
+                  'w-14 h-14 sm:w-18 sm:h-18 md:w-18 md:h-18 lg:w-22 lg:h-22 xl:w-24 xl:h-24' :
+                  logo.customSize.includes('w-20') ?
+                    'w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20' :
+                    logo.customSize.includes('w-18') ?
+                      'w-12 h-12 sm:w-14 sm:h-14 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-18 xl:h-18' :
+                      logo.customSize.includes('w-16') ?
+                        'w-10 h-10 sm:w-12 sm:h-12 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16' :
+                        'w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20'
+              : 'w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20'
+            }
           `}
           loading="lazy"
         />
@@ -670,9 +680,8 @@ const BrandsAndArtistsSection = () => {
   // Desktop layout component
   const DesktopLogoGrid = ({ logos, rowIndex, isLastRow }) => (
     <motion.div
-      className={`hidden md:flex justify-center items-center gap-6 lg:gap-12 xl:gap-20 flex-wrap ${
-        isLastRow ? "" : "mb-8 lg:mb-12"
-      }`}
+      className={`hidden md:flex justify-center items-center gap-6 lg:gap-12 xl:gap-20 flex-wrap ${isLastRow ? "" : "mb-8 lg:mb-12"
+        }`}
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
@@ -691,9 +700,8 @@ const BrandsAndArtistsSection = () => {
       {logoRows.map((row, rowIndex) => (
         <motion.div
           key={`mobile-row-${rowIndex}`}
-          className={`grid grid-cols-3 gap-4 place-items-center ${
-            rowIndex < logoRows.length - 1 ? "mb-6" : ""
-          }`}
+          className={`grid grid-cols-3 gap-4 place-items-center ${rowIndex < logoRows.length - 1 ? "mb-6" : ""
+            }`}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
