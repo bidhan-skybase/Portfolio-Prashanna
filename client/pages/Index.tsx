@@ -470,7 +470,7 @@ const BrandsAndArtistsSection = () => {
         src: "https://prashannabajracharya.com/logos/coke_bw.png",
         hoverSrc: "https://prashannabajracharya.com/logos/coke.png",
         alt: "Coke Studio",
-           customSize: "w-16 h-16", 
+        customSize: "w-16 h-16",
       },
       {
         src: "https://prashannabajracharya.com/logos/Lolla bw.webp",
@@ -788,7 +788,6 @@ const ArtistNamesSection = () => {
 
       { name: "Atif\nAslam", color: "text-black" },
       { name: "Clean\nBandit", color: "text-gray-500" },
-      { name: "Underside", color: "text-black" },
     ],
     [
       { name: "Diljit\nDosanjh", color: "text-gray-500" },
@@ -817,7 +816,8 @@ const ArtistNamesSection = () => {
       { name: "Sushant\nKC", color: "text-gray-500" },
       { name: "1974AD", color: "text-black" },
       { name: "555", color: "text-gray-500" },
-      { name: "Yabesh Thapa", color: "text-black" },
+      { name: "Underside", color: "text-black" },
+      { name: "Yabesh Thapa", color: "text-gray-500" },
     ],
   ];
 
