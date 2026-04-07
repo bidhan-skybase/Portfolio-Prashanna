@@ -173,7 +173,7 @@ const AboutSection = () => {
                 >
                   Prashanna Bajracharya is a self-taught photographer,
                   filmmaker, and creative entrepreneur from Kathmandu. He has
-                  worked with 80+ brands on campaigns, documentaries,
+                  worked with 150+ brands on campaigns, documentaries,
                   editorials, and events blending artistry with impact. Beyond
                   commercial work, he is deeply immersed in music festival
                   photography and videography, capturing the raw energy of live
@@ -206,7 +206,7 @@ const AboutSection = () => {
 
               <div className="grid grid-cols-2 gap-16">
                 <CounterAnimation end={6} label="Years Experience" />
-                <CounterAnimation end={80} label="Happy Clients" />
+                <CounterAnimation end={100} label="Projects" />
               </div>
             </motion.div>
 
