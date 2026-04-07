@@ -774,6 +774,7 @@ const ArtistNamesSection = () => {
 
       { name: "Atif\nAslam", color: "text-black" },
       { name: "Clean\nBandit", color: "text-gray-500" },
+      { name: "Underside", color: "text-black" },
     ],
     [
       { name: "Diljit\nDosanjh", color: "text-gray-500" },
